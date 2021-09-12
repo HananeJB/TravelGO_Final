@@ -8,7 +8,7 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image" style="background: url(&quot;/admin/assets/img/dogs/image_8.jpg&quot;);background-size: cover;"></div>
+                                <div class="flex-grow-1 bg-login-image" style="background: url(/adminpage/assets/img/dogs/image_8.jpg);background-size: cover;"></div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">

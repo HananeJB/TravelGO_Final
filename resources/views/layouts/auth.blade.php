@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="adminpage/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="adminpage/assets/fonts/fontawesome5-overrides.min.css">
 </head>
-<body class="bg-gradient-primary" style="color: var(--white);background: var(--light);">
+<body class="bg-gradient-primary" style="color: var(--white);background: var(--light); margin-top: 150px;">
 
 @yield('content')
 
