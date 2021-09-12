@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('head')
+    <title>TravelGO - Home</title>
+
+@endsection
+
 @section('content')
     <div class="hero-wrap js-fullheight" style="background-image: url('travelgo/images/bg_1.jpg');">
         <div class="overlay"></div>

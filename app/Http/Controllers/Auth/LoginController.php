@@ -39,14 +39,29 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function logout(Request $request)
+
+
+    public function login(Request $request)
     {
-        $this->guard()->logout();
+        $input = $request->all();
 
-        $request->session()->flush();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        $request->session()->regenerate();
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->is_admin == 1) {
+                return redirect()->route('admin.route');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
+        }
 
-        return redirect('home');
     }
+
 }
