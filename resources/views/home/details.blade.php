@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-<title>Details</title>
+<title>Travelgo - Details</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 @endsection
@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span class="mr-2"><a href="/activities">Offer</a></span> <span>Offer details</span></p>
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/home">Home</a></span> <span class="mr-2"><a href="/activities">Offer</a></span> <span>Offer details</span></p>
                 <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $activity->title }}</h1>
             </div>
         </div>
@@ -324,9 +324,10 @@
                 </div> <!-- .col-md-8 -->
             </div>
         </div>
+    </div>
 </section> <!-- .section -->
 
-
+@endsection
 
 <style>
     ul.timeline {
@@ -364,4 +365,4 @@
     }
 </style>
 
-@endsection
+
