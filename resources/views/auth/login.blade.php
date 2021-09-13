@@ -38,7 +38,7 @@
                                             <div class="custom-control custom-checkbox small">
                                                 <div class="form-check">
                                                     <input class="form-check-input custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                    <label class="form-check-label custom-control-label" for="formCheck-1"> {{ __('Remember Me') }}</label>
+                                                    <label class="form-check-label custom-control-label" style="color: black;" for="formCheck-1"> Remember me</label>
                                                 </div>
                                             </div>
                                         </div>

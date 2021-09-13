@@ -101,7 +101,7 @@
                             <div class="item">
                                 <div class="destination">
                                     <a href="#" class="img d-flex justify-content-center align-items-center"
-                                       style="background-image: url(/theme/images/destination-1.jpg);">
+                                       style="background-image: url('{{ Storage::url($data->image) }}');">
                                         <div class="icon d-flex justify-content-center align-items-center">
                                             <span class="icon-search2"></span>
                                         </div>
@@ -136,7 +136,7 @@
                         <div class="destination">
                             <a href="details/{{$activity->id}}"
                                class="img img-2 d-flex justify-content-center align-items-center"
-                               style="background-image: url('/img/{{ $activity->image }}');">
+                               style="background-image: url('{{ Storage::url($activity->image) }}');">
                                 <div class="icon d-flex justify-content-center align-items-center">
                                     <span class="icon-search2"></span>
                                 </div>

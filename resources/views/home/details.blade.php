@@ -32,9 +32,7 @@
                         <h3 class="heading mb-4">Find City</h3>
                         <form action="#">
                             <div class="fields">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Destination, City">
-                                </div>
+
                                 <div class="form-group">
                                     <div class="select-wrap one-third">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -47,12 +45,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-                                </div>
+
 
                                 <div class="form-group">
                                     <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
@@ -234,89 +227,7 @@
 
 
 
-                            <div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-                                <h4 class="mb-4">Related Hotels</h4>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="destination">
-                                            <a href="hotel-single.html" class="img img-2" style="background-image: url(/travelgo/images/hotel-1.jpg);"></a>
-                                            <div class="text p-3">
-                                                <div class="d-flex">
-                                                    <div class="one">
-                                                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                        <p class="rate">
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star-o"></i>
-                                                            <span>8 Rating</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="two">
-                                                        <span class="price per-price">$40<br><small>/night</small></span>
-                                                    </div>
-                                                </div>
-                                                <p>Far far away, behind the word mountains, far from the countries</p>
-                                                <hr>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="destination">
-                                            <a href="hotel-single.html" class="img img-2" style="background-image: url(/travelgo/images/hotel-2.jpg);"></a>
-                                            <div class="text p-3">
-                                                <div class="d-flex">
-                                                    <div class="one">
-                                                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                        <p class="rate">
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star-o"></i>
-                                                            <span>8 Rating</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="two">
-                                                        <span class="price per-price">$40<br><small>/night</small></span>
-                                                    </div>
-                                                </div>
-                                                <p>Far far away, behind the word mountains, far from the countries</p>
-                                                <hr>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="destination">
-                                            <a href="hotel-single.html" class="img img-2" style="background-image: url(/travelgo/images/hotel-3.jpg);"></a>
-                                            <div class="text p-3">
-                                                <div class="d-flex">
-                                                    <div class="one">
-                                                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                        <p class="rate">
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star"></i>
-                                                            <i class="icon-star-o"></i>
-                                                            <span>8 Rating</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="two">
-                                                        <span class="price per-price">$40<br><small>/night</small></span>
-                                                    </div>
-                                                </div>
-                                                <p>Far far away, behind the word mountains, far from the countries</p>
-                                                <hr>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 
 
