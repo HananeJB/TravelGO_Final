@@ -10,44 +10,44 @@
         @yield('head')
 
     <!-- Style -->
-    <link rel="stylesheet" href="travelgo/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="travelgo/css/animate.css">
+    <link rel="stylesheet" href="/travelgo/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/travelgo/css/animate.css">
 
-    <link rel="stylesheet" href="travelgo/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="travelgo/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="travelgo/css/magnific-popup.css">
+    <link rel="stylesheet" href="/travelgo/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/travelgo/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/travelgo/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="travelgo/css/aos.css">
+    <link rel="stylesheet" href="/travelgo/css/aos.css">
 
-    <link rel="stylesheet" href="travelgo/css/ionicons.min.css">
+    <link rel="stylesheet" href="/travelgo/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="travelgo/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="travelgo/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/travelgo/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/travelgo/css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="travelgo/css/flaticon.css">
-    <link rel="stylesheet" href="travelgo/css/icomoon.css">
-    <link rel="stylesheet" href="travelgo/css/style.css">
+    <link rel="stylesheet" href="/travelgo/css/flaticon.css">
+    <link rel="stylesheet" href="/travelgo/css/icomoon.css">
+    <link rel="stylesheet" href="/travelgo/css/style.css">
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="travelgo/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="travelgo/css/animate.css">
+    <link rel="stylesheet" href="/travelgo/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/travelgo/css/animate.css">
 
-    <link rel="stylesheet" href="travelgo/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="travelgo/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="travelgo/css/magnific-popup.css">
+    <link rel="stylesheet" href="/travelgo/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/travelgo/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/travelgo/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="travelgo/css/aos.css">
+    <link rel="stylesheet" href="/travelgo/css/aos.css">
 
-    <link rel="stylesheet" href="travelgo/css/ionicons.min.css">
+    <link rel="stylesheet" href="/travelgo/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="travelgo/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="travelgo/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/travelgo/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/travelgo/css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="travelgo/css/flaticon.css">
-    <link rel="stylesheet" href="travelgo/css/icomoon.css">
-    <link rel="stylesheet" href="travelgo/css/style.css">
+    <link rel="stylesheet" href="/travelgo/css/flaticon.css">
+    <link rel="stylesheet" href="/travelgo/css/icomoon.css">
+    <link rel="stylesheet" href="/travelgo/css/style.css">
 
 
     <!-- Fonts -->
@@ -69,6 +69,7 @@
                 <li class="nav-item active"><a href='/home' class="nav-link">Home</a></li>
 
                 <li class="nav-item"><a href="/offers" class="nav-link">Offers</a></li>
+
                 <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
 
 
@@ -202,24 +203,24 @@
     </svg></div>
 
 
-<script src="travelgo/js/jquery.min.js"></script>
-<script src="travelgo/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="travelgo/js/popper.min.js"></script>
-<script src="travelgo/js/bootstrap.min.js"></script>
-<script src="travelgo/js/jquery.easing.1.3.js"></script>
-<script src="travelgo/js/jquery.waypoints.min.js"></script>
-<script src="travelgo/js/jquery.stellar.min.js"></script>
-<script src="travelgo/js/owl.carousel.min.js"></script>
-<script src="travelgo/js/jquery.magnific-popup.min.js"></script>
-<script src="travelgo/js/aos.js"></script>
-<script src="travelgo/js/jquery.animateNumber.min.js"></script>
-<script src="travelgo/js/bootstrap-datepicker.js"></script>
-<script src="travelgo/js/jquery.timepicker.min.js"></script>
-<script src="travelgo/js/scrollax.min.js"></script>
+<script src="/travelgo/js/jquery.min.js"></script>
+<script src="/travelgo/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/travelgo/js/popper.min.js"></script>
+<script src="/travelgo/js/bootstrap.min.js"></script>
+<script src="/travelgo/js/jquery.easing.1.3.js"></script>
+<script src="/travelgo/js/jquery.waypoints.min.js"></script>
+<script src="/travelgo/js/jquery.stellar.min.js"></script>
+<script src="/travelgo/js/owl.carousel.min.js"></script>
+<script src="/travelgo/js/jquery.magnific-popup.min.js"></script>
+<script src="/travelgo/js/aos.js"></script>
+<script src="/travelgo/js/jquery.animateNumber.min.js"></script>
+<script src="/travelgo/js/bootstrap-datepicker.js"></script>
+<script src="/travelgo/js/jquery.timepicker.min.js"></script>
+<script src="/travelgo/js/scrollax.min.js"></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="travelgo/js/google-map.js"></script>
-<script src="travelgo/js/main.js"></script>
+<script src="/travelgo/js/google-map.js"></script>
+<script src="/travelgo/js/main.js"></script>
 
 </body>
 </html>
