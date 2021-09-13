@@ -18,7 +18,11 @@ class AdminController extends Controller
 
         $users = DB::table('users')
             ->get();
-        return view('admin.dashboard', compact('bookings','users'));
+
+        $activities = DB::table('users')
+            ->get();
+
+        return view('admin.dashboard', compact('bookings','users','activities'));
     }
 
     public function profileadmin()

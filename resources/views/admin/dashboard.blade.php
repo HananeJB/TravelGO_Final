@@ -20,7 +20,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
                                 <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>New reservations</span></div>
-                                <div class="text-dark font-weight-bold h5 mb-0"><span>$40,000</span></div>
+                                <div class="text-dark font-weight-bold h5 mb-0"><span>{{ count($bookings) }}</span></div>
                             </div>
                             <div class="col-auto"><i class="fa fa-calendar-check-o fa-2x text-gray-300"></i></div>
                         </div>
@@ -33,7 +33,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
                                 <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span style="border-color: var(--blue);color: var(--blue);">new users</span></div>
-                                <div class="text-dark font-weight-bold h5 mb-0"><span>$215,000</span></div>
+                                <div class="text-dark font-weight-bold h5 mb-0"><span>{{ count($users) }}</span></div>
                             </div>
                             <div class="col-auto"><i class="fa fa-user-plus fa-2x text-gray-300"></i></div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
                                 <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span style="color: var(--blue);">offers</span></div>
-                                <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                                <div class="text-dark font-weight-bold h5 mb-0"><span>{{ count($activities) }}</span></div>
                             </div>
                             <div class="col-auto"><i class="fa fa-suitcase fa-2x text-gray-300" style="color: var(--gray-dark);"></i></div>
                         </div>
