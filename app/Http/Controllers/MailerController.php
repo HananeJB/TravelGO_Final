@@ -11,8 +11,8 @@ use PHPMailer\PHPMailer\SMTP;
 class MailerController extends Controller {
 
     // =============== [ Email ] ===================
-    public function email() {
-        return view("home.contact");
+    public function contact() {
+        return view("frontend/secondary_pages/contact");
     }
 
 

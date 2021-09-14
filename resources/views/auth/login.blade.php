@@ -1,60 +1,63 @@
-@extends('old.layouts.auth')
+@extends('frontend.layouts.auth_layout')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9 col-lg-12 col-xl-10">
-                <div class="card shadow-lg o-hidden border-0 my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image" style="background: url(/adminpage/assets/img/dogs/image_8.jpg);background-size: cover;"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h4 class="text-dark mb-4">{{ __('Login') }}</h4>
-                                    </div>
-                                    <form class="user" method="POST" action="{{ route('login') }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input class="form-control form-control-user" type="email" id=email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{ old('email') }}" required autocomplete="email" autofocus >
-                                        </div>
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
+    <body id="login_bg">
 
-                                        <div class="form-group">
-                                            <input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password"name="password" required autocomplete="current-password">
-                                        </div>
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <div class="form-check">
-                                                    <input class="form-check-input custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                    <label class="form-check-label custom-control-label" style="color: black;" for="formCheck-1"> Remember me</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #f85959;border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;"> {{ __('Login') }}</button>
-                                        <hr>
-                                        <hr>
+    <nav id="menu" class="fake_menu"></nav>
 
-                                    <div class="text-center"><a class="small" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a></div>
-                                    <div class="text-center"><a class="small" href="{{ route('register') }}">Create an Account!</a></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="preloader">
+        <div data-loader="circle-side"></div>
     </div>
+    <!-- End Preload -->
+
+    <div id="login">
+        <aside>
+            <figure>
+                <a href="/"><img src="/frontend/img/logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+            </figure>
+            <form action="{{ route('login') }}" method="post">
+                @csrf
+                <div class="access_social">
+                    <a href="#0" class="social_bt facebook">Login with Facebook</a>
+                    <a href="#0" class="social_bt google">Login with Google</a>
+                    <a href="#0" class="social_bt linkedin">Login with Linkedin</a>
+                </div>
+                <div class="divider"><span>Or</span></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" id="email">
+                    <i class="icon_mail_alt"></i>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" id="password" value="">
+                    <i class="icon_lock_alt"></i>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="clearfix add_bottom_30">
+                    <div class="checkboxes float-left">
+                        <label class="container_check">Remember me
+                            <input type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="float-right mt-1"><a id="forgot" href="{{ route('password.request') }}">Forgot Password?</a></div>
+                </div>
+                <input type="submit" class="btn_1 rounded full-width" value="Login"/>
+                <div class="text-center add_top_10">New to TravelGo? <strong><a href="{{ route('register') }}">Sign up!</a></strong></div>
+            </form>
+            <div class="copy">Créé par Hanane Jabou</div>
+        </aside>
+    </div>
+    <!-- /login -->
 @endsection
+

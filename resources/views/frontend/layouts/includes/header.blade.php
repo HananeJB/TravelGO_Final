@@ -23,20 +23,40 @@
     </a>
     <nav id="menu" class="main-menu">
         <ul>
-            <li><span><a href="#0">Home</a></span></li>
+            <li><span><a href="/">Home</a></span></li>
             <li><span><a href="#0">Activities</a></span></li>
             <li><span><a href="#0">Hotels</a></span></li>
             <li><span><a href="#0">Restaurants</a></span></li>
             <li><span><a href="#0">Tours</a></span></li>
             <li><span><a href="#0">Adventure</a></span></li>
-            <li><span><a href="#0">Contact Us</a></span></li>
+            <li><span><a href="/about">About</a></span></li>
+            <li><span><a href="/terms_and_conditions">Terms</a></span></li>
+            <li><span><a href="#contact">Contact Us</a></span></li>
             @auth
+                @php
+                  $isAdmin = Auth::user()->is_admin;
+                @endphp
+                @if($isAdmin == 1)
                 <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
                     <ul>
-                        <li><a href="index.html">Mon profil</a></li>
-                        <li><a href="index-2.html">Espace client</a></li>
+                        <li><a href="/admin/profile">My Profil</a></li>
+                        <li><a href="/admin">Admin Panel</a></li>
+                        <li><a href="/admin/activities">Add New Listing</a></li>
+                        <li><a href="/admin/cities">Add New City</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">Logout</a></li>
                     </ul>
                 </li>
+                @else
+                <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
+                    <ul>
+                        <li><a href="/myaccount">My Account</a></li>
+                        <li><a href="/myaccount">My Bookings</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">Logout</a></li>
+                    </ul>
+                </li>
+                @endif
             @endauth
         </ul>
     </nav>

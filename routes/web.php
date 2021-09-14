@@ -31,18 +31,19 @@ Auth::routes();
     Route::get('/home', [HomeController::class,"index"])->name('home');
     Route::get('/offers', [HomeController::class,"offers"]);
     Route::get('/offers/{city}', [HomeController::class,"offerscity"]);
-    Route::get('/about', [HomeController::class,"about"]);
     Route::get('/details/{id}', [HomeController::class,"showDetail"]);
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
-    Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
+    Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
+
 
     /** Contact **/
-    Route::get("/contact", [MailerController::class, "email"])->name("email");
+    Route::get("/contact", [MailerController::class, "contact"])->name("email");
     Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
 
     /** Others **/
     Route::get('/terms_and_conditions', [HomeController::class,"terms"]);
+    Route::get('/about', [HomeController::class,"about"]);
 
 
 /** Admin - Space **/

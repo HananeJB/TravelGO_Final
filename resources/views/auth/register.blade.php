@@ -53,4 +53,64 @@
         </div>
     </div>
 
+
+
+    <body id="register_bg">
+
+    <nav id="menu" class="fake_menu"></nav>
+
+    <div id="preloader">
+        <div data-loader="circle-side"></div>
+    </div>
+    <!-- End Preload -->
+
+    <div id="login">
+        <aside>
+            <figure>
+                <a href="index.html"><img src="img/logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+            </figure>
+            <form action="{{ route('register') }}" method="post" autocomplete="off">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input class="form-control" type="text" name="name" value="{{ old('name') }}" required>
+                    <i class="ti-user"></i>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input class="form-control" type="email" name="email" value="{{ old('email') }}" required>
+                    <i class="icon_mail_alt"></i>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Your password</label>
+                    <input class="form-control" type="password" id="password1" name="password" required>
+                    <i class="icon_lock_alt"></i>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Confirm password</label>
+                    <input class="form-control" type="password" id="password2" name="password_confirmation" required>
+                    <i class="icon_lock_alt"></i>
+                </div>
+                <div id="pass-info" class="clearfix"></div>
+                <input class="btn_1 rounded full-width add_top_30" type="submit" value="Register Now!"/>
+                <div class="text-center add_top_10">Already have an acccount? <strong><a href="{{ route('Login') }}">Sign In</a></strong></div>
+            </form>
+            <div class="copy">Crée par Hanane Jabou</div>
+        </aside>
+    </div>
+    <!-- /login -->
 @endsection

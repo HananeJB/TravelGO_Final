@@ -88,7 +88,8 @@
     <div class="small-dialog-header">
         <h3>Sign In</h3>
     </div>
-    <form>
+    <form action="{{ route('login') }}" method="post">
+        @csrf
         <div class="sign-in-wrapper">
             <a href="#0" class="social_bt facebook">Login with Facebook</a>
             <a href="#0" class="social_bt google">Login with Google</a>
@@ -106,15 +107,15 @@
             <div class="clearfix add_bottom_15">
                 <div class="checkboxes float-left">
                     <label class="container_check">Remember me
-                        <input type="checkbox">
+                        <input type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+                <div class="float-right mt-1"><a id="forgot" href="{{ route('password.request') }}">Forgot Password?</a></div>
             </div>
             <div class="text-center"><input type="submit" value="Log In" class="btn_1 full-width"></div>
             <div class="text-center">
-                Don’t have an account? <a href="register.html">Sign up</a>
+                Don’t have an account? <a href="{{ route('register') }}">Sign up</a>
             </div>
             <div id="forgot_pw">
                 <div class="form-group">
@@ -130,6 +131,10 @@
     <!--form -->
 </div>
 <!-- /Sign In Popup -->
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 
 <div id="toTop"></div><!-- Back to top button -->
 

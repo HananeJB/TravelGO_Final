@@ -40,7 +40,7 @@ class HomeController extends Controller
             ->get();
         $city = DB::table("cities")
             ->get();
-        return view('frontend.main_pages.home', compact('activities', 'city'));
+        return view('frontend/main_pages/home', compact('activities', 'city'));
     }
 
 
@@ -68,20 +68,14 @@ class HomeController extends Controller
         return view('home/details', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
     }
 
-
-    public function contact()
-    {
-        return view('home/contact');
-    }
-
     public function about()
     {
-        return view('home/about');
+        return view('frontend/secondary_pages/about');
     }
 
     public function terms()
     {
-        return view('home/terms');
+        return view('frontend/secondary_pages/terms');
     }
 
     public function addtolist(Request $request)

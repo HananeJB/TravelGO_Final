@@ -11,7 +11,7 @@
         <div id="slider" class="flexslider">
             <ul class="slides">
                 <li>
-                    <img src="/frontend/img/flex_slides/slide_1.jpg" alt="">
+                    <img src="/frontend/img/alexander-kaunas-TAgGZWz6Qg8-unsplash.jpg" alt="">
                     <div class="meta">
                         <h3>Bangkok, A city that never stays the same</h3>
                         <div class="info">
@@ -21,7 +21,7 @@
                     </div>
                 </li>
                 <li>
-                    <img src="/frontend/img/flex_slides/slide_2.jpg" alt="">
+                    <img src="/frontend/img/pexels-asad-photo-maldives-1591373.jpg" alt="">
                     <div class="meta">
                         <h3>Dubai, The most attractive destination</h3>
                         <div class="info">
@@ -31,7 +31,7 @@
                     </div>
                 </li>
                 <li>
-                    <img src="/frontend/img/flex_slides/slide_3.jpg" alt="">
+                    <img src="/frontend/img/flex_slides/pexels-thanakorn-phanthura-3183613.jpg" alt="">
                     <div class="meta">
                         <h3>Cairo, Traditions and culture</h3>
                         <div class="info">
