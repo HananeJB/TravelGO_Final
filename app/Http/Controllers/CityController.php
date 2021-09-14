@@ -20,7 +20,7 @@ class CityController extends Controller
         $activity = DB::table("bookings")->get();
         $data['cities'] = City::orderBy('id','desc')->paginate(5);
 
-        return view('cities.index', $data);
+        return view('backend.listing', $data);
     }
 
     /**

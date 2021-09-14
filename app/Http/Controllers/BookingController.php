@@ -19,7 +19,7 @@ class BookingController extends Controller
     {
         $data = Booking::latest()->paginate(5);
 
-        return view('bookings.index',compact('data'))
+        return view('backend.bookings',compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

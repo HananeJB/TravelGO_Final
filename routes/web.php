@@ -27,49 +27,71 @@ use App\Http\Controllers\PhotosController;
 Auth::routes();
 
 /** Frontend **/
-Route::get('/', function () {return redirect('/home');});
-Route::get('/home', [HomeController::class,"index"])->name('home');
-Route::get('/offers', [HomeController::class,"offers"]);
-Route::get('/offers/{city}', [HomeController::class,"offerscity"]);
-Route::get('/about', [HomeController::class,"about"]);
-Route::get('/details/{id}', [HomeController::class,"showDetail"]);
-Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
-Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
-Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
+    Route::get('/', function () {return redirect('/home');});
+    Route::get('/home', [HomeController::class,"index"])->name('home');
+    Route::get('/offers', [HomeController::class,"offers"]);
+    Route::get('/offers/{city}', [HomeController::class,"offerscity"]);
+    Route::get('/about', [HomeController::class,"about"]);
+    Route::get('/details/{id}', [HomeController::class,"showDetail"]);
+    Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
+    Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
+    Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
 
-/** Contact **/
-Route::get("/contact", [MailerController::class, "email"])->name("email");
-Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
+    /** Contact **/
+    Route::get("/contact", [MailerController::class, "email"])->name("email");
+    Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
 
-/** Others **/
-Route::get('/terms_and_conditions', [HomeController::class,"terms"]);
+    /** Others **/
+    Route::get('/terms_and_conditions', [HomeController::class,"terms"]);
 
 
 /** Admin - Space **/
+    /**
+     * /admin -> Dashboard
+     * /admin/users -> Usertable
+     * /admin/profile -> profile      here we should update and edit
+     * /admin/bookings -> bookings      here we should update and edit and delete
+     * /admin/listing/ * -> ressources (cites, hotels, restaurants, activities)
+     *
+     *  Tools
+     * /admin/tools/picture -> store picture
+     * /admin/tools/picture/(picture-id) -> delete picture by id
+     * /admin/tools/day -> store a day
+     * /admin/tools/day/(day-id) -> delete day by id
 
-    Route::get('/admin', [AdminController::class,"handleAdmin"])->name('adminspace.route')->middleware('admin');
-    Route::get('/admin/users', [AdminController::class,"users"])->middleware('admin');
-    Route::get('/admin/profil', [AdminController::class,"profileadmin"])->middleware('admin');
+    **/
+Route::group(['middleware' => 'admin',], function () {
 
-    Route::post('/admin/users/store', [DayController::class,"store"])->name('users.add');
+    Route::get('/admin', [AdminController::class,"dashboard"])->name('adminspace.route');
+    Route::get('/admin/users', [AdminController::class,"users"]);
+    Route::get('/admin/profile', [AdminController::class,"profile"]);
+    Route::resource('/admin/activities', ActivityController::class);
+    Route::resource('/admin/bookings', BookingController::class);
+    //Route::resource('/admin/hotels', HotelsController::class);   CREATE NEW CONTROLLER
+    //Route::resource('/admin/'restaurants', HotelsController::class);   CREATE NEW CONTROLLER
+    Route::resource('/admin/cities', CityController::class);
+
+
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
     Route::delete('/admin/day/{day}', [DayController::class,"destroy"])->name('days.destroy');
+
+    Route::post('/admin/users/store', [DayController::class,"store"])->name('users.add');   // WHAT IS THIS SHIT
     Route::delete('/admin/user/{user}', [DayController::class,"destroy"])->name('users.destroy');
 
     Route::post('/admin/photos/store',[PhotosController::class,"store"])->name('photos/store');
     Route::delete('/admin/image/{image}',[PhotosController::class,'destroy'])->name('images.destroy');
 
-    Route::resource('/admin/activities', ActivityController::class)->middleware('admin');
-    Route::resource('/admin/bookings', BookingController::class);
-    Route::resource('/admin/cities', CityController::class);
+
+    // doublons
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);
+});
 
-
-/** User - Space **/
-Route::get('/myaccount', [AdminController::class,"handleAdmin"])->name('userspace.route'); /**->middleware('admin');**/
-Route::get('/myaccount/profile', [HomeController::class,"Profile"]);
-Route::get('/myaccount/bookings', [HomeController::class,"reservations"]);
-
+/** User - Space **/ //CREATED NEW CONTROLLER FOR THIS SPACE
+Route::group(['middleware' => 'auth',], function () {
+    Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
+    Route::get('/myaccount/profile', [UserController::class,"profile"]);
+    Route::get('/myaccount/bookings', [UserController::class,"reservations"]);
+});
 
 /** AdminController **/
 /**

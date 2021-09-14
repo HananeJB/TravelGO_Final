@@ -40,7 +40,7 @@ class HomeController extends Controller
             ->get();
         $city = DB::table("cities")
             ->get();
-        return view('home', compact('activities', 'city'));
+        return view('frontend.main_pages.home', compact('activities', 'city'));
     }
 
 
@@ -82,24 +82,6 @@ class HomeController extends Controller
     public function terms()
     {
         return view('home/terms');
-    }
-
-    public function reservations()
-    {
-        $data = DB::table("bookings")
-            ->join('users', 'users.email', '=', 'bookings.email')
-            ->get();
-
-        return view('home/reservations', compact('data'));
-    }
-
-    public function profile()
-    {
-        $data1 = DB::table("bookings")
-            ->join('users', 'users.email', '=', 'bookings.email')
-            ->get();
-        $data = DB::table('users')->get();
-        return view('home/profile', compact('data', 'data1'));
     }
 
     public function addtolist(Request $request)

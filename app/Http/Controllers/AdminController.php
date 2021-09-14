@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function handleAdmin()
+    public function dashboard()
     {
         $bookings = DB::table('bookings')
             ->get();
@@ -25,27 +25,19 @@ class AdminController extends Controller
         return view('backend.dashboard', compact('bookings','users','activities'));
     }
 
-    public function profileadmin()
+    public function profile()
     {
-        return view('admin.profileadmin');
+        return view('backend.profile');
     }
 
     public function users(){
         $users = DB::table("users")->get();
-        return view('admin/users', compact('users'));
+        return view('backend/usertable', compact('users'));
     }
-
-    public function booking(){
-        $booking = DB::table('bookings')
-            ->get();
-    }
-
 
     public function destroy(User $user)
     {
-
         $user->delete();
-
         return back()
             ->with('success', 'User deleted successfully');
     }

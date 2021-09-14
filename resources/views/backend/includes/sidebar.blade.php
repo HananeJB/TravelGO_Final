@@ -7,27 +7,27 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-                <a class="nav-link" href="user-profile.html">
+                <a class="nav-link" href="/admin/profile">
                     <i class="fa fa-fw fa-user"></i>
                     <span class="nav-link-text">My Profile</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/admin">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-                <a class="nav-link" href="bookings.html">
+                <a class="nav-link" href="/admin/bookings">
                     <i class="fa fa-fw fa-calendar-check-o"></i>
                     <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">6 New</span></span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-                <a class="nav-link" href="bookings.html">
+                <a class="nav-link" href="/admin/users">
                     <i class="fa fa-fw fa-users"></i>
-                    <span class="nav-link-text">Users</span>
+                    <span class="nav-link-text">Manage Users</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
@@ -37,16 +37,16 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMylistings">
                     <li>
-                        <a href="listings.html">Cities</a>
+                        <a href="/admin/cities">Cities</a>
                     </li>
                     <li>
-                        <a href="listings.html">Hotels</a>
+                        <a href="/admin/hotels">Hotels</a>
                     </li>
                     <li>
-                        <a href="listings.html">Restaurants</a>
+                        <a href="/admin/'restaurants">Restaurants</a>
                     </li>
                     <li>
-                        <a href="listings.html">Activities</a>
+                        <a href="/admin/activities">Activities</a>
                     </li>
                 </ul>
             </li>
