@@ -22,7 +22,7 @@ class AdminController extends Controller
         $activities = DB::table('users')
             ->get();
 
-        return view('admin.dashboard', compact('bookings','users','activities'));
+        return view('backend.dashboard', compact('bookings','users','activities'));
     }
 
     public function profileadmin()
