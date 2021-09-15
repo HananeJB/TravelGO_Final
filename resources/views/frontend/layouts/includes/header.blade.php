@@ -31,7 +31,7 @@
             <li><span><a href="#0">Adventure</a></span></li>
             <li><span><a href="/about">About</a></span></li>
             <li><span><a href="/terms_and_conditions">Terms</a></span></li>
-            <li><span><a href="#contact">Contact Us</a></span></li>
+            <li><span><a href="/contact">Contact Us</a></span></li>
             @auth
                 @php
                   $isAdmin = Auth::user()->is_admin;

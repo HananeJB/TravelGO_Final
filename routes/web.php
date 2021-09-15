@@ -36,7 +36,6 @@ Auth::routes();
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
     Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
 
-
     /** Contact **/
     Route::get("/contact", [MailerController::class, "contact"])->name("email");
     Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
