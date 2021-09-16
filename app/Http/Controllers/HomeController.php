@@ -51,21 +51,36 @@ class HomeController extends Controller
             ->get();
         $activity = Activity::find($city);
 
-        return view('home/activities', ['activity' => $activity, 'city' => $city], compact('activity', 'city', 'activities'));
+        return view('frontend/secondary_pages/activities', ['activity' => $activity, 'city' => $city], compact('activity', 'city', 'activities'));
     }
 
     public function offers()
     {
         $activities = DB::table("activities")
             ->get();
-        return view('home/activities', compact('activities'));
+        return view('frontend/secondary_pages/activities', compact('activities'));
     }
 
 
     public function showDetail($id)
     {
         $activity = Activity::find($id);
-        return view('home/details', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
+        return view('frontend/secondary_pages/details', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
+    }
+
+    public function adventure()
+    {
+        return view('frontend/secondary_pages/adventures');
+    }
+
+    public function blog()
+    {
+        return view('frontend/secondary_pages/blogs');
+    }
+
+    public function blogpost()
+    {
+        return view('frontend/secondary_pages/blogpost');
     }
 
     public function about()

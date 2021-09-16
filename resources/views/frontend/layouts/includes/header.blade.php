@@ -8,7 +8,6 @@
     </div>
     <ul id="top_menu">
         <li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-        <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
         @guest
             <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
         @endguest
@@ -24,14 +23,12 @@
     <nav id="menu" class="main-menu">
         <ul>
             <li><span><a href="/">Home</a></span></li>
-            <li><span><a href="#0">Activities</a></span></li>
-            <li><span><a href="#0">Hotels</a></span></li>
-            <li><span><a href="#0">Restaurants</a></span></li>
-            <li><span><a href="#0">Tours</a></span></li>
-            <li><span><a href="#0">Adventure</a></span></li>
+            <li><span><a href="/activities">Activities</a></span></li>
+            <li><span><a href="/adventures">Adventure</a></span></li>
             <li><span><a href="/about">About</a></span></li>
+            <li><span><a href="/blog">Blog</a></span></li>
             <li><span><a href="/terms_and_conditions">Terms</a></span></li>
-            <li><span><a href="#contact">Contact Us</a></span></li>
+            <li><span><a href="/contact">Contact Us</a></span></li>
             @auth
                 @php
                   $isAdmin = Auth::user()->is_admin;
