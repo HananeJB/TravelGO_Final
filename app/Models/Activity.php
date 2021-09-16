@@ -10,7 +10,16 @@ class Activity extends Model
     use HasFactory;
     protected $fillable = [
         'city_id',
-        'title', 'category','description1','description2','price','datedebut','datefin','image','adresse','video'
+        'title',
+        'category',
+        'description1',
+        'description2',
+        'price',
+        'datedebut',
+        'datefin',
+        'image',
+        'adresse',
+        'program'
 
     ];
 

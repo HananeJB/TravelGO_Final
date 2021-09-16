@@ -31,7 +31,7 @@ Auth::routes();
     Route::get('/home', [HomeController::class,"index"])->name('home');
     Route::get('/activities', [HomeController::class,"offers"]);
     Route::get('/activities/{city}', [HomeController::class,"offerscity"]);
-    Route::get('/details/{id}', [HomeController::class,"showDetail"]);
+    Route::get('/activities/details/{id}', [HomeController::class,"showDetail"]);
     Route::get('/adventures', [HomeController::class,"adventure"]);
     Route::get('/blog', [HomeController::class,"blog"]);
     Route::get('/blog/post', [HomeController::class,"blogpost"]);
@@ -71,8 +71,6 @@ Route::group(['middleware' => 'admin',], function () {
     Route::get('/admin/profile', [AdminController::class,"profile"]);
     Route::resource('/admin/activities', ActivityController::class);
     Route::resource('/admin/bookings', BookingController::class);
-    //Route::resource('/admin/hotels', HotelsController::class);   CREATE NEW CONTROLLER
-    //Route::resource('/admin/'restaurants', HotelsController::class);   CREATE NEW CONTROLLER
     Route::resource('/admin/cities', CityController::class);
 
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
@@ -91,6 +89,7 @@ Route::group(['middleware' => 'auth',], function () {
     Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
     Route::get('/myaccount/profile', [UserController::class,"profile"]);
     Route::get('/myaccount/bookings', [UserController::class,"reservations"]);
+
 });
 
 /** AdminController **/

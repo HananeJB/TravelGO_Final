@@ -6,8 +6,16 @@
             <img src="/frontend/img/logo_sticky.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
         </a>
     </div>
+
     <ul id="top_menu">
+        @auth
+            @php
+                $isAdmin = Auth::user()->is_admin;
+            @endphp
+            @if($isAdmin =! 1)
         <li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
+            @endif
+        @endauth
         @guest
             <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
         @endguest
@@ -36,7 +44,7 @@
                 @if($isAdmin == 1)
                 <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
                     <ul>
-                        <li><a href="/admin/profile">My Profil</a></li>
+                        <li><a href="/admin/profile">My Profile</a></li>
                         <li><a href="/admin">Admin Panel</a></li>
                         <li><a href="/admin/activities">Add New Listing</a></li>
                         <li><a href="/admin/cities">Add New City</a></li>

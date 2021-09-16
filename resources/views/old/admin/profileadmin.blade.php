@@ -1,13 +1,17 @@
-@extends ('layouts.admin')
+@extends('backend.backend_layout')
 
-
-@section('content')
+@section('head')
+    <title>TravelGo - Admin dashboard</title>
+    <meta name="description" content="">
+@endsection
 
 <div class="content-wrapper">
+
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
             <h2><i class="fa fa-user"></i>Profile details</h2>
         </div>
+
         <div class="row">
             <div class="col-md-4">
 
@@ -17,13 +21,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Your name">
+                            <input type="text" class="form-control" placeholder="Your name" value='{{ Auth::user()->name }}'>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Last name</label>
-                            <input type="text" class="form-control" placeholder="Your last name">
+                            <input type="text" class="form-control" placeholder="Your last name" value='{{ Auth::user()->lastname }}'>
                         </div>
                     </div>
                 </div>
@@ -32,13 +36,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Telephone</label>
-                            <input type="text" class="form-control" placeholder="Your telephone number">
+                            <input type="text" class="form-control" placeholder="Your telephone number" value='{{ Auth::user()->telephone }}'>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Your email">
+                            <input type="email" class="form-control" placeholder="Your email" value='{{ Auth::user()->email }}'>
                         </div>
                     </div>
                 </div>
@@ -64,15 +68,15 @@
                 </div>
                 <div class="form-group">
                     <label>Old password</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" type="password"  {{ Auth::user()->password }}>
                 </div>
                 <div class="form-group">
                     <label>New password</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" name="password" type="password">
                 </div>
                 <div class="form-group">
                     <label>Confirm new password</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" name="password_confirmation" type="password_confirmation">
                 </div>
             </div>
         </div>
@@ -101,7 +105,7 @@
 @endsection
 
 <style>
- 
+
     html {
         position: relative;
         min-height: 100%;
