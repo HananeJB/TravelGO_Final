@@ -20,5 +20,3 @@
 <link href="/backend/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Plugin styles -->
 <link href="/backend/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-<!-- Your custom styles -->
-<link href="/backend/css/custom.css" rel="stylesheet">

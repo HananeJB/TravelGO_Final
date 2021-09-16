@@ -11,6 +11,7 @@ use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Auth::routes();
     /** Contact **/
     Route::get("/contact", [MailerController::class, "contact"])->name("email");
     Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
+
+    /** Blog **/
+    Route::get('/blog', [PostController::class, 'BlogList']);
+    Route::get('/blog/{id}', [PostController::class, 'BlogSingle']);
 
     /** Others **/
     Route::get('/terms_and_conditions', [HomeController::class,"terms"]);
@@ -70,6 +75,7 @@ Route::group(['middleware' => 'admin',], function () {
     //Route::resource('/admin/hotels', HotelsController::class);   CREATE NEW CONTROLLER
     //Route::resource('/admin/'restaurants', HotelsController::class);   CREATE NEW CONTROLLER
     Route::resource('/admin/cities', CityController::class);
+    Route::resource('/admin/blog', PostController::class);
 
 
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
