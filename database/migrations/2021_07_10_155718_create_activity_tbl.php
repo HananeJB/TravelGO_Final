@@ -24,6 +24,7 @@ class CreateActivityTbl extends Migration
             $table->id();
             $table->text('title')->nullable();
             $table->text('category')->nullable();
+            $table->text('program')->nullable();
             $table->text('description1')->nullable();
             $table->text('description2')->nullable();
             $table->text('price')->nullable();
@@ -31,7 +32,7 @@ class CreateActivityTbl extends Migration
             $table->date('datefin')->nullable();
             $table->text('image')->nullable();
             $table->text('adresse')->nullable();
-            $table->text('video')->nullable();
+
 
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');

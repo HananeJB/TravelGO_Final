@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\City;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
 {
@@ -18,7 +19,7 @@ class ActivityController extends Controller
     {
         $activities = Activity::latest()->paginate(5);
 
-        return view('activities.index', compact('activities'))
+        return view('backend.activities.index', compact('activities'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -31,7 +32,7 @@ class ActivityController extends Controller
     public function create()
     {
         $cities = City::pluck('title', 'id');
-        return view('activities.create', compact('cities', $cities));
+        return view('backend.activities.create', compact('cities', $cities));
     }
 
     /**
@@ -53,15 +54,16 @@ class ActivityController extends Controller
         $activity->datedebut = $request->get('datedebut');
         $activity->datefin = $request->get('datefin');
         $activity->adresse = $request->get('adresse');
-        $activity->video = $request->get('video');
-        $path = $request->file('image')->store('public/images');
 
-        $activity->image = $path;
+        $activity->video = $request->get('video');
+
+
+
         $cities = City::find($request->get('city_id'));
         $cities->activities()->save($activity);
 
 
-        return redirect()->route('activities.index');
+        return redirect()->route('backend.activities.index');
     }
 
     /**
@@ -72,8 +74,7 @@ class ActivityController extends Controller
      */
     public function show(Activity $activity)
     {
-
-        return view('activities.show', compact('activity'));
+        return view('backend.activities.show', compact('activity'));
     }
 
 
@@ -86,7 +87,7 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        return view('activities.edit', compact('activity'));
+        return view('backend.activities.edit', compact('activity'));
     }
 
     /**
@@ -125,7 +126,7 @@ class ActivityController extends Controller
 
         $activity->update($input);
 
-        return redirect()->route('activities.index')
+        return redirect()->route('backend.activities.index')
             ->with('success', 'Activity updated successfully');
     }
 
@@ -140,7 +141,7 @@ class ActivityController extends Controller
     {
         $activity->delete();
 
-        return redirect()->route('activities.index')
+        return redirect()->back()
             ->with('success', 'Activity deleted successfully');
     }
 }

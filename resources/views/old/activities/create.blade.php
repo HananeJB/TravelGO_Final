@@ -79,7 +79,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>city:</strong>
+                <label>Select City</label>
 
                 <select name="city_id" class="form-control" required>
                     @foreach($cities as $id => $city)

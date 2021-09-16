@@ -82,7 +82,7 @@ class HomeController extends Controller
     public function showDetail($id)
     {
         $activity = Activity::find($id);
-        return view('frontend/secondary_pages/details', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
+        return view('frontend/secondary_pages/activity-details', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
     }
 
     public function adventure()
