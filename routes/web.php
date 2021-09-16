@@ -11,7 +11,6 @@ use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
-use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +33,6 @@ Auth::routes();
     Route::get('/activities/{city}', [HomeController::class,"offerscity"]);
     Route::get('/activities/details/{id}', [HomeController::class,"showDetail"]);
     Route::get('/adventures', [HomeController::class,"adventure"]);
-    Route::get('/blog', [HomeController::class,"blog"]);
-    Route::get('/blog/post', [HomeController::class,"blogpost"]);
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
     Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
@@ -82,11 +79,16 @@ Route::group(['middleware' => 'admin',], function () {
     Route::resource('/admin/adventures', AdventureController::class);
     Route::resource('/admin/post', PostController::class);
 
+
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
     Route::delete('/admin/day/{day}', [DayController::class,"destroy"])->name('days.destroy');
 
-    Route::post('/admin/photos/store',[ActivityController::class,"store"])->name('photos/store');
-    Route::delete('/admin/image/{image}',[ActivityController::class,'destroyimage'])->name('images.destroy');
+    Route::post('/admin/users/store', [DayController::class,"store"])->name('users.add');   // WHAT IS THIS SHIT
+    Route::delete('/admin/user/{user}', [DayController::class,"destroy"])->name('users.destroy');
+
+    Route::post('/admin/photos/store',[PhotosController::class,"store"])->name('photos/store');
+    Route::delete('/admin/image/{image}',[PhotosController::class,'destroy'])->name('images.destroy');
+
 
     // doublons
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);
@@ -97,7 +99,6 @@ Route::group(['middleware' => 'auth',], function () {
     Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
     Route::get('/myaccount/profile', [UserController::class,"profile"]);
     Route::get('/myaccount/bookings', [UserController::class,"reservations"]);
-
 });
 
 /** AdminController **/
