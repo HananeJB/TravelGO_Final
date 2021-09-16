@@ -8,9 +8,11 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\MailerController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\AdventureController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,8 @@ Auth::routes();
     Route::get('/activities/{city}', [HomeController::class,"offerscity"]);
     Route::get('/activities/details/{id}', [HomeController::class,"showDetail"]);
     Route::get('/adventures', [HomeController::class,"adventure"]);
+    Route::get('/blog', [HomeController::class,"blog"]);
+    Route::get('/blog/post', [HomeController::class,"blogpost"]);
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
     Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
@@ -42,8 +46,8 @@ Auth::routes();
     Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
 
     /** Blog **/
-    Route::get('/blog', [HomeController::class, 'BlogList']);
-    Route::get('/blog/{id}', [HomeController::class, 'BlogSingle']);
+    Route::get('/blog', [PostController::class, 'BlogList']);
+    Route::get('/blog/{id}', [PostController::class, 'BlogSingle']);
 
     /** Others **/
     Route::get('/terms_and_conditions', [HomeController::class,"terms"]);
@@ -72,8 +76,10 @@ Route::group(['middleware' => 'admin',], function () {
     Route::get('/admin/profile', [AdminController::class,"profile"]);
     Route::resource('/admin/activities', ActivityController::class);
     Route::resource('/admin/bookings', BookingController::class);
+    //Route::resource('/admin/hotels', HotelsController::class);   CREATE NEW CONTROLLER
+    //Route::resource('/admin/'restaurants', HotelsController::class);   CREATE NEW CONTROLLER
     Route::resource('/admin/cities', CityController::class);
-    Route::resource('/admin/post', PostController::class);
+    Route::resource('/admin/blog', PostController::class);
     Route::resource('/admin/adventures', AdventureController::class);
 
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
@@ -81,6 +87,7 @@ Route::group(['middleware' => 'admin',], function () {
 
     Route::post('/admin/photos/store',[ActivityController::class,"store"])->name('photos/store');
     Route::delete('/admin/image/{image}',[ActivityController::class,'destroyimage'])->name('images.destroy');
+
 
     // doublons
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);

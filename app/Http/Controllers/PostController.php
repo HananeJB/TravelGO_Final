@@ -10,12 +10,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('backend.post.table_post', compact('posts'));
+        return view('backend.blog.table_blog', compact('posts'));
     }
 
     public function create()
     {
-        return view('backend.post.create_post');
+        return view('backend.blog.edit_blog');
     }
 
     public function store(Request $request)
@@ -28,13 +28,14 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->published_at = $request->published_at;
+
         $post->save();
         return redirect('/home')->with('success','Post created successfully!');
     }
 
     public function edit(Post $post)
     {
-        return view('backend.post.edit_post', compact('post'));
+        return view('backend.blog.edit_blog', compact('post'));
     }
 
     public function update(Post $post, Request $request)
@@ -57,5 +58,14 @@ class PostController extends Controller
         return redirect('/home')->with('success','Post deleted successfully!');
     }
 
-
+    public function BlogList()
+    {
+        $posts = Post::all();
+        return view('frontend.blog.blog', compact('posts'));
+    }
+    public function BlogSingle($id)
+    {
+        $posts = Post::find($id)->first();
+        return view('frontend.blog.blog_single', compact('posts'));
+    }
 }
