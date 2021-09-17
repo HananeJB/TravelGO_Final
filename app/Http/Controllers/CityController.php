@@ -20,7 +20,7 @@ class CityController extends Controller
         $activity = DB::table("bookings")->get();
         $data['cities'] = City::orderBy('id','desc')->paginate(5);
 
-        return view('backend.listing', $data);
+        return view('backend.cities.index', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('cities.create');
+        return view('backend.cities.create');
     }
 
     /**
@@ -43,6 +43,7 @@ class CityController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'country' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ]);
@@ -52,6 +53,7 @@ class CityController extends Controller
         $city = new City;
 
         $city->title = $request->title;
+        $city->country = $request->country;
 
         $city->image = $path;
 
@@ -70,7 +72,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        return view('cities.show',compact('city'));
+        return view('backend.cities.show',compact('city'));
     }
 
     /**
@@ -81,7 +83,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        return view('cities.edit',compact('city'));
+        return view('backend.cities.edit',compact('city'));
     }
 
     /**

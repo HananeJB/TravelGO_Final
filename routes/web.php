@@ -76,8 +76,8 @@ Route::group(['middleware' => 'admin',], function () {
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
     Route::delete('/admin/day/{day}', [DayController::class,"destroy"])->name('days.destroy');
 
-    Route::post('/admin/photos/store',[PhotosController::class,"store"])->name('photos/store');
-    Route::delete('/admin/image/{image}',[PhotosController::class,'destroy'])->name('images.destroy');
+    Route::post('/admin/photos/store',[ActivityController::class,"store"])->name('photos/store');
+    Route::delete('/admin/image/{image}',[ActivityController::class,'destroy'])->name('images.destroy');
 
 
     // doublons

@@ -12,10 +12,13 @@
         <form class="container-fluid" action="{{ route('activities.update',$activity->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            @foreach($errors->all() as $error)
+                {{ $error  }}
+            @endforeach
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="/admin/activities">Activities</a>
                 </li>
                 <li class="breadcrumb-item active">Add Activity</li>
             </ol>
@@ -69,17 +72,29 @@
                     </div>
 
                 </div>
-                <!-- /row-->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Program description</label>
+                            <textarea class="form-control" style="height:150px" name="program" placeholder="Program description">{{ $activity->program }}</textarea>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- /row-->
+                @foreach($activity->images as $image)
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Photos</label>
-                            <img src="{{ Storage::url($activity->image) }}" width="300px">
+                            <img src="{{ Storage::url($image->image) }}" width="300px">
                         </div>
                     </div>
                 </div>
+
+            @endforeach
                 <!-- /row-->
             </div>
             <!-- /box_general-->
@@ -93,7 +108,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" class="form-control" placeholder="ex. 250, Fifth Avenue...">
+                            <input type="text" name="adresse" value="{{ $activity->adresse }}" class="form-control" placeholder="ex. 250, Fifth Avenue...">
                         </div>
                     </div>
                 </div>

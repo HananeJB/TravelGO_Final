@@ -16,6 +16,7 @@ class CreateActivityTbl extends Migration
         Schema::create('cities', function (Blueprint $table) {
         $table->id();
         $table->string('title');
+        $table->string('country');
         $table->string('image');
         $table->timestamps();
         });

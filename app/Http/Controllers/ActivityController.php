@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\City;
 
+use App\Models\Day;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,9 +47,9 @@ class ActivityController extends Controller
     {
 
         $activity = new Activity;
-
         $activity->title = $request->get('title');
         $activity->category = $request->get('category');
+        $activity->program = $request->get('program');
         $activity->description1 = $request->get('description1');
         $activity->description2 = $request->get('description2');
         $activity->price = $request->get('price');
@@ -55,15 +57,28 @@ class ActivityController extends Controller
         $activity->datefin = $request->get('datefin');
         $activity->adresse = $request->get('adresse');
 
-        $activity->video = $request->get('video');
-
-
-
         $cities = City::find($request->get('city_id'));
         $cities->activities()->save($activity);
 
+        if($request->hasFile("images")){
+            $files=$request->file("images");
+            foreach($files as $file){
+                $imageName=time().'_'.$file->getClientOriginalName();
+                $request['activity_id']=$activity->id;
+                $request['image']=$imageName;
+                $file->move(\public_path("/images"),$imageName);
+                Image::create($request->all());
 
-        return redirect()->route('backend.activities.index');
+            }
+        }
+
+        $day = new Day;
+        $day->title = $request->get('title');
+        $day->description = $request->get('description');
+        $activity = Activity::find($request->get('activity_id'));
+        $activity->days()->save($day);
+
+        return redirect()->route('activities.index');
     }
 
     /**
@@ -76,8 +91,6 @@ class ActivityController extends Controller
     {
         return view('backend.activities.show', compact('activity'));
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -102,13 +115,12 @@ class ActivityController extends Controller
         $request->validate([
             'title' => 'required',
             'category' => 'required',
+            'program' => 'required',
             'description1' => 'required',
             'description2' => 'required',
             'price' => 'required',
             'datedebut' => 'required',
             'datefin' => 'required',
-            'image' => 'required',
-            'video' => 'required',
             'adresse' => 'required'
 
         ]);
@@ -126,7 +138,7 @@ class ActivityController extends Controller
 
         $activity->update($input);
 
-        return redirect()->route('backend.activities.index')
+        return redirect()->route('activities.index')
             ->with('success', 'Activity updated successfully');
     }
 

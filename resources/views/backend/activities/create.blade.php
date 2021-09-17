@@ -11,11 +11,13 @@
 
         <form class="container-fluid" action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
+        @foreach($errors->all() as $error)
+            {{ $error  }}
+        @endforeach
         <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="/admin/activities">Activities</a>
                 </li>
                 <li class="breadcrumb-item active">Add Activity</li>
             </ol>
@@ -42,6 +44,7 @@
                             <input type="text" class="form-control" name="category" >
                         </div>
                     </div>
+
                 </div>
                 <!-- /row-->
                 <div class="row">
@@ -60,12 +63,38 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Program description</label>
+                            <textarea class="form-control" style="height:150px" name="program" placeholder="Program description"></textarea>
+                        </div>
+                    </div>
+                </div>
                 <!-- /row-->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Price</label>
                             <input type="text" name="price"  class="form-control" placeholder="price">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Cover image</label>
+                            <input type="file" id="input-file-now-custom-3"  class="form-control" name="image">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Images</label>
+                            <input type="file" id="input-file-now-custom-3" class="form-control" name="images[]" multiple>
                         </div>
                     </div>
 

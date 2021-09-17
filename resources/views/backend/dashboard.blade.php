@@ -41,7 +41,7 @@
                             </div>
                             <div class="mr-5"><h5>{{ count($activities) }} New Activities!</h5></div>
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="reviews.html">
+                        <a class="card-footer text-white clearfix small z-1" href="/admin/activities">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                 <i class="fa fa-angle-right"></i>

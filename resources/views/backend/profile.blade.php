@@ -11,33 +11,28 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="/admin">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Add listing</li>
+                <li class="breadcrumb-item active">Profile</li>
             </ol>
             <div class="box_general padding_bottom">
                 <div class="header_box version_2">
                     <h2><i class="fa fa-user"></i>Profile details</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Your photo</label>
-                            <form action="/file-upload" class="dropzone"></form>
-                        </div>
-                    </div>
-                    <div class="col-md-8 add_top_30">
+
+                    <div class="col-md-12 add_top_30">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Your name">
+                                    <input type="text" class="form-control" value='{{ Auth::user()->name }}' placeholder="Your name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Last name</label>
-                                    <input type="text" class="form-control" placeholder="Your last name">
+                                    <input type="text" class="form-control" value='{{ Auth::user()->lastname }}' placeholder="Your last name">
                                 </div>
                             </div>
                         </div>
@@ -46,22 +41,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telephone</label>
-                                    <input type="text" class="form-control" placeholder="Your telephone number">
+                                    <input type="text" class="form-control" value='{{ Auth::user()->telephone }}' placeholder="Your telephone number">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="Your email">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Personal info</label>
-                                    <textarea style="height:100px;" class="form-control" placeholder="Personal info"></textarea>
+                                    <input type="email" class="form-control" value='{{ Auth::user()->email }}' placeholder="Your email">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +64,7 @@
                         </div>
                         <div class="form-group">
                             <label>Old password</label>
-                            <input class="form-control" type="password">
+                            <input class="form-control" value="{{ Auth::user()->password }}"  type="password">
                         </div>
                         <div class="form-group">
                             <label>New password</label>
@@ -86,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <label>Confirm new password</label>
-                            <input class="form-control" type="password">
+                            <input class="form-control" type="password_confirmation">
                         </div>
                     </div>
                 </div>
@@ -97,7 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label>Old email</label>
-                            <input class="form-control" name="old_email" id="old_email" type="email">
+                            <input class="form-control" name="old_email" value="{{ Auth::user()->email }}" id="old_email" type="email">
                         </div>
                         <div class="form-group">
                             <label>New email</label>
