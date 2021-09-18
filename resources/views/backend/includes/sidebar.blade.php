@@ -24,6 +24,20 @@
                     <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">6 New</span></span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
+                    <i class="fa fa-fw fa-list"></i>
+                    <span class="nav-link-text">Blogs</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseMylistings">
+                    <li>
+                        <a href="/admin/blog/create">Create a new blog</a>
+                    </li>
+                    <li>
+                        <a href="/admin/blog">Manage Blogs</a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
                 <a class="nav-link" href="/admin/users">
                     <i class="fa fa-fw fa-users"></i>

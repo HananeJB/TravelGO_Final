@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Activity;
@@ -42,6 +43,22 @@ class HomeController extends Controller
             ->get();
         return view('frontend/main_pages/home', compact('activities', 'city'));
     }
+
+    /** Start Blog **/
+
+    public function BlogList()
+    {
+        $posts = Post::all();
+        return view('frontend.blog.blog', compact('posts'));
+    }
+
+    public function BlogSingle($id)
+    {
+        $posts = Post::find($id)->first();
+        return view('frontend.blog.blog_single', compact('posts'));
+    }
+
+    /** End Blog**/
 
 
     public function offerscity($city)

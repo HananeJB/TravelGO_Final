@@ -41,7 +41,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" placeholder="Hotel Mariott" value="{{$post->title ?? ''}}">
+                                    <input type="text" class="form-control" placeholder="Hotel Mariott"">
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Body</label>
-                                    <div class="editor" name="" value="{{$post->body ?? ''}}" ></div>
+                                    <div class="editor" name="" ></div>
                                 </div>
                             </div>
                         </div>
