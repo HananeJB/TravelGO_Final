@@ -47,7 +47,8 @@
                     <ul>
                         <li><a href="/admin/profile">My Profile</a></li>
                         <li><a href="/admin">Admin Panel</a></li>
-                        <li><a href="/admin/activities/create">Add New Listing</a></li>
+                        <li><a href="/admin/activities/create">Add New Activity</a></li>
+                        <li><a href="/admin/adventures/create">Add New Adventure</a></li>
                         <li><a href="/admin/cities/create">Add New City</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">Logout</a></li>

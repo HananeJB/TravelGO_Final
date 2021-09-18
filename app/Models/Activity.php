@@ -17,7 +17,7 @@ class Activity extends Model
         'price',
         'datedebut',
         'datefin',
-        'image',
+        'cover',
         'adresse',
         'program'
 
@@ -43,11 +43,6 @@ class Activity extends Model
     public function photos(){
         return $this->hasMany(Photo::class);
     }
-
-
-
-
-
 
 
 

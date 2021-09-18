@@ -15,11 +15,28 @@ class CreateActivityTbl extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
         $table->id();
-        $table->string('title');
-        $table->string('country');
-        $table->string('image');
+        $table->string('title')->nullable();
+        $table->string('country')->nullable();
+        $table->string('image')->nullable();
         $table->timestamps();
         });
+
+        Schema::create('adventures', function (Blueprint $table) {
+            $table->id();
+            $table->text('title')->nullable();
+            $table->text('small_description')->nullable();
+            $table->text('description')->nullable();
+            $table->text('location')->nullable();
+            $table->text('price')->nullable();
+            $table->text('cover')->nullable();
+            $table->date('stardate')->nullable();
+            $table->date('enddate')->nullable();
+            $table->text('level')->nullable();
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->timestamps();
+        });
+
 
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
@@ -31,13 +48,11 @@ class CreateActivityTbl extends Migration
             $table->text('price')->nullable();
             $table->date('datedebut')->nullable();
             $table->date('datefin')->nullable();
-            $table->text('image')->nullable();
+            $table->text('cover')->nullable();
             $table->text('adresse')->nullable();
-
 
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-
 
             $table->timestamps();
         });
@@ -50,6 +65,7 @@ class CreateActivityTbl extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('adventures');
         Schema::dropIfExists('activities');
         Schema::dropIfExists('cities');
     }

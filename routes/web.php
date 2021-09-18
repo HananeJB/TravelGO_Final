@@ -74,13 +74,13 @@ Route::group(['middleware' => 'admin',], function () {
     Route::resource('/admin/bookings', BookingController::class);
     Route::resource('/admin/cities', CityController::class);
     Route::resource('/admin/post', PostController::class);
-
+    Route::resource('/admin/adventures', AdventureController::class);
 
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
     Route::delete('/admin/day/{day}', [DayController::class,"destroy"])->name('days.destroy');
 
     Route::post('/admin/photos/store',[ActivityController::class,"store"])->name('photos/store');
-    Route::delete('/admin/image/{image}',[ActivityController::class,'destroy'])->name('images.destroy');
+    Route::delete('/admin/image/{image}',[ActivityController::class,'destroyimage'])->name('images.destroy');
 
     // doublons
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);

@@ -76,6 +76,7 @@ class HomeController extends Controller
         $activities = DB::table("activities")
             ->get();
         return view('frontend/secondary_pages/activities', compact('activities'));
+
     }
 
 
