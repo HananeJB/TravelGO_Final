@@ -19,7 +19,7 @@ class AdminController extends Controller
         $users = DB::table('users')
             ->get();
 
-        $activities = DB::table('users')
+        $activities = DB::table('activities')
             ->get();
 
         return view('backend.dashboard', compact('bookings','users','activities'));
