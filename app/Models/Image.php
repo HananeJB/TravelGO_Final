@@ -15,5 +15,10 @@ class Image extends Model
     ];
     public function activity() {
         return $this->belongsTo(Activity::class);
+
+    }
+    public function adventure() {
+        return $this->belongsTo(Adventure::class);
+
     }
 }

@@ -13,34 +13,34 @@
                 <li class="breadcrumb-item">
                     <a href="/admin">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Activities</li>
+                <li class="breadcrumb-item active">Adventures</li>
             </ol>
             <div class="box_general">
                 <div class="header_box">
-                    <h2 class="d-inline-block">Activities</h2>
+                    <h2 class="d-inline-block">Adventures</h2>
                 </div>
                 <div class="list_general">
 
                     <ul>
-                        @foreach ($activities as $activity)
-                        <li>
-                            <figure><img src="/images/{{$activity->cover}}" alt=""></figure>
-                            <small>Hotel</small>
-                            <h4>{{ $activity->title }}</h4>
-                            <p>{{ $activity->description1 }}</p>
-                            <form action="{{ route('activities.destroy',$activity->id) }}" method="POST">
-                            <p><a href="{{ route('activities.edit',$activity->id) }}" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> Edit item</a></p>
-                            <ul class="buttons">
-                                @csrf
-                                @method('DELETE')
-                                <li> <button type="submit" class="btn_1 gray delete wishlist_close">Delete</button></li>
+                        @foreach ($adventures as $adventure)
+                            <li>
+                                <figure><img src="/images/{{$adventure->cover}}" alt=""></figure>
+                                <small>{{ $adventure->level }}</small>
+                                <h4>{{ $adventure->title }}</h4>
+                                <p>{{ $adventure->small_description }}</p>
+                                <form action="{{ route('adventures.destroy',$adventure->id) }}" method="POST">
+                                    <p><a href="{{ route('adventures.edit',$adventure->id) }}" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> Edit item</a></p>
+                                    <ul class="buttons">
+                                        @csrf
+                                        @method('DELETE')
+                                        <li> <button type="submit" class="btn_1 gray delete wishlist_close">Delete</button></li>
 
-                            </ul>
-                            </form>
-                        </li>
+                                    </ul>
+                                </form>
+                            </li>
                         @endforeach
                     </ul>
-                    <p class="d-flex justify-content-end pb-4"><a href="{{ route('activities.create') }}" class="btn_1 bg-dark"><i class="fa fa-fw fa-plus"></i> Create new activity</a></p>
+                    <p class="d-flex justify-content-end pb-4"><a href="{{ route('adventures.create') }}" class="btn_1 bg-dark"><i class="fa fa-fw fa-plus"></i> Create new Adventure</a></p>
 
                 </div>
             </div>

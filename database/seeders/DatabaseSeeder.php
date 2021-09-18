@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             create_users::class,
             create_cities::class,
+            create_activities::class,
         ]);
     }
 }

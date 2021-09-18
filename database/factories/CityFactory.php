@@ -22,7 +22,9 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->name(),
+            'country'=> $this->faker->name(),
+            'image'=> $this->faker->randomElement($array = array ('blog-1.jpg','blog-2.jpg','blog-3.jpg','blog-4.jpg')),
         ];
     }
 }

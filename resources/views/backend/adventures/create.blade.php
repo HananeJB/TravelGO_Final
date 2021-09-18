@@ -9,24 +9,23 @@
 
     <div class="content-wrapper">
 
-        <form class="container-fluid" action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="container-fluid" action="{{ route('adventures.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach($errors->all() as $error)
             {{ $error  }}
         @endforeach
-        <!-- Breadcrumbs-->
+
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="/admin/activities">Activities</a>
+                    <a href="/admin/Adventures">Adventures</a>
                 </li>
-                <li class="breadcrumb-item active">Add Activity</li>
+                <li class="breadcrumb-item active">Add Adventure</li>
             </ol>
-
 
             <div class="box_general padding_bottom">
 
                 <div class="header_box version_2">
-                    <h2><i class="fa fa-file"></i>Add Activity</h2>
+                    <h2><i class="fa fa-file"></i>Add Adventure</h2>
                 </div>
 
 
@@ -34,14 +33,18 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Activity Title</label>
+                            <label>Adventure Title</label>
                             <input type="text" class="form-control" name="title" >
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Category</label>
-                            <input type="text" class="form-control" name="category" >
+                            <label>Level</label>
+                            <select name="level" class="form-control" required>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
                         </div>
                     </div>
 
@@ -51,7 +54,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Small description</label>
-                            <textarea class="form-control" style="height:150px" name="description1" placeholder="Small description"></textarea>
+                            <textarea class="form-control" style="height:150px" name="small_description" placeholder="Small description"></textarea>
                         </div>
                     </div>
                 </div>
@@ -59,18 +62,11 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Big description</label>
-                            <textarea class="form-control" style="height:150px" name="description2" placeholder="Big description"></textarea>
+                            <textarea class="form-control" style="height:150px" name="description" placeholder="Big description"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Program description</label>
-                            <textarea class="form-control" style="height:150px" name="program" placeholder="Program description"></textarea>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- /row-->
                 <div class="row">
                     <div class="col-md-12">
@@ -79,16 +75,16 @@
                             <input type="text" name="price"  class="form-control" placeholder="price">
                         </div>
                     </div>
-
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Cover image</label>
-                            <input type="file" name="cover" class="form-control" placeholder="image">
+                            <input type="file" name="cover" class="form-control" placeholder="cover">
                         </div>
                     </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -116,7 +112,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" name="adresse" class="form-control" placeholder="ex. 250, Fifth Avenue...">
+                            <input type="text" name="location" class="form-control" placeholder="ex. 250, Fifth Avenue...">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -154,7 +150,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="form-group">
-                            <input type="date" name="datedebut" class="form-control" >
+                            <input type="date" name="stardate" class="form-control" >
                         </div>
                     </div>
 
@@ -165,7 +161,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="form-group">
-                            <input type="date" name="datefin" class="form-control" >
+                            <input type="date" name="enddate" class="form-control" >
                         </div>
                     </div>
 

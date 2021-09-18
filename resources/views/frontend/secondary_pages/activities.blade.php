@@ -16,40 +16,7 @@
                 </div>
             </div>
         </section>
-        <!--/hero_in-->
 
-        <div class="filters_listing sticky_horizontal">
-            <div class="container">
-                <ul class="clearfix">
-                    <li>
-                        <div class="switch-field">
-                            <input type="radio" id="all" name="listing_filter" value="all" checked data-filter="*" class="selected">
-                            <label for="all">All</label>
-                            <input type="radio" id="popular" name="listing_filter" value="popular" data-filter=".popular">
-                            <label for="popular">Popular</label>
-                            <input type="radio" id="latest" name="listing_filter" value="latest" data-filter=".latest">
-                            <label for="latest">Latest</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="layout_view">
-                            <a href="tours-grid-isotope.html"><i class="icon-th"></i></a>
-                            <a href="#0" class="active"><i class="icon-th-list"></i></a>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /filters -->
-
-        <div class="collapse" id="collapseMap">
-            <div id="map" class="map"></div>
-        </div>
-        <!-- End Map -->
 
         <div class="container margin_60_35">
             <div class="col-lg-12">
@@ -83,8 +50,8 @@
             </div>
             <!-- /custom-search-input-2 -->
             <div class="isotope-wrapper">
+                @foreach ($activities as $activity)
                 <div class="box_list isotope-item popular">
-                    @foreach ($activities as $activity)
                     <div class="row no-gutters">
                         <div class="col-lg-5">
                             <figure>
@@ -104,8 +71,8 @@
                             </ul>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
             <!-- /isotope-wrapper -->
 

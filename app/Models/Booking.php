@@ -18,6 +18,10 @@ class Booking extends Model
     {
         return $this->belongsTo(Activity::class);
     }
+    public function adventure()
+    {
+        return $this->belongsTo(Adventure::class);
+    }
 
 }
 

@@ -19,6 +19,8 @@ class CreateImagesTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('activity_id');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
+            $table->unsignedBigInteger('adventures_id');
+            $table->foreign('adventures_id')->references('id')->on('adventures')->onDelete('cascade');
 
         });
     }

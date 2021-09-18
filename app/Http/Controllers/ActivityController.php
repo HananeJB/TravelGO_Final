@@ -46,25 +46,40 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
 
-        $activity = new Activity;
-        $activity->title = $request->get('title');
-        $activity->category = $request->get('category');
-        $activity->program = $request->get('program');
-        $activity->description1 = $request->get('description1');
-        $activity->description2 = $request->get('description2');
-        $activity->price = $request->get('price');
-        $activity->datedebut = $request->get('datedebut');
-        $activity->datefin = $request->get('datefin');
-        $activity->adresse = $request->get('adresse');
 
-        $cities = City::find($request->get('city_id'));
-        $cities->activities()->save($activity);
+        $request->validate([
+            'city_id' => 'required',
+            'title' => 'required',
+            'category' => 'required',
+            'description1' => 'required',
+            'description2' => 'required',
+            'price' => 'required',
+            'datedebut' => 'required',
+            'datefin' => 'required',
+            'adresse' => 'required',
+            'program' => 'required',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $input = $request->all();
+
+
+        if ($image = $request->file('cover')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['cover'] = "$profileImage";
+        }
+
+        Activity::create($input);
+
+
 
         if($request->hasFile("images")){
             $files=$request->file("images");
             foreach($files as $file){
                 $imageName=time().'_'.$file->getClientOriginalName();
-                $request['activity_id']=$activity->id;
+                $request['activity_id']=$request->get('activity_id');
                 $request['image']=$imageName;
                 $file->move(\public_path("/images"),$imageName);
                 Image::create($request->all());
@@ -72,11 +87,7 @@ class ActivityController extends Controller
             }
         }
 
-        $day = new Day;
-        $day->title = $request->get('title');
-        $day->description = $request->get('description');
-        $activity = Activity::find($request->get('activity_id'));
-        $activity->days()->save($day);
+
 
         return redirect()->route('activities.index');
     }
@@ -127,13 +138,13 @@ class ActivityController extends Controller
 
         $input = $request->all();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'img/';
-            $profileImage   = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        if ($image = $request->file('cover')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        } else {
-            unset($input['image']);
+            $input['cover'] = "$profileImage";
+        }else{
+            unset($input['cover']);
         }
 
         $activity->update($input);
@@ -155,5 +166,15 @@ class ActivityController extends Controller
 
         return redirect()->back()
             ->with('success', 'Activity deleted successfully');
+
+
+    }
+    public function destroyimage(Image $image)
+    {
+        $image->delete();
+
+        return back()
+            ->with('success', 'Image deleted successfully');
+
     }
 }
