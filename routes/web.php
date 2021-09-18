@@ -8,7 +8,6 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\MailerController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\AdventureController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
@@ -46,8 +45,8 @@ Auth::routes();
     Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
 
     /** Blog **/
-    Route::get('/blog', [PostController::class, 'BlogList']);
-    Route::get('/blog/{id}', [PostController::class, 'BlogSingle']);
+    Route::get('/blog', [HomeController::class, 'BlogList']);
+    Route::get('/blog/{id}', [HomeController::class, 'BlogSingle']);
 
     /** Others **/
     Route::get('/terms_and_conditions', [HomeController::class,"terms"]);
@@ -81,13 +80,13 @@ Route::group(['middleware' => 'admin',], function () {
     Route::resource('/admin/cities', CityController::class);
     Route::resource('/admin/blog', PostController::class);
     Route::resource('/admin/adventures', AdventureController::class);
+    Route::resource('/admin/post', PostController::class);
 
     Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
     Route::delete('/admin/day/{day}', [DayController::class,"destroy"])->name('days.destroy');
 
     Route::post('/admin/photos/store',[ActivityController::class,"store"])->name('photos/store');
     Route::delete('/admin/image/{image}',[ActivityController::class,'destroyimage'])->name('images.destroy');
-
 
     // doublons
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);
