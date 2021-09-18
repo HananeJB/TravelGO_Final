@@ -11,6 +11,7 @@ use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +89,6 @@ Route::group(['middleware' => 'admin',], function () {
 
     Route::post('/admin/photos/store',[PhotosController::class,"store"])->name('photos/store');
     Route::delete('/admin/image/{image}',[PhotosController::class,'destroy'])->name('images.destroy');
-
 
     // doublons
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);
