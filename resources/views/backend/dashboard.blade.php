@@ -21,9 +21,9 @@
                     <div class="card dashboard text-white bg-primary o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fa fa-fw fa-envelope-open"></i>
+                                <i class="fa fa-fw fa-globe"></i>
                             </div>
-                            <div class="mr-5"><h5>26 New Messages!</h5></div>
+                            <div class="mr-5"><h5>26 Adventures!</h5></div>
                         </div>
                         <a class="card-footer text-white clearfix small z-1" href="messages.html">
                             <span class="float-left">View Details</span>
@@ -37,9 +37,9 @@
                     <div class="card dashboard text-white bg-warning o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fa fa-fw fa-star"></i>
+                                <i class="fa fa-fw fa-briefcase"></i>
                             </div>
-                            <div class="mr-5"><h5>{{ count($activities) }} New Activities!</h5></div>
+                            <div class="mr-5"><h5>{{ count($activities) }} Activities!</h5></div>
                         </div>
                         <a class="card-footer text-white clearfix small z-1" href="/admin/activities">
                             <span class="float-left">View Details</span>
@@ -69,7 +69,7 @@
                     <div class="card dashboard text-white bg-danger o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fa fa-fw fa-heart"></i>
+                                <i class="fa fa-fw fa-user"></i>
                             </div>
                             <div class="mr-5"><h5>{{ count($users) }} Users!</h5></div>
                         </div>

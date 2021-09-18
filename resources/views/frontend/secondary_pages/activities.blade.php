@@ -88,7 +88,7 @@
                     <div class="row no-gutters">
                         <div class="col-lg-5">
                             <figure>
-                                <small>Historic</small>
+                                <small>{{$activity->category}}</small>
                                 <a href='/activities/details/{{$activity->id}}'><img src="/frontend/img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
                             </figure>
                         </div>
@@ -99,22 +99,13 @@
                                 <span class="price">From <strong>{{ $activity->price }}</strong> /per person</span>
                             </div>
                             <ul>
-                                <li><i class="icon_clock_alt"></i> 1h 30min</li>
+                                <li><i class="icon_clock_alt"></i>x</li>
                                 <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
                             </ul>
                         </div>
                     </div>
                     @endforeach
                 </div>
-                <!-- /box_list -->
-
-                <!-- /box_list -->
-
-                <!-- /box_list -->
-
-                <!-- /box_list -->
-
-                <!-- /box_list -->
             </div>
             <!-- /isotope-wrapper -->
 

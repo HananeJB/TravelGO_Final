@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        //
+
     }
 
     public function reservations()

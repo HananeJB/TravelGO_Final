@@ -12,11 +12,12 @@
             @php
                 $isAdmin = Auth::user()->is_admin;
             @endphp
-            @if($isAdmin =! 1)
+            @if($isAdmin != 1)
         <li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
             @endif
         @endauth
         @guest
+                <li><a href="#" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
             <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
         @endguest
     </ul>
@@ -46,8 +47,8 @@
                     <ul>
                         <li><a href="/admin/profile">My Profile</a></li>
                         <li><a href="/admin">Admin Panel</a></li>
-                        <li><a href="/admin/activities">Add New Listing</a></li>
-                        <li><a href="/admin/cities">Add New City</a></li>
+                        <li><a href="/admin/activities/create">Add New Listing</a></li>
+                        <li><a href="/admin/cities/create">Add New City</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">Logout</a></li>
                     </ul>
