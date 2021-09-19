@@ -43,6 +43,12 @@
                             <input type="text" value="{{ $city->country }}" class="form-control" name="country" >
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" value="{{ $city->description }}" class="form-control" name="description" >
+                        </div>
+                    </div>
 
                 </div>
                 <div class="row">

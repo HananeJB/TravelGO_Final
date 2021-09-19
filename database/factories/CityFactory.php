@@ -24,6 +24,7 @@ class CityFactory extends Factory
         return [
             'title' => $this->faker->name(),
             'country'=> $this->faker->name(),
+            'description'=> $this->faker->text(50),
             'image'=> $this->faker->randomElement($array = array ('blog-1.jpg','blog-2.jpg','blog-3.jpg','blog-4.jpg')),
         ];
     }

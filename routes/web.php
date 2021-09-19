@@ -32,7 +32,7 @@ Auth::routes();
     Route::get('/', function () {return redirect('/home');});
     Route::get('/home', [HomeController::class,"index"])->name('home');
     Route::get('/activities', [HomeController::class,"offers"]);
-    Route::get('/activities/{city}', [HomeController::class,"offerscity"]);
+    Route::get('/activities/{id}', [HomeController::class,"offerscity"]);
     Route::get('/activities/details/{id}', [HomeController::class,"showDetail"]);
     Route::get('/adventures', [HomeController::class,"adventure"]);
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');

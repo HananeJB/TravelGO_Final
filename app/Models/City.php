@@ -12,6 +12,7 @@ class City extends Model
 
         'title',
         'country',
+        'description',
         'image',
 
     ];

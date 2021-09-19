@@ -17,6 +17,7 @@ class CreateActivityTbl extends Migration
         $table->id();
         $table->string('title')->nullable();
         $table->string('country')->nullable();
+        $table->string('description')->nullable();
         $table->string('image')->nullable();
         $table->timestamps();
         });

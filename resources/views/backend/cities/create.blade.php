@@ -44,6 +44,12 @@
                             <input type="text" class="form-control" name="country" >
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" class="form-control" name="description" >
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /row-->

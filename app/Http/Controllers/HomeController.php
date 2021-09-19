@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
@@ -39,10 +40,14 @@ class HomeController extends Controller
     {
         $posts =  Post::latest()->take(4)->get();
         $activities = DB::table("activities")
+            ->limit(6)
             ->get();
         $city = DB::table("cities")
+            ->join('activities', 'activities.city_id', '=', 'cities.id')
             ->get();
-        return view('frontend/main_pages/home', compact('activities', 'city','posts'));
+
+
+        return view('frontend/main_pages/home', compact('activities','city','posts'));
     }
 
     /** Start Blog **/
@@ -63,21 +68,22 @@ class HomeController extends Controller
 
     /** End Blog**/
 
-
-    public function offerscity($city)
+    /** Start Activity **/
+    public function offerscity($id)
     {
-        $activities = DB::table("activities")
-            ->where('city' == $city)
+        $cities=City::find($id);
+        $activities = DB::table("cities")
+            ->join('activities', 'cities.id', '=', 'activities.city_id')
+            ->where('city_id','=',$id)
             ->get();
-        $activity = Activity::find($city);
 
-        return view('frontend/secondary_pages/activities', ['activity' => $activity, 'city' => $city], compact('activity', 'city', 'activities'));
+
+        return view('frontend/secondary_pages/activities', compact(  'activities','cities'));
     }
 
     public function offers()
     {
-        $activities = DB::table("activities")
-            ->get();
+        $activities = Activity::orderby('id')->simplepaginate(10);
         return view('frontend/secondary_pages/activities', compact('activities'));
 
     }
@@ -88,6 +94,11 @@ class HomeController extends Controller
         $activity = Activity::find($id);
         return view('frontend/secondary_pages/activity-detail', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
     }
+
+
+    /** End activity **/
+
+
 
     public function adventure()
     {

@@ -53,6 +53,7 @@ class CityController extends Controller
         $city = new City;
 
         $city->title = $request->title;
+        $city->description = $request->description;
         $city->country = $request->country;
 
         $city->image = $path;
@@ -97,6 +98,8 @@ class CityController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'country' => 'required',
+            'description' => 'required',
 
         ]);
 
@@ -111,6 +114,8 @@ class CityController extends Controller
         }
 
         $city->title = $request->title;
+        $city->country = $request->country;
+        $city->description = $request->description;
 
         $city->save();
 

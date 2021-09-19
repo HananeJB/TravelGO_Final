@@ -9,98 +9,36 @@
 <main>
     <section class="slider">
         <div id="slider" class="flexslider">
+
             <ul class="slides">
+                @foreach($city as $city)
                 <li>
                     <img src="/frontend/img/alexander-kaunas-TAgGZWz6Qg8-unsplash.jpg" alt="">
                     <div class="meta">
-                        <h3>Bangkok, A city that never stays the same</h3>
+                        <h3>{{$city->description}}</h3>
                         <div class="info">
                             <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
                         </div>
-                        <a href="#0" class="btn_1">Read more</a>
+                        <a href="/activities/{{$city->id}}" class="btn_1">Read more</a>
                     </div>
                 </li>
-                <li>
-                    <img src="/frontend/img/pexels-asad-photo-maldives-1591373.jpg" alt="">
-                    <div class="meta">
-                        <h3>Dubai, The most attractive destination</h3>
-                        <div class="info">
-                            <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
-                        </div>
-                        <a href="#0" class="btn_1">Read more</a>
-                    </div>
-                </li>
-                <li>
-                    <img src="/frontend/img/flex_slides/pexels-thanakorn-phanthura-3183613.jpg" alt="">
-                    <div class="meta">
-                        <h3>Cairo, Traditions and culture</h3>
-                        <div class="info">
-                            <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
-                        </div>
-                        <a href="#0" class="btn_1">Read more</a>
-                    </div>
-                </li>
-                <li>
-                    <img src="/frontend/img/flex_slides/slide_4.jpg" alt="">
-                    <div class="meta">
-                        <h3>Nassau, Unique beaches and horizons</h3>
-                        <div class="info">
-                            <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
-                        </div>
-                        <a href="#0" class="btn_1">Read more</a>
-                    </div>
-                </li>
-                <li>
-                    <img src="/frontend/img/flex_slides/slide_5.jpg" alt="">
-                    <div class="meta">
-                        <h3>Rome, The Eternal City</h3>
-                        <div class="info">
-                            <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
-                        </div>
-                        <a href="#0" class="btn_1">Read more</a>
-                    </div>
-                </li>
+                @endforeach
             </ul>
+
             <div id="icon_drag_mobile"></div>
         </div>
         <div id="carousel_slider_wp">
             <div id="carousel_slider" class="flexslider">
                 <ul class="slides">
+                    @foreach($city as $city)
                     <li>
                         <img src="/frontend/img/flex_slides/slide_1_thumb.jpg" alt="">
                         <div class="caption">
-                            <h3>Bangkok <span>Thailand</span></h3>
+                            <h3>{{$city->title}} <span>{{$city->country}}</span></h3>
                             <small>$75 per person</small>
                         </div>
                     </li>
-                    <li>
-                        <img src="/frontend/img/flex_slides/slide_2_thumb.jpg" alt="">
-                        <div class="caption">
-                            <h3>Dubai <span>Emirates</span></h3>
-                            <small>$75 per person</small>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="/frontend/img/flex_slides/slide_3_thumb.jpg" alt="">
-                        <div class="caption">
-                            <h3>Cairo <span>Egypt</span></h3>
-                            <small>$45 per person</small>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="/frontend/img/flex_slides/slide_4_thumb.jpg" alt="">
-                        <div class="caption">
-                            <h3>Nassau <span>Bahamas</span></h3>
-                            <small>$85 per person</small>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="/frontend/img/flex_slides/slide_5_thumb.jpg" alt="">
-                        <div class="caption">
-                            <h3>Rome <span>Italy</span></h3>
-                            <small>$75 per person</small>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -149,36 +87,18 @@
             <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
         </div>
         <div id="reccomended" class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="box_grid">
-                    <figure>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="tour-detail.html"><img src="/frontend/img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                        <small>Historic</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="tour-detail.html">Arc Triomphe</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span class="price">From <strong>$54</strong> /per person</span>
-                    </div>
-                    <ul>
-                        <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                        <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-                    </ul>
-                </div>
-            </div>
             <!-- /item -->
+            @foreach($activities as $activity)
             <div class="item">
                 <div class="box_grid">
                     <figure>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="tour-detail.html"><img src="/frontend/img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                        <small>Churches</small>
+                        <a href='/activities/details/{{$activity->id}}'><img src="/frontend/img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+                        <small>{{ $activity->category }}</small>
                     </figure>
                     <div class="wrapper">
-                        <h3><a href="tour-detail.html">Notredam</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span class="price">From <strong>$124</strong> /per person</span>
+                        <h3><a href='/activities/details/{{$activity->id}}'>{{ $activity->title }}</a></h3>
+                        <p>{{ $activity->description1 }}</p>
+                        <span class="price">From <strong>${{ $activity->price }}</strong> /per person</span>
                     </div>
                     <ul>
                         <li><i class="icon_clock_alt"></i> 1h 30min</li>
@@ -186,83 +106,7 @@
                     </ul>
                 </div>
             </div>
-            <!-- /item -->
-            <div class="item">
-                <div class="box_grid">
-                    <figure>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="tour-detail.html"><img src="/frontend/img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                        <small>Historic</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="tour-detail.html">Versailles</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span class="price">From <strong>$25</strong> /per person</span>
-                    </div>
-                    <ul>
-                        <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                        <li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /item -->
-            <div class="item">
-                <div class="box_grid">
-                    <figure>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="tour-detail.html"><img src="/frontend/img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                        <small>Historic</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="tour-detail.html">Versailles</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span class="price">From <strong>$25</strong> /per person</span>
-                    </div>
-                    <ul>
-                        <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                        <li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /item -->
-            <div class="item">
-                <div class="box_grid">
-                    <figure>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="tour-detail.html"><img src="/frontend/img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                        <small>Museum</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="tour-detail.html">Pompidue Museum</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span class="price">From <strong>$45</strong> /per person</span>
-                    </div>
-                    <ul>
-                        <li><i class="icon_clock_alt"></i> 2h 30min</li>
-                        <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /item -->
-            <div class="item">
-                <div class="box_grid">
-                    <figure>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="tour-detail.html"><img src="/frontend/img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                        <small>Walking</small>
-                    </figure>
-                    <div class="wrapper">
-                        <h3><a href="tour-detail.html">Tour Eiffel</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span class="price">From <strong>$65</strong> /per person</span>
-                    </div>
-                    <ul>
-                        <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                        <li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.5</strong></div></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /item -->
+            @endforeach
         </div>
         <!-- /carousel -->
         <p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Tours</a></p>

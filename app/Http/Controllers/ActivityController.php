@@ -75,17 +75,7 @@ class ActivityController extends Controller
 
 
 
-        if($request->hasFile("images")){
-            $files=$request->file("images");
-            foreach($files as $file){
-                $imageName=time().'_'.$file->getClientOriginalName();
-                $request['activity_id']=$request->get('activity_id');
-                $request['image']=$imageName;
-                $file->move(\public_path("/images"),$imageName);
-                Image::create($request->all());
 
-            }
-        }
 
 
 
