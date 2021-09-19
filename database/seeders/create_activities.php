@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class create_activities extends Seeder
 {
@@ -14,8 +14,6 @@ class create_activities extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'title'=> '1',
-        ]);
+        Activity::factory()->times(40)->create();
     }
 }

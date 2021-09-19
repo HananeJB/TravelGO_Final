@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class create_cities extends Seeder
 {
@@ -14,8 +14,6 @@ class create_cities extends Seeder
      */
     public function run()
     {
-        DB::table('cities')->insert([
-            'title'=> 'Cities 123'
-        ]);
+        City::factory()->times(10)->create();
     }
 }
