@@ -37,12 +37,12 @@
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="post_info">
-                                        <small>{{ date('Y-m-d', strtotime($post->published_at)) }}</small>
+                                        <small>{{ date('Y-m-d', strtotime($post->created_at)) }}</small>
                                         <h3><a href="/blog/{{ $post->id }}">{{ $post->title }}</a></h3>
                                         @php
                                             $body = substr($post->body, 0, 150);
                                         @endphp
-                                        <p>{{$body}}</p>
+                                        <p> {!!$body!!}</p>
                                         <ul>
                                             <li>
                                                 <div class="thumb"><img src="/frontend/img/thumb_blog.jpg" alt=""></div> Hannane Jabou
@@ -74,55 +74,27 @@
                 <!-- /col -->
 
                 <aside class="col-lg-3">
-                    <div class="widget">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
-                            </div>
-                            <button type="submit" id="submit" class="btn_1 rounded"> Search</button>
-                        </form>
-                    </div>
+
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">
                             <h4>Recent Posts</h4>
                         </div>
                         <ul class="comments-list">
+                            @foreach($latest as $latest)
                             <li>
                                 <div class="alignleft">
-                                    <a href="#0"><img src="img/blog-5.jpg" alt=""></a>
+                                    <a href="/blog/{{ $latest->id }}"><img src="/uploads/blog/{{ $latest->image }}" style="width: auto; height: 80px;" alt=""></a>
                                 </div>
-                                <small>11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                                <small>{{ $latest->created_at }}</small>
+
+                                <h3><a href="#" title="">{{ $latest->title }}</a></h3>
                             </li>
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="img/blog-6.jpg" alt=""></a>
-                                </div>
-                                <small>11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="img/blog-4.jpg" alt=""></a>
-                                </div>
-                                <small>11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- /widget -->
-                    <div class="widget">
-                        <div class="widget-title">
-                            <h4>Blog Categories</h4>
-                        </div>
-                        <ul class="cats">
-                            <li><a href="#">Admissions <span>(12)</span></a></li>
-                            <li><a href="#">News <span>(21)</span></a></li>
-                            <li><a href="#">Events <span>(44)</span></a></li>
-                            <li><a href="#">Focus in the lab <span>(31)</span></a></li>
-                        </ul>
-                    </div>
+
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">

@@ -27,7 +27,11 @@
                 <li class="breadcrumb-item active">Add post</li>
             </ol>
 
-            <form action="/post" method="post">
+            <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @foreach($errors->all() as $error)
+                    {{ $error  }}
+                @endforeach
                 <div class="box_general padding_bottom">
                     <div class="header_box version_2">
                         <h2><i class="fa fa-file"></i>Basic info</h2>
@@ -41,7 +45,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" placeholder="Hotel Mariott"">
+                                    <input type="text" name="title" class="form-control" placeholder="title">
                                 </div>
                             </div>
                         </div>
@@ -50,7 +54,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Body</label>
-                                    <div class="editor" name="" ></div>
+                                    <textarea id="summernote" name="body"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +63,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Picture</label>
-                                    <form action="/file-upload" class="dropzone"></form>
+                                    <input type="file" name="image" class="form-control" placeholder="image">
                                 </div>
                             </div>
                         </div>
@@ -83,6 +87,7 @@
     <script src="/backend/js/editor/summernote-bs4.min.js"></script>
     <script>
         $('.editor').summernote({
+
             fontSizes: ['10', '14'],
             toolbar: [
                 // [groupName, [list of button]]
@@ -90,10 +95,18 @@
                 ['font', ['strikethrough']],
                 ['fontsize', ['fontsize']],
                 ['para', ['ul', 'ol', 'paragraph']]
+
             ],
+            styleTags: [
+                'p',
+                { title: 'Blockquote', tag: 'blockquote', className: 'blockquote', value: 'blockquote' },
+                'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+            ],
+            lineHeights: ['1.8'],
             placeholder: 'Write here your description....',
             tabsize: 2,
-            height: 200
+            height: 200,
         });
+        var markupStr = $('#summernote').summernote('body');
     </script>
 @endsection

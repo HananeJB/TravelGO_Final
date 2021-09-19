@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DayController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AdventureController;
 use App\Http\Controllers\MailerController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CityController;
@@ -94,9 +95,9 @@ Route::group(['middleware' => 'admin',], function () {
     Route::put('/admin/update/{id}',[ActivityController::class,'update']);
 });
 
-/** User - Space **/ //CREATED NEW CONTROLLER FOR THIS SPACE
+/** User - Space //CREATED NEW CONTROLLER FOR THIS SPACE
 Route::group(['middleware' => 'auth',], function () {
-    Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
+    Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');
     Route::get('/myaccount/profile', [UserController::class,"profile"]);
     Route::get('/myaccount/bookings', [UserController::class,"reservations"]);
 });

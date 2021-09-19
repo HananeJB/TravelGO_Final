@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             create_users::class,
             create_cities::class,
             create_activities::class,
+            create_posts::class,
         ]);
     }
 }

@@ -37,7 +37,7 @@
                         </div>
                         <!-- /post meta -->
                         <div class="post-content">
-                            {{ $posts->body }}<p></p>
+                            {!! $posts->body !!}<p></p>
                         </div>
                         <!-- /post -->
                     </div>
@@ -140,55 +140,26 @@
                 <!-- /col -->
 
                 <aside class="col-lg-3">
-                    <div class="widget">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
-                            </div>
-                            <button type="submit" id="submit" class="btn_1 rounded"> Search</button>
-                        </form>
-                    </div>
+
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">
                             <h4>Recent Posts</h4>
                         </div>
                         <ul class="comments-list">
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="/frontend/img/blog-5.jpg" alt=""></a>
-                                </div>
-                                <small>11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="/frontend/img/blog-6.jpg" alt=""></a>
-                                </div>
-                                <small>11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
-                            <li>
-                                <div class="alignleft">
-                                    <a href="#0"><img src="/frontend/img/blog-4.jpg" alt=""></a>
-                                </div>
-                                <small>11.08.2016</small>
-                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                            </li>
+                            @foreach($latest as $latest)
+                                <li>
+                                    <div class="alignleft">
+                                        <a href="/blog/{{ $latest->id }}"><img src="/uploads/blog/{{ $latest->image }}" style="width: auto; height: 80px;" alt=""></a>
+                                    </div>
+                                    <small>{{ $latest->created_at }}</small>
+
+                                    <h3><a href="#" title="">{{ $latest->title }}</a></h3>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
-                    <!-- /widget -->
-                    <div class="widget">
-                        <div class="widget-title">
-                            <h4>Blog Categories</h4>
-                        </div>
-                        <ul class="cats">
-                            <li><a href="#">Admissions <span>(12)</span></a></li>
-                            <li><a href="#">News <span>(21)</span></a></li>
-                            <li><a href="#">Events <span>(44)</span></a></li>
-                            <li><a href="#">Focus in the lab <span>(31)</span></a></li>
-                        </ul>
-                    </div>
+
                     <!-- /widget -->
                     <div class="widget">
                         <div class="widget-title">

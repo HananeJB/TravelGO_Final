@@ -27,9 +27,12 @@
                 <li class="breadcrumb-item active">Add post</li>
             </ol>
 
-            <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('post.update',$post->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                @foreach($errors->all() as $error)
+                    {{ $error  }}
+                @endforeach
 
                 <div class="box_general padding_bottom">
                     <div class="header_box version_2">
@@ -44,25 +47,26 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" placeholder="Hotel Mariott" value="{{$post->title ?? ''}}">
+                                    <input type="text" class="form-control" name="title" value="{{$post->title}}">
                                 </div>
                             </div>
                         </div>
                         <!-- /row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Body</label>
-                                    <div class="editor" name="">{{$post->body ?? ''}}</div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Body</label>
+                                <textarea id="summernote" name="body">{{$post->body}}</textarea>
                             </div>
                         </div>
+                    </div>
                         <!-- /row-->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Picture</label>
-                                    <input type="file" class="dropzone"></input>
+                                    <img src="/uploads/blog/{{ $post->image }}" width="200px">
+                                    <input type="file" name="image" class="form-control" placeholder="image">
                                 </div>
                             </div>
                         </div>
@@ -98,5 +102,6 @@
             tabsize: 2,
             height: 200
         });
+        var markupStr = $('#summernote').summernote('body');
     </script>
 @endsection

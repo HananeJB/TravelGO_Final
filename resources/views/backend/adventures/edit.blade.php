@@ -85,6 +85,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Cover image</label>
+                            <img src="/images/{{$adventure->cover}}" width="300px">
                             <input type="file" name="cover" class="form-control" placeholder="image">
                         </div>
                     </div>
@@ -94,7 +95,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Images</label>
-                            <img src="/images/{{$adventure->cover}}" width="300px">
+
                             <input type="file" id="input-file-now-custom-3" class="form-control" name="images[]" multiple>
                         </div>
                     </div>

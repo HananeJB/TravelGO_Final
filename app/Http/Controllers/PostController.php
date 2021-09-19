@@ -23,14 +23,28 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->published_at = $request->published_at;
-        $post->save();
-        return redirect('/home')->with('success','Post created successfully!');
+
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'uploads/blog/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
+        Post::create($input);
+
+
+        return redirect('/admin/blog')->with('success','Post created successfully!');
     }
+    public function show(Post $post)
+    {
+        return view('backend.activities.show', compact('post'));
+    }
+
 
     public function edit(Post $post)
     {
@@ -41,20 +55,32 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'body' => 'required',
+            'body' => 'required'
         ]);
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->published_at = $request->published_at;
 
-        $post->save();
-        return redirect('/home')->with('success','Post updated successfully!');
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'uploads/blog/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }else{
+            unset($input['image']);
+        }
+
+        $post->update($input);
+
+        return redirect()->route('post.index')
+            ->with('success', 'Post updated successfully');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('/home')->with('success','Post deleted successfully!');
+
+        return back()
+            ->with('success', 'Post deleted successfully');
     }
 
 

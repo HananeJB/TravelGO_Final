@@ -49,10 +49,11 @@
                                     <td>{{ date('Y-m-d', strtotime($post->created_at)) }}</td>
                                     <td>
                                         <a href="/blog/{{$post->id}}" class="btn">Show</a>
-                                        <a href="/admin/blog/{{$post->id}}/edit" class="btn">Edit</a>
-                                        <form action="/admin/blog/{{$post->id}}" method="post" class="d-inline">
+                                        <a href="{{ route('post.edit',$post->id) }}" class="btn">Edit</a>
+                                        <form action="{{ route('post.destroy',$post->id) }}" method="post" class="d-inline">
                                             {{ csrf_field() }}
                                             @method('DELETE')
+
                                             <button class="btn btn-danger" type="submit">Delete</button>
                                         </form>
                                     </td>

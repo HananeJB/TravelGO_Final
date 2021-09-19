@@ -37,25 +37,28 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts =  Post::latest()->take(4)->get();
         $activities = DB::table("activities")
             ->get();
         $city = DB::table("cities")
             ->get();
-        return view('frontend/main_pages/home', compact('activities', 'city'));
+        return view('frontend/main_pages/home', compact('activities', 'city','posts'));
     }
 
     /** Start Blog **/
 
     public function BlogList()
     {
+        $latest = Post::latest()->take(4)->get();
         $posts = Post::all();
-        return view('frontend.blog.blog', compact('posts'));
+        return view('frontend.blog.blog', compact('posts','latest'));
     }
 
     public function BlogSingle($id)
     {
-        $posts = Post::find($id)->first();
-        return view('frontend.blog.blog_single', compact('posts'));
+        $latest = Post::latest()->take(4)->get();
+        $posts = Post::find($id);
+        return view('frontend.blog.blog_single', compact('posts','latest'));
     }
 
     /** End Blog**/
@@ -91,15 +94,6 @@ class HomeController extends Controller
         return view('frontend/secondary_pages/adventures');
     }
 
-    public function blog()
-    {
-        return view('frontend/secondary_pages/blogs');
-    }
-
-    public function blogpost()
-    {
-        return view('frontend/secondary_pages/blogpost');
-    }
 
     public function about()
     {
