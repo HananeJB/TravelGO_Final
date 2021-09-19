@@ -11,11 +11,12 @@
         <div id="slider" class="flexslider">
 
             <ul class="slides">
-                @foreach($city as $city)
+                @foreach($cities as $city)
                 <li>
-                    <img src="/frontend/img/alexander-kaunas-TAgGZWz6Qg8-unsplash.jpg" alt="">
-                    <div class="meta">
-                        <h3>{{$city->description}}</h3>
+                    <img src="/uploads/blog/{{$city->image}}" alt="">
+                    <div class="meta" style="bottom: 45% !important;">
+                        <h3>{{$city->title}}, {{$city->country}}</h3>
+                        <h5 style="color:white">{{$city->description}}</h5>
                         <div class="info">
                             <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
                         </div>
@@ -30,9 +31,9 @@
         <div id="carousel_slider_wp">
             <div id="carousel_slider" class="flexslider">
                 <ul class="slides">
-                    @foreach($city as $city)
+                    @foreach($cities as $city)
                     <li>
-                        <img src="/frontend/img/flex_slides/slide_1_thumb.jpg" alt="">
+                        <img src="/uploads/blog/{{$city->image}}" alt="">
                         <div class="caption">
                             <h3>{{$city->title}} <span>{{$city->country}}</span></h3>
                             <small>$75 per person</small>

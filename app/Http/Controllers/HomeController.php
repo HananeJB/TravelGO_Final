@@ -42,12 +42,11 @@ class HomeController extends Controller
         $activities = DB::table("activities")
             ->limit(6)
             ->get();
-        $city = DB::table("cities")
-            ->join('activities', 'activities.city_id', '=', 'cities.id')
+
+        $cities = DB::table("cities")
             ->get();
 
-
-        return view('frontend/main_pages/home', compact('activities','city','posts'));
+        return view('frontend/main_pages/home', compact('activities','cities','posts'));
     }
 
     /** Start Blog **/
