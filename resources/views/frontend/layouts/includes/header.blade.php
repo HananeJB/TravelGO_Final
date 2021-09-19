@@ -13,11 +13,11 @@
                 $isAdmin = Auth::user()->is_admin;
             @endphp
             @if($isAdmin != 1)
-        <li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
+                <li><a href="/cart" class="cart-menu-btn" title="Cart"><strong>{{Cart::count()}}</strong></a></li>
             @endif
         @endauth
         @guest
-                <li><a href="#" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
+            <li><a href="/cart" class="cart-menu-btn" title="Cart"><strong>{{Cart::count()}}</strong></a></li>
             <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
         @endguest
     </ul>

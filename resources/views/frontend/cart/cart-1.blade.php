@@ -59,7 +59,7 @@
                                         Qty
                                     </th>
                                     <th>
-                                        Guests
+                                        Date
                                     </th>
                                     <th>
                                         Total
@@ -82,8 +82,7 @@
                                         {{ $row->qty }}
                                     </td>
                                     <td>
-                                        {{ $row->options->num_adults ?? '' }} Adult(s) and
-                                        {{ $row->options->num_childrens ?? '' }} Children(s)
+                                        {{ $row->options->startdate }}
                                     </td>
                                     <td>
                                         <strong>{{ $row->total }} Dhs</strong>
@@ -105,14 +104,14 @@
 
                     <aside class="col-lg-4" id="sidebar">
                         <div class="box_detail">
-                            <div id="total_cart">
-                                Total <span class="float-right">{{ $total }}</span>
-                            </div>
                             <ul class="cart_details">
-                                <li>From <span>02-11-18</span></li>
-                                <li>To <span>04-11-18</span></li>
+                                <li>Subtotal <span class="float-right">{{ $cartsum['subtotal'] }}</span></li>
+                                <li>Tax <span class="float-right">{{ $cartsum['tax'] }}</span></li>
                             </ul>
-                            <a href="cart-2.html" class="btn_1 full-width purchase">Checkout</a>
+                            <div id="total_cart">
+                                Total <span class="float-right">{{ $cartsum['total'] }}</span>
+                            </div>
+                            <a href="/cart/checkout" class="btn_1 full-width purchase">Checkout</a>
                             <div class="text-center"><small>No money charged in this step</small></div>
                         </div>
                     </aside>

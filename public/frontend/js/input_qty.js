@@ -8,8 +8,10 @@
     }
 
     var cardQty = document.querySelector(".qtyTotal");
-    cardQty.innerHTML = tot;
-	} 
+    var cardQty2 = document.querySelector(".qtyTotal2");
+        document.getElementById('qtyTotal').value = tot;
+        cardQty2.innerHTML = tot;
+	}
 	qtySum();
 
 	$(function() {

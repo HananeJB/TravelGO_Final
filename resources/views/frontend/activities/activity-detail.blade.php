@@ -120,30 +120,33 @@
                         <form action="/addtocart" method="post">
                             @csrf
                             <div class="price">
-                                <span>{{ $activity->price }}$ <small>per person</small></span>
+                                <span>{{ $activity->price }} Dhs <small>per person</small></span>
                             </div>
 
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="dates" placeholder="When..">
-                                <input class="form-control" type="hidden" name="startdate">
-                                <input class="form-control" type="hidden" name="enddate">
+                            <div class="form-group" id="input_date">
+                                <input class="form-control" type="text" name="date" id="datepicker" value="" placeholder="When..">
                                 <i class="icon_calendar"></i>
                             </div>
+
                             <div class="panel-dropdown">
-                                <a href="#">Guests <span class="qtyTotal">1</span></a>
+                                <input type="hidden" name="qty" id="qtyTotal" class="qtyTotal"/>
+                                <a href="#">Guests <span class="qtyTotal2">1</span></a>
                                 <div class="panel-dropdown-content right">
                                     <div class="qtyButtons">
                                         <label>Adults</label>
-                                        <input type="text" name="adults_num" value="1">
+                                        <input type="text" name="qtyInput" value="1">
                                     </div>
                                     <div class="qtyButtons">
                                         <label>Childrens</label>
-                                        <input type="text" name="childrens_num" value="0">
+                                        <input type="text" name="qtyInput" value="0">
                                     </div>
                                 </div>
                             </div>
                             <input type="submit" class="btn_1 full-width purchase" value="Purchase" />
                             <div class="text-center"><small>No money charged in this step</small></div>
+                            <input type="hidden" name="id" value="{{ $activity->id }}">
+                            <input type="hidden" name="title" value="{{ $activity->title }}">
+                            <input type="hidden" name="price" value="{{ $activity->price }}">
                         </form>
                         </div>
 
@@ -165,29 +168,21 @@
     <script src="/frontend/js/map_single_tour.js"></script>
     <script src="/frontend/js/infobox.js"></script>
 
+
     <!-- DATEPICKER  -->
     <script>
-        $(function() {
-            $('input[name="dates"]').daterangepicker({
-                autoUpdateInput: false,
-                opens: 'left',
-                locale: {
-                    cancelLabel: 'Clear'
-                }
-            });
-            $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' to ' + picker.endDate.format('DD/MM/YYYY'));
-            });
-            $('input[name="startdate"]').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY'));
-            });
-            $('input[name="enddate"]').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.endDate.format('DD/MM/YYYY'));
-            });
-            $('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
-                $(this).val('');
-            });
+        $('input[name="date"]').daterangepicker({
+            "singleDatePicker": true,
+            "autoApply": true,
+            parentEl:'#input_date',
+            "linkedCalendars": false,
+            "showCustomRangeLabel": false
+        }, function(start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            document.getElementById("datepicker").setAttribute('value', start.format('DD-MM-YYYY') );
+
         });
+
     </script>
 
     <!-- INPUT QUANTITY  -->

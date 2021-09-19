@@ -9,7 +9,16 @@ class CartController extends Controller
 {
     public function addtocart(Request $request)
     {
-        Cart::add($request->id, $request->name, $request->qty, $request->price, 0, ['num_adults' => $request->num_adults,'num_childrens' => $request->num_childrens,'period' => $request->period,'period' => $request->period]);
+        Cart::add(
+            $request->id,
+            $request->title,
+            $request->qty,
+            $request->price,
+            0,
+            [
+                'startdate' => $request->date,
+                'taxrate' => 20,
+            ]);
         return redirect('/cart')->with('success', 'your message,here');
     }
 
@@ -22,7 +31,18 @@ class CartController extends Controller
     public function cart()
     {
         $cartitems=Cart::content();
-        $total=Cart::total();
-        return view('frontend.cart.cart-1', compact('cartitems','total'));
+        $cartsum=['total'=>Cart::total(),'tax'=>Cart::tax(),'subtotal'=>Cart::subtotal()];
+        return view('frontend.cart.cart-1', compact('cartitems','cartsum'));
+    }
+    public function checkout()
+    {
+        $cartitems=Cart::content();
+        $cartsum=['total'=>Cart::total(),'tax'=>Cart::tax(),'subtotal'=>Cart::subtotal()];
+        return view('frontend.cart.cart-2', compact('cartitems','cartsum'));
+    }
+    public function validation()
+    {
+        $cartsum=['total'=>Cart::total(),'tax'=>Cart::tax(),'subtotal'=>Cart::subtotal()];
+        return view('frontend.cart.cart-3', compact('cartsum'));
     }
 }
