@@ -117,12 +117,16 @@
 
                     <aside class="col-lg-4" id="sidebar">
                         <div class="box_detail booking">
+                        <form action="/addtocart" method="post">
+                            @csrf
                             <div class="price">
-                                <span>{{ $activity->price }}$ <small>person</small></span>
+                                <span>{{ $activity->price }}$ <small>per person</small></span>
                             </div>
 
                             <div class="form-group">
                                 <input class="form-control" type="text" name="dates" placeholder="When..">
+                                <input class="form-control" type="hidden" name="startdate">
+                                <input class="form-control" type="hidden" name="enddate">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="panel-dropdown">
@@ -130,16 +134,17 @@
                                 <div class="panel-dropdown-content right">
                                     <div class="qtyButtons">
                                         <label>Adults</label>
-                                        <input type="text" name="qtyInput" value="1">
+                                        <input type="text" name="adults_num" value="1">
                                     </div>
                                     <div class="qtyButtons">
                                         <label>Childrens</label>
-                                        <input type="text" name="qtyInput" value="0">
+                                        <input type="text" name="childrens_num" value="0">
                                     </div>
                                 </div>
                             </div>
-                            <a href="cart-1.html" class="btn_1 full-width purchase">Purchase</a>
+                            <input type="submit" class="btn_1 full-width purchase" value="Purchase" />
                             <div class="text-center"><small>No money charged in this step</small></div>
+                        </form>
                         </div>
 
                     </aside>
@@ -152,4 +157,39 @@
     </main>
     <!--/main-->
 
+@endsection
+
+@section("custom_js")
+    <!-- Map -->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="/frontend/js/map_single_tour.js"></script>
+    <script src="/frontend/js/infobox.js"></script>
+
+    <!-- DATEPICKER  -->
+    <script>
+        $(function() {
+            $('input[name="dates"]').daterangepicker({
+                autoUpdateInput: false,
+                opens: 'left',
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+            $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' to ' + picker.endDate.format('DD/MM/YYYY'));
+            });
+            $('input[name="startdate"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY'));
+            });
+            $('input[name="enddate"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.endDate.format('DD/MM/YYYY'));
+            });
+            $('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+        });
+    </script>
+
+    <!-- INPUT QUANTITY  -->
+    <script src="/frontend/js/input_qty.js"></script>
 @endsection

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,11 @@ Auth::routes();
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
     Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
+
+    /** Cart **/
+    Route::post("/addtocart", [CartController::class, "addtocart"]);
+    Route::post("/cartdestroy", [CartController::class, "cartdestroy"]);
+    Route::get("/cart", [CartController::class, "cart"]);
 
     /** Contact **/
     Route::get("/contact", [MailerController::class, "contact"])->name("email");
