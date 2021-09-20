@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Activity;
 use App\Models\Booking;
 use App\User;
@@ -123,17 +124,13 @@ class BookingController extends Controller
     public function destroy(Booking $booking)
     {
         $booking->delete();
-
         return redirect()->route('bookings.index')
             ->with('success','Booking deleted successfully');
     }
     public function showDetail($id)
     {
         $activity = Activity::find($id);
-
         return view('home/payments', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
     }
-
-
 
 }

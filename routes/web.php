@@ -45,7 +45,7 @@ Auth::routes();
     Route::post("/cartdestroy", [CartController::class, "cartdestroy"]);
     Route::get("/cart", [CartController::class, "cart"]);
     Route::get("/cart/checkout", [CartController::class, "checkout"]);
-    Route::get("/cart/validation", [CartController::class, "validation"]);
+    Route::post("/cart/validation", [CartController::class, "validation"]);
 
     /** Contact **/
     Route::get("/contact", [MailerController::class, "contact"])->name("email");

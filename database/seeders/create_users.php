@@ -19,7 +19,7 @@ class create_users extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name'=> 'Admin',
+            'firstname'=> 'Admin',
             'lastname'=> 'Admin',
             'email'=> 'admin@gmail.com',
             'password'=> Hash::make('12345678'),
@@ -27,7 +27,7 @@ class create_users extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name'=> 'Customer',
+            'firstname'=> 'Customer',
             'lastname'=> 'hanane',
             'email'=> 'customer@gmail.com',
             'password'=> Hash::make('12345678'),

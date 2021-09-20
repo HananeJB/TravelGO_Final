@@ -43,7 +43,8 @@
 
         <div class="bg_color_1">
             <div class="container margin_60_35">
-                <div class="row">
+                <form class="row" action="/cart/validation" method="post">
+                    @csrf
                     <div class="col-lg-8">
                         <div class="box_cart">
                             @if (Auth::check())
@@ -56,7 +57,12 @@
                                 <div class="step">
                                     <div class="row">
                                         <div class="message">
-                                            <p>You are logged in as {{ Auth::user()->name }}, <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Click here to logout</a></p>
+                                            <p>You are logged in as {{ Auth::user()->firstname }}, <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Click here to logout</a></p>
+                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                            <input type="hidden" name="firstname" value="{{ Auth::user()->firstname }}">
+                                            <input type="hidden" name="lastname" value="{{ Auth::user()->lastname }}">
+                                            <input type="hidden" name="phone" value="{{ Auth::user()->phone }}">
+                                            <input type="hidden" name="email" value="{{ Auth::user()->email }}">
                                         </div>
                                     </div>
                                 </div>
@@ -75,13 +81,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>First name</label>
-                                            <input type="text" class="form-control" id="firstname_booking" name="firstname_booking">
+                                            <input type="text" class="form-control" id="firstname" name="firstname">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Last name</label>
-                                            <input type="text" class="form-control" id="lastname_booking" name="lastname_booking">
+                                            <input type="text" class="form-control" id="lastname" name="lastname">
                                         </div>
                                     </div>
                                 </div>
@@ -89,13 +95,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="email" id="email_booking" name="email_booking" class="form-control">
+                                            <input type="email" id="email" name="email" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Confirm email</label>
-                                            <input type="email" id="email_booking_2" name="email_booking_2" class="form-control">
+                                            <input type="email" id="email_2" name="email2" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +109,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Telephone</label>
-                                            <input type="text" id="telephone_booking" name="telephone_booking" class="form-control">
+                                            <input type="text" id="phone" name="phone" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -209,13 +215,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Street line 1</label>
-                                            <input type="text" id="street_1" name="street_1" class="form-control">
+                                            <input type="text" id="street_1" name="address" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Street line 2</label>
-                                            <input type="text" id="street_2" name="street_2" class="form-control">
+                                            <input type="text" id="street_2" name="address2" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -223,19 +229,19 @@
                                     <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label>City</label>
-                                            <input type="text" id="city_booking" name="city_booking" class="form-control">
+                                            <input type="text" id="city_booking" name="city" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
                                             <label>State</label>
-                                            <input type="text" id="state_booking" name="state_booking" class="form-control">
+                                            <input type="text" id="state_booking" name="state" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
                                             <label>Postal code</label>
-                                            <input type="text" id="postal_code" name="postal_code" class="form-control">
+                                            <input type="text" id="postal_code" name="postalcode" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -266,10 +272,10 @@
                             <div id="total_cart">
                                 Total <span class="float-right">{{ $cartsum['total'] }} Dhs</span>
                             </div>
-                            <a href="/cart/validation" class="btn_1 full-width purchase">Purchase</a>
+                            <input type="submit" class="btn_1 full-width purchase" value="Purchase"/>
                         </div>
                     </aside>
-
+                </form>
                 </div>
                 <!-- /row -->
             </div>

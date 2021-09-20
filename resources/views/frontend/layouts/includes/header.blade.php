@@ -43,7 +43,7 @@
                   $isAdmin = Auth::user()->is_admin;
                 @endphp
                 @if($isAdmin == 1)
-                <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
+                <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->firstname }}</a></span>
                     <ul>
                         <li><a href="/admin/profile">My Profile</a></li>
                         <li><a href="/admin">Admin Panel</a></li>

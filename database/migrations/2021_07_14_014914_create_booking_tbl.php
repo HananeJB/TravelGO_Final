@@ -15,20 +15,26 @@ class CreateBookingTbl extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->integer('numpeople')->nullable();
-            $table->string('roomtype')->nullable();
-            $table->unsignedBigInteger('activity_id');
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            
+            $table->string('paymentmethod')->nullable();
+            $table->string('address')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postalcode')->nullable();
+            $table->integer('qty')->nullable();
+            $table->integer('statut');
+            $table->integer('totalpayment');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-  
+
     /**
      * Reverse the migrations.
      *

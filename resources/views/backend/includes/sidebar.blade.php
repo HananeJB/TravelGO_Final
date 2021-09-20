@@ -29,11 +29,11 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMyblogs" data-parent="#mylistings">
                     <i class="fa fa-fw fa-list"></i>
                     <span class="nav-link-text">Blogs</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseMylistings">
+                <ul class="sidenav-second-level collapse" id="collapseMyblogs">
                     <li>
                         <a href="/admin/blog/create">Create a new blog</a>
                     </li>
