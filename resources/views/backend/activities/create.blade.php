@@ -201,7 +201,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="file" name="cover" class="form-control" placeholder="Image">
+                                                <input type="file" name="image" class="form-control" placeholder="Image">
                                             </div>
                                         </div>
                                         <div class="col-md-2">

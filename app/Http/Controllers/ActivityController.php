@@ -86,7 +86,7 @@ class ActivityController extends Controller
 
                 Image::create([
                     'name' => $name,
-                    'path' => '/uploads',
+                    'path' => 'images/',
                     'activity_id'=>$activity_id ,
                 ]);
             }

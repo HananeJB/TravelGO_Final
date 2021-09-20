@@ -8,14 +8,15 @@
 @section('content')
 
     <main>
-        <section class="hero_in tours_detail">
-            <div class="wrapper" >
+        <section class="hero_in tours_detail" >
+            <div class="wrapper"  style="background-image: url('/images/{{$activity->cover}}'); background-size: cover; " >
                 <div class="container">
                     <h1 class="fadeInUp"><span></span>Tour detail page</h1>
                 </div>
                 <span class="magnific-gallery">
+                        <a href="/images/{{$activity->cover}}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
                      @foreach($activity->images as $image)
-					<a href="/images/{{ $image->image }}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
+                        <a href="/images/{{ $image->name}}" title="Photo title" data-effect="mfp-zoom-in"></a>
                     @endforeach
 				</span>
             </div>

@@ -17,7 +17,6 @@
             </div>
         </section>
 
-
         <div class="container margin_60_35">
             <div class="col-lg-12">
                 <div class="row no-gutters custom-search-input-2 inner">
@@ -56,7 +55,7 @@
                         <div class="col-lg-5">
                             <figure>
                                 <small>{{$activity->category}}</small>
-                                <a href='/activities/details/{{$activity->id}}'><img src="/frontend/img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+                                <a href='/activities/details/{{$activity->id}}'><img src="/images/{{$activity->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
                             </figure>
                         </div>
                         <div class="col-lg-7">
@@ -76,7 +75,7 @@
             </div>
             <!-- /isotope-wrapper -->
 
-{{--            <p class="text-center add_top_30">{!!$activities->links()!!}</p>--}}
+     <p class="text-center add_top_30">{!!$activities->links()!!}</p>
 
         </div>
         <!-- /container -->
