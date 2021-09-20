@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Adventure;
 use App\Models\City;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class AdventureController extends Controller
@@ -63,7 +64,26 @@ class AdventureController extends Controller
             $input['cover'] = "$profileImage";
         }
 
-        Adventure::create($input);
+        $adventure= Adventure::create($input);
+        $adventure_id = $adventure->id;
+
+        if($request->hasfile('images')) {
+            $files = $request->file('images');
+
+            foreach($files as $file) {
+
+                $path = 'images/';
+                $name = time() . "." . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                Image::create([
+                    'name' => $name,
+                    'path' => '/uploads',
+                    'adventure_id'=>$adventure_id ,
+                ]);
+            }
+        }
+
 
         return redirect()->route('adventures.index')
             ->with('success','Adventure created successfully.');

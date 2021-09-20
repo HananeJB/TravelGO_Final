@@ -71,8 +71,26 @@ class ActivityController extends Controller
             $input['cover'] = "$profileImage";
         }
 
-        Activity::create($input);
+        $activity = Activity::create($input);
 
+        $activity_id = $activity->id;
+
+        if($request->hasfile('images')) {
+            $files = $request->file('images');
+
+            foreach($files as $file) {
+
+                $path = 'images/';
+                $name = time() . "." . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                Image::create([
+                    'name' => $name,
+                    'path' => '/uploads',
+                    'activity_id'=>$activity_id ,
+                ]);
+            }
+        }
 
 
 
@@ -137,7 +155,29 @@ class ActivityController extends Controller
             unset($input['cover']);
         }
 
+
         $activity->update($input);
+
+
+        $activity_id = $activity->id;
+
+        if($request->hasfile('images')) {
+            $files = $request->file('images');
+
+            foreach($files as $file) {
+
+                $path = 'images/';
+                $name = time() . "." . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                Image::create([
+                    'name' => $name,
+                    'path' => '/uploads',
+                    'activity_id'=>$activity_id ,
+                ]);
+            }
+        }
+
 
         return redirect()->route('activities.index')
             ->with('success', 'Activity updated successfully');
@@ -159,12 +199,11 @@ class ActivityController extends Controller
 
 
     }
-    public function destroyimage(Image $image)
-    {
-        $image->delete();
+    public function deleteimage($id){
+         Image::find($id)->delete();
 
-        return back()
-            ->with('success', 'Image deleted successfully');
 
+
+        return back();
     }
 }

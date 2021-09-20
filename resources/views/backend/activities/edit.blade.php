@@ -82,19 +82,17 @@
                     </div>
                 </div>
 
-                <!-- /row-->
-                @foreach($activity->images as $image)
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Photos</label>
-                            <img src="{{ Storage::url($image->image) }}" width="300px">
+                            <label>Cover</label>
+                            <img src="/images/{{$activity->cover}}" style="width: 50%;" alt="">
+                            <input type="file" name="cover" class="form-control" placeholder="Image">
                         </div>
                     </div>
                 </div>
 
-            @endforeach
+
                 <!-- /row-->
             </div>
             <!-- /box_general-->
@@ -205,5 +203,36 @@
     </div>
         <!-- /.container-fluid-->
 
+
+@endsection
+
+@section('custom_js')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(function() {
+            // Multiple images preview with JavaScript
+            var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#images').on('change', function() {
+                multiImgPreview(this, 'div.imgPreview');
+            });
+        });
+    </script>
 
 @endsection
