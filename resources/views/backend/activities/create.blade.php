@@ -191,17 +191,17 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Title">
+                                                <input type="text" name="day_title[]" class="form-control" placeholder="Title">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Description">
+                                                <input type="text" name="day_description[]" class="form-control" placeholder="Description">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                                <input type="file" name="image[]" class="form-control" placeholder="Image">
                                             </div>
                                         </div>
                                         <div class="col-md-2">

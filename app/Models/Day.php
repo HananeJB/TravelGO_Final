@@ -14,8 +14,8 @@ class Day extends Model
     public $timestamps = false;
     protected $fillable = [
         'activity_id',
-        'title',
-        'description',
+        'day_title',
+        'day_description',
         'image',
 
     ];
@@ -25,5 +25,8 @@ class Day extends Model
     }
     public function adventure() {
         return $this->belongsTo(Adventure::class);
+    }
+    public function image() {
+        return $this->Hasmany(Image::class);
     }
 }

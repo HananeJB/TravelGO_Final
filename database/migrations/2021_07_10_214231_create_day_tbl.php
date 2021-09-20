@@ -15,17 +15,16 @@ class CreateDayTbl extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('day_title')->nullable();
+            $table->text('day_description')->nullable();
             $table->text('image')->nullable();
             $table->unsignedBigInteger('activity_id');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            
             $table->timestamps();
         });
     }
 
-   
+
 
 
     /**

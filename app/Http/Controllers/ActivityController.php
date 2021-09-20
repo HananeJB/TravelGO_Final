@@ -93,9 +93,16 @@ class ActivityController extends Controller
         }
 
 
+            foreach ( $request->day_title as $day=>$insert) {
+            $data =[
+                'day_title' =>$request->day_title[$day],
+                'day_description' =>$request->day_description[$day],
+                'activity_id'=>$activity_id ,
 
+            ];
 
-
+                DB::table('days')->insert($data);
+            }
 
         return redirect()->route('activities.index');
     }
@@ -200,7 +207,7 @@ class ActivityController extends Controller
 
     }
     public function deleteimage($id){
-         Image::find($id)->delete();
+        Image::find($id)->delete();
 
 
 
