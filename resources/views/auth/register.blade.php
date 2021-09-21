@@ -49,7 +49,7 @@
                 @enderror
                 <div class="form-group">
                     <label>Telephone</label>
-                    <input class="form-control" type="yexy" id="exampleInputEmail-2"  name="telephone" value="{{ old('telephone') }}">
+                    <input class="form-control" type="text" id="exampleInputEmail-2"  name="telephone" value="{{ old('telephone') }}">
                     <i class="icon-phone"></i>
                 </div>
                 <div class="form-group">

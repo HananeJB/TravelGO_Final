@@ -14,13 +14,13 @@
 
 <body class="fixed-nav sticky-footer" id="page-top">
 
-    @include('backend.includes.sidebar')
+@include('backend.includes.sidebar')
 
-    @yield('content')
+@yield('content')
 
-    @include('backend.includes.footer')
+@include('backend.includes.footer')
 
-    @yield('custom_js')
+@yield('custom_js')
 
 
 </body>
