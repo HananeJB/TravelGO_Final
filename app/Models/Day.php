@@ -14,6 +14,7 @@ class Day extends Model
     public $timestamps = false;
     protected $fillable = [
         'activity_id',
+        'adventure_id',
         'day_title',
         'day_description',
         'image',

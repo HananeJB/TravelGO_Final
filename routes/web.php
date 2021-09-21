@@ -82,13 +82,11 @@ Route::group(['middleware' => 'admin',], function () {
     Route::resource('/admin/post', PostController::class);
 
 
-    Route::post('/admin/day/store', [DayController::class,"store"])->name('day.add');
-    Route::delete('/admin/day/{day}', [DayController::class,"destroy"])->name('days.destroy');
+    Route::delete('/admin/day/{day}', [ActivityController::class,"deleteday"])->name('days.destroy');
 
     Route::delete('/deleteimage/{id}',[ActivityController::class,'deleteimage'])->name('images.destroy');
 
-    // doublons
-    Route::put('/admin/update/{id}',[ActivityController::class,'update']);
+
 });
 
 /** User - Space //CREATED NEW CONTROLLER FOR THIS SPACE

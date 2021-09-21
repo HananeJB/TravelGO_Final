@@ -6,6 +6,7 @@ use App\Models\Adventure;
 use App\Models\City;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdventureController extends Controller
 {
@@ -65,6 +66,7 @@ class AdventureController extends Controller
         }
 
         $adventure= Adventure::create($input);
+
         $adventure_id = $adventure->id;
 
         if($request->hasfile('images')) {
@@ -83,7 +85,19 @@ class AdventureController extends Controller
                 ]);
             }
         }
+        foreach ( $request->day_title as $day=>$insert) {
+            $data =[
+                'day_title' =>$request->day_title[$day],
+                'day_description' =>$request->day_description[$day],
+                'image' =>$request->image[$day]->store('images'),
+                'adventure_id'=>$adventure_id,
 
+            ];
+
+
+
+            DB::table('days')->insert($data);
+        }
 
         return redirect()->route('adventures.index')
             ->with('success','Adventure created successfully.');

@@ -165,17 +165,17 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Title">
+                                                <input type="text" name="day_title[]" class="form-control" placeholder="Title">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Description">
+                                                <input type="text" name="day_description[]" class="form-control" placeholder="Description">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                                <input type="file" name="image[]" class="form-control" placeholder="Image">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -188,6 +188,45 @@
                             </tr>
                         </table>
                         <a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add Item</a>
+                    </div>
+                    <div class="col-md-12">
+                        <h6>Item</h6>
+                        <table id="pricing-list-container" style="width:100%;">
+                            @foreach($data as $key=>$items)
+                            <tr class="pricing-list-item">
+
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <input type="hidden" class="form-control" value="{{++$key}}" placeholder="Title">
+                                                <input type="text" name="day_title" value="{{$items->day_title}}" class="form-control" placeholder="Title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="text"  name="day_description" value="{{$items->day_description}}" class="form-control" placeholder="Description">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <form action="{{ route('days.destroy',$items->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            @endforeach
+                        </table>
                     </div>
 
                 </div>

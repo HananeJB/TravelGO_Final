@@ -97,6 +97,7 @@ class ActivityController extends Controller
             $data =[
                 'day_title' =>$request->day_title[$day],
                 'day_description' =>$request->day_description[$day],
+                'image' =>$request->image[$day]->store('images'),
                 'activity_id'=>$activity_id ,
 
             ];
@@ -126,7 +127,8 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        return view('backend.activities.edit', compact('activity'));
+        $data = Day::all();
+        return view('backend.activities.edit', compact('activity','data'));
     }
 
     /**
@@ -147,7 +149,8 @@ class ActivityController extends Controller
             'price' => 'required',
             'datedebut' => 'required',
             'datefin' => 'required',
-            'adresse' => 'required'
+            'adresse' => 'required',
+            'cover' => 'required',
 
         ]);
 
@@ -185,6 +188,19 @@ class ActivityController extends Controller
             }
         }
 
+        foreach ( $request->day_title as $day=>$insert) {
+            $data =[
+                'day_title' =>$request->day_title[$day],
+                'day_description' =>$request->day_description[$day],
+                'image' =>$request->image[$day]->store('images'),
+                'activity_id'=>$activity_id ,
+
+            ];
+
+            DB::table('days')->insert($data);
+        }
+
+
 
         return redirect()->route('activities.index')
             ->with('success', 'Activity updated successfully');
@@ -208,9 +224,11 @@ class ActivityController extends Controller
     }
     public function deleteimage($id){
         Image::find($id)->delete();
+        return back();
+    }
 
-
-
+    public function deleteday($id){
+        Day::find($id)->delete();
         return back();
     }
 }
