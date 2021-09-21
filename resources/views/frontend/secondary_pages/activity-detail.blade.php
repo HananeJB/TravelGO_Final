@@ -47,70 +47,29 @@
                                 {{ $activity->program }}
                             </p>
                             <ul class="cbp_tmtimeline">
+                                @php
+                                    $i=0;
+                                @endphp
+                                @foreach($activity->days as $day)
                                 <li>
-                                    <time class="cbp_tmtime" datetime="09:30"><span>30 min.</span><span>09:30</span>
-                                    </time>
+
                                     <div class="cbp_tmicon">
-                                        1
+                                        @php
+                                            $i++;
+                                        @endphp
+                                        {!! $i !!}
                                     </div>
                                     <div class="cbp_tmlabel">
                                         <div class="hidden-xs">
                                             <img src="img/tour_plan_1.jpg" alt="" class="rounded-circle thumb_visit">
                                         </div>
-                                        <h4>Interior of the cathedral</h4>
+                                        <h4>{{$day->day_title}}</h4>
                                         <p>
-                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                            {{$day->day_description}}
                                         </p>
                                     </div>
                                 </li>
-                                <li>
-                                    <time class="cbp_tmtime" datetime="11:30"><span>2 hours</span><span>11:30</span>
-                                    </time>
-                                    <div class="cbp_tmicon">
-                                        2
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <div class="hidden-xs">
-                                            <img src="img/tour_plan_2.jpg" alt="" class="rounded-circle thumb_visit">
-                                        </div>
-                                        <h4>Statue of Saint Reparata</h4>
-                                        <p>
-                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <time class="cbp_tmtime" datetime="13:30"><span>1 hour</span><span>13:30</span>
-                                    </time>
-                                    <div class="cbp_tmicon">
-                                        3
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <div class="hidden-xs">
-                                            <img src="img/tour_plan_3.jpg" alt="" class="rounded-circle thumb_visit">
-                                        </div>
-                                        <h4>Huge clock decorated</h4>
-                                        <p>
-                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <time class="cbp_tmtime" datetime="14:30"><span>2 hours</span><span>14:30</span>
-                                    </time>
-                                    <div class="cbp_tmicon">
-                                        4
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <div class="hidden-xs">
-                                            <img src="img/tour_plan_4.jpg" alt="" class="rounded-circle thumb_visit">
-                                        </div>
-                                        <h4>Vasari's fresco</h4>
-                                        <p>
-                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                        </p>
-                                    </div>
-                                </li>
+                                @endforeach
                             </ul>
                         </section>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adventure;
 use App\Models\City;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -68,6 +69,7 @@ class HomeController extends Controller
     /** End Blog**/
 
     /** Start Activity **/
+
     public function offerscity($id)
     {
         $cities=City::find($id);
@@ -82,7 +84,7 @@ class HomeController extends Controller
 
     public function offers()
     {
-        $activities = Activity::orderby('id')->simplepaginate(10);
+        $activities = Activity::orderby('id')->simplepaginate(15);
         return view('frontend/secondary_pages/activities', compact('activities'));
 
     }
@@ -91,19 +93,34 @@ class HomeController extends Controller
     public function showDetail($id)
     {
         $activity = Activity::find($id);
-        return view('frontend/secondary_pages/activity-detail', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
+        return view('frontend/secondary_pages/activity-detail', ['activity' => $activity, 'id' => $id ], compact('activity', 'id'));
     }
-
 
     /** End activity **/
 
 
+    /** End adventure **/
 
     public function adventure()
     {
-        return view('frontend/secondary_pages/adventures');
+        $adventures = Adventure::all();
+        return view('frontend/secondary_pages/adventures', compact('adventures'));
     }
 
+    public function ShowAdventure($id)
+    {
+        $city = DB::table("adventures")
+            ->join('cities', 'cities.id', '=','adventures.city_id')
+            ->select('country' , 'cities.title')
+            ->get();
+        $image = DB::table("adventures")
+            ->join('images', 'adventures.id', '=','images.adventure_id')
+            ->get();
+        $adventure = Adventure::find($id);
+        return view('frontend/secondary_pages/adventure-detail', ['adventure' => $adventure, 'id' => $id , 'city'=> $city], compact('adventure', 'id', 'city','image'));
+    }
+
+    /** End adventure **/
 
     public function about()
     {
