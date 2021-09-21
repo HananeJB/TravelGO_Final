@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 
@@ -75,10 +74,13 @@ class CartController extends Controller
 
             //order details
             'cartitems' => Cart::content(),
-            'cartsum' => array('total'=>Cart::total(),'tax'=>Cart::tax(),'subtotal'=>Cart::subtotal()),
+            'cart_total' => Cart::total(),
+            'cart_tax' => Cart::tax(),
+            'cart_subtotal' => Cart::subtotal(),
+            'statut' => '1',
 
             //related to
-            'user_id' => $request->user_id,
+            'user_id' => $request->user_id
             ]);
 
 

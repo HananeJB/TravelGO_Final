@@ -14,6 +14,6 @@ class create_activities extends Seeder
      */
     public function run()
     {
-        Activity::factory()->times(40)->create();
+        Activity::factory()->times(10)->create();
     }
 }

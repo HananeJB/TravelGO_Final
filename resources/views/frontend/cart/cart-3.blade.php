@@ -37,8 +37,8 @@
                     </div>
                     <!-- End bs-wizard -->
                     <div id="confirm">
-                        <h4>Order completed!</h4>
-                        <p>You'll receive a confirmation email at mail@example.com</p>
+                        <h4>{{ $message }}</h4>
+                        <p>{{ $instruction }}</p>
                     </div>
                 </div>
             </div>
