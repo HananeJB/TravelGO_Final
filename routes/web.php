@@ -11,6 +11,7 @@ use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -70,7 +71,8 @@ Route::group(['middleware' => 'admin',], function () {
 
     Route::get('/admin', [AdminController::class,"dashboard"])->name('adminspace.route');
     Route::get('/admin/users', [AdminController::class,"users"]);
-    Route::get('/admin/profile', [AdminController::class,"profile"]);
+    Route::get('/admin/profile/{user}', [UserController::class,"profile"]);
+    Route::patch('/admin/profile/{user}/edit', [UserController::class,"updateUserProfile"])->name('profile.update');
     Route::resource('/admin/activities', ActivityController::class);
     Route::resource('/admin/bookings', BookingController::class);
     //Route::resource('/admin/hotels', HotelsController::class);   CREATE NEW CONTROLLER
