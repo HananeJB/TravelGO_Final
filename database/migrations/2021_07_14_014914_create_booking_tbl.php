@@ -26,8 +26,8 @@ class CreateBookingTbl extends Migration
             $table->string('state')->nullable();
             $table->string('postalcode')->nullable();
             $table->integer('qty')->nullable();
-            $table->integer('statut');
-            $table->integer('totalpayment');
+            $table->integer('statut')->nullable();
+            $table->integer('totalpayment')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

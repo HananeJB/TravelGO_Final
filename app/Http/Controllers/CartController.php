@@ -51,7 +51,7 @@ class CartController extends Controller
          **/
 
         //user info
-        $booking[] = [
+        $booking = new Booking([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'phone' => $request->phone,
@@ -79,9 +79,11 @@ class CartController extends Controller
 
             //related to
             'user_id' => $request->user_id,
-            ];
+            ]);
 
-        if(DB::table('bookings')->insert($booking)){
+
+
+        if($booking->save()){
             $message = "Order completed!";
             $instruction = "You'll receive a confirmation email at ".$request->email;
         }else{
