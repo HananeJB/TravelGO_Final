@@ -11,6 +11,7 @@
 
 </head>
 
+
 <body class="fixed-nav sticky-footer" id="page-top">
 
     @include('backend.includes.sidebar')
@@ -20,6 +21,7 @@
     @include('backend.includes.footer')
 
     @yield('custom_js')
+
 
 </body>
 </html>
