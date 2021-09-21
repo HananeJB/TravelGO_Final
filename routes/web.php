@@ -71,7 +71,7 @@ Route::group(['middleware' => 'admin',], function () {
 
     Route::get('/admin', [AdminController::class,"dashboard"])->name('adminspace.route');
     Route::get('/admin/users', [AdminController::class,"users"]);
-    Route::get('/admin/profile/{user}', [UserController::class,"profile"]);
+    Route::get('/admin/profile/{user}', [UserController::class,"admin"]);
     Route::patch('/admin/profile/{user}/edit', [UserController::class,"updateUserProfile"])->name('profile.update');
     Route::resource('/admin/activities', ActivityController::class);
     Route::resource('/admin/bookings', BookingController::class);
@@ -98,9 +98,11 @@ Route::group(['middleware' => 'admin',], function () {
 
 /** User - Space **/ //CREATED NEW CONTROLLER FOR THIS SPACE
 Route::group(['middleware' => 'auth',], function () {
+
     Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
     Route::get('/myaccount/profile', [UserController::class,"profile"]);
     Route::get('/myaccount/bookings', [UserController::class,"reservations"]);
+
 });
 
 /** AdminController **/
