@@ -41,6 +41,7 @@ Auth::routes();
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
     Route::get('/payments/{id}', [BookingController::class,"showDetail"]);
+    Route::get('/search', [HomeController::class,"search"])->name('activity.search');
 
     /** Contact **/
     Route::get("/contact", [MailerController::class, "contact"])->name("email");

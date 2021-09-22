@@ -34,7 +34,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" value="{{ $city->title }}" class="form-control" name="title" >
+                            <input type="text" value="{{ $city->city }}" class="form-control" name="city" >
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Panagea | Home</title>
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
@@ -15,7 +15,7 @@
                 <li>
                     <img src="/uploads/blog/{{$city->image}}" alt="">
                     <div class="meta" style="bottom: 45% !important;">
-                        <h3>{{$city->title}}, {{$city->country}}</h3>
+                        <h3>{{$city->city}}, {{$city->country}}</h3>
                         <h5 style="color:white">{{$city->description}}</h5>
                         <div class="info">
                             <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
@@ -35,7 +35,7 @@
                     <li>
                         <img src="/uploads/blog/{{$city->image}}" alt="">
                         <div class="caption">
-                            <h3>{{$city->title}} <span>{{$city->country}}</span></h3>
+                            <h3>{{$city->city}} <span>{{$city->country}}</span></h3>
                             <small>$75 per person</small>
                         </div>
                     </li>
@@ -48,32 +48,28 @@
     <div class="search_container">
         <div class="container">
             <div class="col-lg-12">
+                <form action="{{route('activity.search')}}" enctype="multipart/form-data">
                 <div class="row no-gutters custom-search-input-2 inner">
-                    <div class="col-lg-4">
+                    <div class="col-lg-7">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="What are you looking for...">
-                            <i class="icon_search"></i>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Where">
+                            <input name="searchcity" class="form-control" type="text" placeholder="Where do you want to go ?">
                             <i class="icon_pin_alt"></i>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <select class="wide">
-                            <option>All Categories</option>
-                            <option>Churches</option>
-                            <option>Historic</option>
-                            <option>Museums</option>
-                            <option>Walking tours</option>
+                        <select name="search" class="wide">
+                            <option >All Categories</option>
+                            <option value="Churches" >Churches</option>
+                            <option value="Historic" >Historic</option>
+                            <option value="Museums">Museums</option>
+                            <option value="Walking tours">Walking tours</option>
                         </select>
                     </div>
                     <div class="col-lg-2">
                         <input type="submit" class="btn_search" value="Search">
                     </div>
                 </div>
+                </form>
                 <!-- /row -->
             </div>
             <!-- /custom-search-input-2 -->

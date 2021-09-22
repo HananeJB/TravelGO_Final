@@ -42,7 +42,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Category</label>
-                            <input type="text" class="form-control" name="category" value="{{ $activity->category }}">                        </div>
+                            <select class="form-control" name="category">
+                                <option>{{ $activity->category }}</option>
+                                <option value="Churches" >Churches</option>
+                                <option value="Historic" >Historic</option>
+                                <option value="Museums">Museums</option>
+                                <option value="Walking tours">Walking tours</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <!-- /row-->

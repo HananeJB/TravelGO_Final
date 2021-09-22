@@ -42,7 +42,7 @@ class CityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'city' => 'required',
             'country' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
@@ -52,7 +52,7 @@ class CityController extends Controller
 
         $city = new City;
 
-        $city->title = $request->title;
+        $city->city = $request->city;
         $city->description = $request->description;
         $city->country = $request->country;
 
@@ -97,7 +97,7 @@ class CityController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
+            'city' => 'required',
             'country' => 'required',
             'description' => 'required',
 
@@ -113,7 +113,7 @@ class CityController extends Controller
             $city->image = $path;
         }
 
-        $city->title = $request->title;
+        $city->city = $request->city;
         $city->country = $request->country;
         $city->description = $request->description;
 

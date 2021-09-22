@@ -24,7 +24,7 @@ class ActivityFactory extends Factory
         return [
             'city_id'=> rand(1,10),
             'title' => $this->faker->name(),
-            'category'=>$this->faker->name(),
+            'category'=>$this->faker->randomElement($array = array ('Churches','Historic','Museums','Walking tours')),
             'description1'=>$this->faker->text(100),
             'description2'=>$this->faker->text(800),
             'price'=>$this->faker->numberBetween(100,1000),

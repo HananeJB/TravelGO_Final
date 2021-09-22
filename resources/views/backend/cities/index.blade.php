@@ -25,7 +25,7 @@
                         @foreach ($cities as $city)
                             <li>
                                 <figure><img src="{{ Storage::url($city->image) }}" alt=""></figure>
-                                <small>{{ $city->title }}</small>
+                                <small>{{ $city->city }}</small>
                                 <h4>{{ $city->country }}</h4>
                                 <p>{{ $city->description }}</p>
 

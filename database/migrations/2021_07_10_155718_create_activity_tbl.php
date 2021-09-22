@@ -15,7 +15,7 @@ class CreateActivityTbl extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
         $table->id();
-        $table->string('title')->nullable();
+        $table->string('city')->nullable();
         $table->string('country')->nullable();
         $table->string('description')->nullable();
         $table->string('image')->nullable();

@@ -131,6 +131,28 @@ class HomeController extends Controller
 
     /** End adventure **/
 
+
+    /** Start search **/
+
+    public function search(){
+
+        $search = request()->input('search');
+
+        $city= request()->input('searchcity');
+
+        $results = DB::table("activities")
+            ->join('cities', 'cities.id', '=','activities.city_id')
+            ->where('cities.city', $city)
+            ->orWhere('category', $search)
+            ->get();
+
+        return view('frontend.secondary_pages.search',compact('results','city','search'));
+
+    }
+
+    /** End search **/
+
+
     public function about()
     {
         return view('frontend/secondary_pages/about');
