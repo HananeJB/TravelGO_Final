@@ -150,9 +150,7 @@
                                 <div class="mb-5">
                                     <h3>Day {!! $f->format($i++) !!} - {{$day->day_title}}</h3>
                                     <figure><img src="/Storage::{{$day->image}};" class="img-fluid" alt=""></figure>
-
                                     <p>{{$day->day_description}}</p>
-
                                 </div>
                                 @endforeach
                             </div>
