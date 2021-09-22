@@ -53,7 +53,7 @@
                                 <div class="pl-lg-4">
                                     <h3>{{$adventure->small_description}}</h3>
                                     <ul>
-                                        <li><i class="pe-7s-clock"></i>Duration <span>3 days</span></li>
+                                        <li><i class="pe-7s-clock"></i>Duration <span>{!! $interval->days !!} days</span></li>
                                         <li><i class="pe-7s-graph3"></i>Activity level <span>{{$adventure->level}}</span></li>
                                         <li><i class="pe-7s-shopbag"></i>Includes <span>Equipment, Drinks, Accommodations, Food</span></li>
                                     </ul>

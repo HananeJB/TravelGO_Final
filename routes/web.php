@@ -37,6 +37,7 @@ Auth::routes();
     Route::get('/activities/details/{id}', [HomeController::class,"showDetail"]);
     Route::get('/adventures/details/{id}', [HomeController::class,"ShowAdventure"]);
     Route::get('/adventures', [HomeController::class,"adventure"]);
+    Route::get('/adventures/all', [HomeController::class,"ShowAdventures"]);
     Route::post('/send-message',[HomeController::class,"sendEmail"])->name('contact.send');
     Route::post('/addtolist',[HomeController::class,"addtolist"])->name('addtolist');
     Route::get('/payments/{id}', [BookingController::class,"showDetail"]);

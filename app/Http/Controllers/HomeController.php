@@ -8,8 +8,6 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Activity;
-use App\Models\Day;
-use App\Models\Booking;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
@@ -40,11 +38,13 @@ class HomeController extends Controller
     public function index()
     {
         $posts =  Post::latest()->take(4)->get();
+
         $activities = DB::table("activities")
-            ->limit(6)
+            ->limit(5)
             ->get();
 
         $cities = DB::table("cities")
+            ->limit(5)
             ->get();
 
         return view('frontend/main_pages/home', compact('activities','cities','posts'));
@@ -76,7 +76,7 @@ class HomeController extends Controller
         $activities = DB::table("cities")
             ->join('activities', 'cities.id', '=', 'activities.city_id')
             ->where('city_id','=',$id)
-            ->get();
+            ->simplepaginate(10);
 
 
         return view('frontend/secondary_pages/activities', compact(  'activities','cities'));
@@ -84,7 +84,7 @@ class HomeController extends Controller
 
     public function offers()
     {
-        $activities = Activity::orderby('id')->simplepaginate(15);
+        $activities = Activity::orderby('id')->simplepaginate(10);
         return view('frontend/secondary_pages/activities', compact('activities'));
 
     }
@@ -99,22 +99,31 @@ class HomeController extends Controller
     /** End activity **/
 
 
-    /** End adventure **/
+    /** start adventure **/
 
     public function adventure()
     {
+        $popular = Adventure::latest()->take(7)->get();
+        $adventure = Adventure::all()->take(4);
         $adventures = Adventure::all();
-        return view('frontend/secondary_pages/adventures', compact('adventures'));
+        return view('frontend/secondary_pages/adventures', compact('adventure','adventures','popular'));
+    }
+
+    public function showadventures()
+    {
+        $adventures = Adventure::orderby('id')->simplepaginate(10);
+        return view('frontend.secondary_pages.adventureslist', compact('adventures'));
     }
 
     public function ShowAdventure($id)
     {
         $city = DB::table("adventures")
             ->join('cities', 'cities.id', '=','adventures.city_id')
-            ->select('country' , 'cities.title')
+            ->where('adventures.id','=',$id)
             ->get();
         $image = DB::table("adventures")
             ->join('images', 'adventures.id', '=','images.adventure_id')
+            ->where('adventures.id','=',$id)
             ->get();
         $adventure = Adventure::find($id);
         return view('frontend/secondary_pages/adventure-detail', ['adventure' => $adventure, 'id' => $id , 'city'=> $city], compact('adventure', 'id', 'city','image'));
