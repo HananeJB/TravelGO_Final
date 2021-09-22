@@ -83,9 +83,8 @@ class CartController extends Controller
             'user_id' => $request->user_id
             ]);
 
-
-
         if($booking->save()){
+            Cart::destroy();
             $message = "Order completed!";
             $instruction = "You'll receive a confirmation email at ".$request->email;
         }else{
