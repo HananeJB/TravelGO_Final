@@ -55,7 +55,7 @@
                     </ul>
                 </li>
                 @else
-                <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
+                <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->firstname }}</a></span>
                     <ul>
                         <li><a href="/myaccount">My Account</a></li>
                         <li><a href="/myaccount">My Bookings</a></li>

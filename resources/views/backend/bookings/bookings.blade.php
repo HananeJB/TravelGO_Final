@@ -21,9 +21,9 @@
                     <div class="filter">
                         <select name="orderby" onchange="location = this.value;" class="selectbox">
                             <option value="/admin/bookings">Any status</option>
-                            <option value="/admin/bookings/2">Approved</option>
-                            <option value="/admin/bookings/1">Pending</option>
-                            <option value="/admin/bookings/0">Cancelled</option>
+                            <option value="/admin/bookings/statut/2">Approved</option>
+                            <option value="/admin/bookings/statut/1">Pending</option>
+                            <option value="/admin/bookings/statut/0">Cancelled</option>
                         </select>
                     </div>
                 </div>
@@ -42,8 +42,20 @@
                             <p><a href="mailto:{{ $order->email }}" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a>
                                 <a href="/admin/bookings/viewinvoice/{{ $order->id }}" target=”_blank” class="btn_1 gray"><i class="fa fa-fw fa-print"></i> Print invoice</a></p>
                             <ul class="buttons">
-                                <li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-                                <li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+                                <ul class="buttons">
+                                    <form action="{{ route('bookings.update',$order->id) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="statut" value="2" />
+                                        <li><button href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray approve" type="submit"><i class="fa fa-fw fa-check-circle-o"></i> Approve</button></li>
+                                    </form>
+                                    <form action="{{ route('bookings.update',$order->id) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="statut" value="0" />
+                                        <li><button href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray delete" type="submit"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</button></li>
+                                    </form>
+                                </ul>
                             </ul>
                         </li>
                         @endforeach

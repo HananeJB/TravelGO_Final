@@ -81,7 +81,7 @@ Route::group(['middleware' => 'admin',], function () {
     Route::get('/admin/users', [AdminController::class,"users"]);
     Route::get('/admin/profile', [AdminController::class,"profile"]);
     Route::resource('/admin/activities', ActivityController::class);
-    Route::get('/admin/bookings/{statut}', [BookingController::class, "index_filter"]);
+    Route::get('/admin/bookings/statut/{statut}', [BookingController::class, "index_filter"]);
     Route::resource('/admin/bookings', BookingController::class);
     Route::get('/admin/bookings/viewinvoice/{booking}', [BookingController::class, "ViewInvoice"]);
     Route::resource('/admin/cities', CityController::class);
