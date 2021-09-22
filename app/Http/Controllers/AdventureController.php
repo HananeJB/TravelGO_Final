@@ -31,7 +31,7 @@ class AdventureController extends Controller
      */
     public function create()
     {
-        $cities = City::pluck('title', 'id');
+        $cities = City::pluck('city', 'id');
         return view('backend.adventures.create', compact('cities', $cities));
     }
 

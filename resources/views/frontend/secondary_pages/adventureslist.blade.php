@@ -19,11 +19,12 @@
 
         <div class="container margin_60_35">
             <div class="col-lg-12">
+                <form action="{{route('adventure.search')}}" enctype="multipart/form-data">
                 <div class="row no-gutters custom-search-input-2 inner">
 
                     <div class="col-lg-8">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Where">
+                            <input class="form-control" type="text" name="searchcity" placeholder="Where">
                             <i class="icon_pin_alt"></i>
                         </div>
                     </div>
@@ -31,6 +32,7 @@
                         <input type="submit" class="btn_search" value="Search">
                     </div>
                 </div>
+                </form>
                 <!-- /row -->
             </div>
             <!-- /custom-search-input-2 -->
@@ -41,7 +43,7 @@
                             <div class="col-lg-5">
                                 <figure>
                                     <small>{{$adventure->level}}</small>
-                                    <a href='/activities/details/{{$adventure->id}}'><img src="/images/{{$adventure->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
+                                    <a href='/adventures/details/{{$adventure->id}}'><img src="/images/{{$adventure->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
                                 </figure>
                             </div>
                             <div class="col-lg-7">

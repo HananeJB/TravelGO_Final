@@ -98,7 +98,12 @@
                         <span class="price">From <strong>${{ $activity->price }}</strong> /per person</span>
                     </div>
                     <ul>
-                        <li><i class="icon_clock_alt"></i> 1h 30min</li>
+                        @php
+                            $date1 = new DateTime($activity->datedebut) ;
+                            $date2 = new DateTime($activity->datefin);
+                            $interval = $date1->diff($date2);
+                        @endphp
+                        <li><i class="icon_clock_alt"></i> {!! $interval->days !!} days</li>
                         <li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
                     </ul>
                 </div>

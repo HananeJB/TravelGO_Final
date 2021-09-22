@@ -21,32 +21,28 @@
 
         <div class="container margin_60_35">
             <div class="col-lg-12">
-                <div class="row no-gutters custom-search-input-2 inner">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="What are you looking for...">
-                            <i class="icon_search"></i>
+                <form action="{{route('activity.search')}}" enctype="multipart/form-data">
+                    <div class="row no-gutters custom-search-input-2 inner">
+                        <div class="col-lg-7">
+                            <div class="form-group">
+                                <input name="searchcity" class="form-control" type="text" placeholder="Where do you want to go ?">
+                                <i class="icon_pin_alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <select name="search" class="wide">
+                                <option >All Categories</option>
+                                <option value="Churches" >Churches</option>
+                                <option value="Historic" >Historic</option>
+                                <option value="Museums">Museums</option>
+                                <option value="Walking tours">Walking tours</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="btn_search" value="Search">
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Where">
-                            <i class="icon_pin_alt"></i>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <select class="wide">
-                            <option>All Categories</option>
-                            <option>Churches</option>
-                            <option>Historic</option>
-                            <option>Museums</option>
-                            <option>Walking tours</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="submit" class="btn_search" value="Search">
-                    </div>
-                </div>
+                </form>
                 <!-- /row -->
             </div>
             <!-- /custom-search-input-2 -->

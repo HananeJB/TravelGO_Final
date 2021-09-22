@@ -134,7 +134,7 @@ class HomeController extends Controller
 
     /** Start search **/
 
-    public function search(){
+    public function activitysearch(){
 
         $search = request()->input('search');
 
@@ -146,7 +146,19 @@ class HomeController extends Controller
             ->orWhere('category', $search)
             ->get();
 
-        return view('frontend.secondary_pages.search',compact('results','city','search'));
+        return view('frontend.secondary_pages.searchactivities',compact('results','city','search'));
+
+    }
+
+    public function adventuresearch(){
+
+        $city= request()->input('searchcity');
+        $results = DB::table("adventures")
+            ->join('cities', 'cities.id', '=','adventures.city_id')
+            ->where('cities.city', $city)
+            ->get();
+
+        return view('frontend.secondary_pages.searchadventures',compact('results','city'));
 
     }
 
