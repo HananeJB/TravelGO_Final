@@ -14,7 +14,7 @@
 
 <body class="fixed-nav sticky-footer" id="page-top">
 
-@include('backend.includes.sidebar')
+@include('frontend.layouts.includes.sidebar')
 
 @yield('content')
 

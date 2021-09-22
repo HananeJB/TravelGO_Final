@@ -16,7 +16,7 @@
                 </li>
                 <li class="breadcrumb-item active">Profile</li>
             </ol>
-            <form class="container-fluid" action="{{ route('profile.update',$user->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="container-fluid" action="{{ route('user.profile.update',$user->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <div class="box_general padding_bottom">

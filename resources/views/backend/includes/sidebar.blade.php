@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-                <a class="nav-link" href="/admin/profile">
+                <a class="nav-link" href="/admin/profile/{{Auth::user()->id}}">
                     <i class="fa fa-fw fa-user"></i>
                     <span class="nav-link-text">My Profile</span>
                 </a>

@@ -45,7 +45,7 @@
                 @if($isAdmin == 1)
                 <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
                     <ul>
-                        <li><a href="/admin/profile">My Profile</a></li>
+                        <li><a href="/admin/profile/{{Auth::user()->id}}">My Profile</a></li>
                         <li><a href="/admin">Admin Panel</a></li>
                         <li><a href="/admin/activities/create">Add New Activity</a></li>
                         <li><a href="/admin/adventures/create">Add New Adventure</a></li>
@@ -57,7 +57,7 @@
                 @else
                 <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->name }}</a></span>
                     <ul>
-                        <li><a href="/myaccount">My Account</a></li>
+                        <li><a href="/myaccount/{{Auth::user()->id}}">My Account</a></li>
                         <li><a href="/myaccount">My Bookings</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">Logout</a></li>

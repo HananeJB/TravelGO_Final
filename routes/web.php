@@ -93,11 +93,11 @@ Route::group(['middleware' => 'admin',], function () {
 
 });
 
-/** User - Space //CREATED NEW CONTROLLER FOR THIS SPACE
+/** User - Space //CREATED NEW CONTROLLER FOR THIS SPACE**/
 Route::group(['middleware' => 'auth',], function () {
 
-    Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
-    Route::get('/myaccount', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');
+    Route::get('/myaccount/{user}', [UserController::class,"dashboard"])->name('userspace.route'); /**->middleware('admin');**/
+    Route::patch('/myaccount/{user}/edit', [UserController::class,"updateUserProfile"])->name('user.profile.update');
     Route::get('/myaccount/profile', [UserController::class,"profile"]);
     Route::get('/myaccount/bookings', [UserController::class,"reservations"]);
 
