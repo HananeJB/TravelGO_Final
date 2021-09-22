@@ -9,8 +9,11 @@ class Image extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'image',
+        'name',
+        'path',
         'activity_id',
+        'adventure_id',
+
 
     ];
     public function activity() {
@@ -19,6 +22,10 @@ class Image extends Model
     }
     public function adventure() {
         return $this->belongsTo(Adventure::class);
+
+    }
+    public function day() {
+        return $this->belongsTo(Day::class);
 
     }
 }

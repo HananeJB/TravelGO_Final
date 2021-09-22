@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adventure;
+use App\Models\City;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Activity;
-use App\Models\Day;
-use App\Models\Booking;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
@@ -38,11 +38,16 @@ class HomeController extends Controller
     public function index()
     {
         $posts =  Post::latest()->take(4)->get();
+
         $activities = DB::table("activities")
+            ->limit(5)
             ->get();
-        $city = DB::table("cities")
+
+        $cities = DB::table("cities")
+            ->limit(5)
             ->get();
-        return view('frontend/main_pages/home', compact('activities', 'city','posts'));
+
+        return view('frontend/main_pages/home', compact('activities','cities','posts'));
     }
 
     /** Start Blog **/
@@ -63,21 +68,23 @@ class HomeController extends Controller
 
     /** End Blog**/
 
+    /** Start Activity **/
 
-    public function offerscity($city)
+    public function offerscity($id)
     {
-        $activities = DB::table("activities")
-            ->where('city' == $city)
-            ->get();
-        $activity = Activity::find($city);
+        $cities=City::find($id);
+        $activities = DB::table("cities")
+            ->join('activities', 'cities.id', '=', 'activities.city_id')
+            ->where('city_id','=',$id)
+            ->simplepaginate(10);
+
 
         return view('frontend/activities/activities', ['activity' => $activity, 'city' => $city], compact('activity', 'city', 'activities'));
     }
 
     public function offers()
     {
-        $activities = DB::table("activities")
-            ->get();
+        $activities = Activity::orderby('id')->simplepaginate(10);
         return view('frontend/activities/activities', compact('activities'));
 
     }
@@ -89,10 +96,73 @@ class HomeController extends Controller
         return view('frontend/activities/activity-detail', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
     }
 
+    /** End activity **/
+
+
+    /** start adventure **/
+
     public function adventure()
     {
-        return view('frontend/secondary_pages/adventures');
+        $popular = Adventure::latest()->take(7)->get();
+        $adventure = Adventure::all()->take(4);
+        $adventures = Adventure::all();
+        return view('frontend/secondary_pages/adventures', compact('adventure','adventures','popular'));
     }
+
+    public function showadventures()
+    {
+        $adventures = Adventure::orderby('id')->simplepaginate(10);
+        return view('frontend.secondary_pages.adventureslist', compact('adventures'));
+    }
+
+    public function ShowAdventure($id)
+    {
+        $city = DB::table("adventures")
+            ->join('cities', 'cities.id', '=','adventures.city_id')
+            ->where('adventures.id','=',$id)
+            ->get();
+        $image = DB::table("adventures")
+            ->join('images', 'adventures.id', '=','images.adventure_id')
+            ->where('adventures.id','=',$id)
+            ->get();
+        $adventure = Adventure::find($id);
+        return view('frontend/secondary_pages/adventure-detail', ['adventure' => $adventure, 'id' => $id , 'city'=> $city], compact('adventure', 'id', 'city','image'));
+    }
+
+    /** End adventure **/
+
+
+    /** Start search **/
+
+    public function activitysearch(){
+
+        $search = request()->input('search');
+
+        $city= request()->input('searchcity');
+
+        $results = DB::table("activities")
+            ->join('cities', 'cities.id', '=','activities.city_id')
+            ->where('cities.city', $city)
+            ->orWhere('category', $search)
+            ->get();
+
+        return view('frontend.secondary_pages.searchactivities',compact('results','city','search'));
+
+    }
+
+    public function adventuresearch(){
+
+        $city= request()->input('searchcity');
+        $results = DB::table("adventures")
+            ->join('cities', 'cities.id', '=','adventures.city_id')
+            ->where('cities.city', $city)
+            ->get();
+
+        return view('frontend.secondary_pages.searchadventures',compact('results','city'));
+
+    }
+
+    /** End search **/
 
 
     public function about()

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Adventure;
 use App\Models\City;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdventureController extends Controller
 {
@@ -29,7 +31,7 @@ class AdventureController extends Controller
      */
     public function create()
     {
-        $cities = City::pluck('title', 'id');
+        $cities = City::pluck('city', 'id');
         return view('backend.adventures.create', compact('cities', $cities));
     }
 
@@ -63,7 +65,39 @@ class AdventureController extends Controller
             $input['cover'] = "$profileImage";
         }
 
-        Adventure::create($input);
+        $adventure= Adventure::create($input);
+
+        $adventure_id = $adventure->id;
+
+        if($request->hasfile('images')) {
+            $files = $request->file('images');
+
+            foreach($files as $file) {
+
+                $path = 'images/';
+                $name = time() . "." . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                Image::create([
+                    'name' => $name,
+                    'path' => '/uploads',
+                    'adventure_id'=>$adventure_id ,
+                ]);
+            }
+        }
+        foreach ( $request->day_title as $day=>$insert) {
+            $data =[
+                'day_title' =>$request->day_title[$day],
+                'day_description' =>$request->day_description[$day],
+                'image' =>$request->image[$day]->store('images'),
+                'adventure_id'=>$adventure_id,
+
+            ];
+
+
+
+            DB::table('days')->insert($data);
+        }
 
         return redirect()->route('adventures.index')
             ->with('success','Adventure created successfully.');

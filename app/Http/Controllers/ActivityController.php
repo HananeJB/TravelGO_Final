@@ -33,7 +33,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        $cities = City::pluck('title', 'id');
+        $cities = City::pluck('city', 'id');
         return view('backend.activities.create', compact('cities', $cities));
     }
 
@@ -71,23 +71,39 @@ class ActivityController extends Controller
             $input['cover'] = "$profileImage";
         }
 
-        Activity::create($input);
+        $activity = Activity::create($input);
 
+        $activity_id = $activity->id;
 
+        if($request->hasfile('images')) {
+            $files = $request->file('images');
 
-        if($request->hasFile("images")){
-            $files=$request->file("images");
-            foreach($files as $file){
-                $imageName=time().'_'.$file->getClientOriginalName();
-                $request['activity_id']=$request->get('activity_id');
-                $request['image']=$imageName;
-                $file->move(\public_path("/images"),$imageName);
-                Image::create($request->all());
+            foreach($files as $file) {
 
+                $path = 'images/';
+                $name = time() . "." . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                Image::create([
+                    'name' => $name,
+                    'path' => 'images/',
+                    'activity_id'=>$activity_id ,
+                ]);
             }
         }
 
 
+            foreach ( $request->day_title as $day=>$insert) {
+            $data =[
+                'day_title' =>$request->day_title[$day],
+                'day_description' =>$request->day_description[$day],
+                'image' =>$request->image[$day]->store('images'),
+                'activity_id'=>$activity_id ,
+
+            ];
+
+                DB::table('days')->insert($data);
+            }
 
         return redirect()->route('activities.index');
     }
@@ -111,7 +127,8 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        return view('backend.activities.edit', compact('activity'));
+        $data = Day::all();
+        return view('backend.activities.edit', compact('activity','data'));
     }
 
     /**
@@ -132,7 +149,8 @@ class ActivityController extends Controller
             'price' => 'required',
             'datedebut' => 'required',
             'datefin' => 'required',
-            'adresse' => 'required'
+            'adresse' => 'required',
+            'cover' => 'required',
 
         ]);
 
@@ -147,7 +165,42 @@ class ActivityController extends Controller
             unset($input['cover']);
         }
 
+
         $activity->update($input);
+
+
+        $activity_id = $activity->id;
+
+        if($request->hasfile('images')) {
+            $files = $request->file('images');
+
+            foreach($files as $file) {
+
+                $path = 'images/';
+                $name = time() . "." . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                Image::create([
+                    'name' => $name,
+                    'path' => '/uploads',
+                    'activity_id'=>$activity_id ,
+                ]);
+            }
+        }
+
+        foreach ( $request->day_title as $day=>$insert) {
+            $data =[
+                'day_title' =>$request->day_title[$day],
+                'day_description' =>$request->day_description[$day],
+                'image' =>$request->image[$day]->store('images'),
+                'activity_id'=>$activity_id ,
+
+            ];
+
+            DB::table('days')->insert($data);
+        }
+
+
 
         return redirect()->route('activities.index')
             ->with('success', 'Activity updated successfully');
@@ -169,12 +222,13 @@ class ActivityController extends Controller
 
 
     }
-    public function destroyimage(Image $image)
-    {
-        $image->delete();
+    public function deleteimage($id){
+        Image::find($id)->delete();
+        return back();
+    }
 
-        return back()
-            ->with('success', 'Image deleted successfully');
-
+    public function deleteday($id){
+        Day::find($id)->delete();
+        return back();
     }
 }

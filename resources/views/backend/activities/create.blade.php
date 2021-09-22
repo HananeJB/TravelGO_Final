@@ -41,7 +41,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Category</label>
-                            <input type="text" class="form-control" name="category" >
+                            <select class="form-control" name="category">
+                                <option>All Categories</option>
+                                <option value="Churches" >Churches</option>
+                                <option value="Historic" >Historic</option>
+                                <option value="Museums">Museums</option>
+                                <option value="Walking tours">Walking tours</option>
+                            </select>
                         </div>
                     </div>
 
@@ -93,7 +99,10 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Images</label>
-                            <input type="file" id="input-file-now-custom-3" class="form-control" name="images[]" multiple>
+                                <div class="form-group">
+                                    <input type="file" name="images[]" class="form-control" id="images" multiple="multiple">
+                                </div>
+
                         </div>
                     </div>
 
@@ -188,17 +197,17 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Title">
+                                                <input type="text" name="day_title[]" class="form-control" placeholder="Title">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Description">
+                                                <input type="text" name="day_description[]" class="form-control" placeholder="Description">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                                <input type="file" name="image[]" class="form-control" placeholder="Image">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -222,7 +231,37 @@
 
 
         </form>
-
     </div>
+    </div>
+@endsection
+
+@section('custom_js')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(function() {
+            // Multiple images preview with JavaScript
+            var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#images').on('change', function() {
+                multiImgPreview(this, 'div.imgPreview');
+            });
+        });
+    </script>
 
 @endsection

@@ -2,33 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
 
+    public function admin() {
 
-    public function dashboard()
-    {
-
+        return view('backend.profile')->withUser(Auth::user());
     }
 
-    public function reservations()
-    {
-        $data = DB::table("bookings")
-            ->join('users', 'users.email', '=', 'bookings.email')
-            ->get();
+    public function dashboard() {
 
-        return view('home/reservations', compact('data'));
+        return view('frontend.profile.profile')->withUser(Auth::user());
     }
 
-    public function profile()
+    public function updateUserProfile(Request $request)
     {
-        $data1 = DB::table("bookings")
-            ->join('users', 'users.email', '=', 'bookings.email')
-            ->get();
-        $data = DB::table('users')->get();
-        return view('home/profile', compact('data', 'data1'));
+        $user = Auth::user();
+        $user->name = request()->input('name');
+        $user->lastname = request()->input('lastname');
+        $user->telephone = request()->input('telephone');
+        $user->email =  request()->input('email');
+        $user->password = \Hash::make($request->input('password'));
+        $user->save();
+
+
+        return redirect()->back();
     }
+
 }

@@ -34,7 +34,6 @@
                                 @csrf
                                 @method('DELETE')
                                 <li> <button type="submit" class="btn_1 gray delete wishlist_close">Delete</button></li>
-
                             </ul>
                             </form>
                         </li>

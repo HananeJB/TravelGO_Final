@@ -42,7 +42,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Category</label>
-                            <input type="text" class="form-control" name="category" value="{{ $activity->category }}">                        </div>
+                            <select class="form-control" name="category">
+                                <option>{{ $activity->category }}</option>
+                                <option value="Churches" >Churches</option>
+                                <option value="Historic" >Historic</option>
+                                <option value="Museums">Museums</option>
+                                <option value="Walking tours">Walking tours</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <!-- /row-->
@@ -82,19 +89,17 @@
                     </div>
                 </div>
 
-                <!-- /row-->
-                @foreach($activity->images as $image)
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Photos</label>
-                            <img src="{{ Storage::url($image->image) }}" width="300px">
+                            <label>Cover</label>
+                            <img src="/images/{{$activity->cover}}" style="width: 50%;" alt="">
+                            <input type="file" name="cover" class="form-control" placeholder="Image">
                         </div>
                     </div>
                 </div>
 
-            @endforeach
+
                 <!-- /row-->
             </div>
             <!-- /box_general-->
@@ -167,17 +172,17 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Title">
+                                                <input type="text" name="day_title[]" class="form-control" placeholder="Title">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Description">
+                                                <input type="text" name="day_description[]" class="form-control" placeholder="Description">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                                <input type="file" name="image[]" class="form-control" placeholder="Image">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -190,6 +195,45 @@
                             </tr>
                         </table>
                         <a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add Item</a>
+                    </div>
+                    <div class="col-md-12">
+                        <h6>Item</h6>
+                        <table id="pricing-list-container" style="width:100%;">
+                            @foreach($data as $key=>$items)
+                            <tr class="pricing-list-item">
+
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <input type="hidden" class="form-control" value="{{++$key}}" placeholder="Title">
+                                                <input type="text" name="day_title" value="{{$items->day_title}}" class="form-control" placeholder="Title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="text"  name="day_description" value="{{$items->day_description}}" class="form-control" placeholder="Description">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <form action="{{ route('days.destroy',$items->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            @endforeach
+                        </table>
                     </div>
 
                 </div>
@@ -205,5 +249,36 @@
     </div>
         <!-- /.container-fluid-->
 
+
+@endsection
+
+@section('custom_js')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(function() {
+            // Multiple images preview with JavaScript
+            var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#images').on('change', function() {
+                multiImgPreview(this, 'div.imgPreview');
+            });
+        });
+    </script>
 
 @endsection

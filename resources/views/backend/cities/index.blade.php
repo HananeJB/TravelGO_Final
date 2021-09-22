@@ -25,8 +25,9 @@
                         @foreach ($cities as $city)
                             <li>
                                 <figure><img src="{{ Storage::url($city->image) }}" alt=""></figure>
-                                <small>{{ $city->title }}</small>
+                                <small>{{ $city->city }}</small>
                                 <h4>{{ $city->country }}</h4>
+                                <p>{{ $city->description }}</p>
 
                                 <form action="{{ route('cities.destroy',$city->id) }}" method="POST">
                                     <p><a href="{{ route('cities.edit',$city->id) }}" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> Edit item</a></p>

@@ -12,7 +12,9 @@
         <section class="hero_in tours">
             <div class="wrapper">
                 <div class="container">
-                    <h1 class="fadeInUp"><span></span>Paris tours list</h1>
+
+                    <h1 class="fadeInUp"><span></span> tours list</h1>
+
                 </div>
             </div>
         </section>
@@ -45,38 +47,38 @@
             </div>
             <!-- /custom-search-input-2 -->
             <div class="isotope-wrapper">
-                @foreach ($activities as $activity)
-                <div class="box_list isotope-item popular">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5">
-                            <figure>
-                                <small>{{$activity->category}}</small>
-                                <a href='/activities/details/{{$activity->id}}'><img src="/images/{{$activity->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-                                <h3><a href='activities/details/{{$activity->id}}'>{{ $activity->title }}</a></h3>
-                                <p>{{ $activity->description1 }}</p>
-                                <span class="price">From <strong>{{ $activity->price }}</strong> /per person</span>
+                @foreach ($results as $activity)
+                    <div class="box_list isotope-item popular">
+                        <div class="row no-gutters">
+                            <div class="col-lg-5">
+                                <figure>
+                                    <small>{{$activity->category}}</small>
+                                    <a href='/activities/details/{{$activity->id}}'><img src="/images/{{$activity->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
+                                </figure>
                             </div>
-                            <ul>
-                                @php
-                                    $date1 = new DateTime($activity->datedebut) ;
-                                    $date2 = new DateTime($activity->datefin);
-                                    $interval = $date1->diff($date2);
-                                @endphp
-                                <li><i class="icon_clock_alt"></i>  {!! $interval->days !!}</li>
-                                <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-                            </ul>
+                            <div class="col-lg-7">
+                                <div class="wrapper">
+                                    <h3><a href='activities/details/{{$activity->id}}'>{{ $activity->title }}</a></h3>
+                                    <p>{{ $activity->description1 }}</p>
+                                    <span class="price">From <strong>{{ $activity->price }}</strong> /per person</span>
+                                </div>
+                                <ul>
+                                    @php
+                                        $date1 = new DateTime($activity->datedebut) ;
+                                        $date2 = new DateTime($activity->datefin);
+                                        $interval = $date1->diff($date2);
+                                    @endphp
+                                    <li><i class="icon_clock_alt"></i>  {!! $interval->days !!}</li>
+                                    <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
             <!-- /isotope-wrapper -->
 
-     <p class="text-center add_top_30">{!!$activities->links()!!}</p>
+
 
         </div>
         <!-- /container -->
