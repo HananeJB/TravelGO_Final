@@ -44,7 +44,9 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->firstname }}</td>
+                                    <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>@if($user->is_admin==1) {{'Admin'}} @else {{'Visiteur'}} @endif</td>
                                     <td>{{ $user->created_at }}</td>

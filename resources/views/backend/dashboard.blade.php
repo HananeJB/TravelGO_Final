@@ -23,9 +23,9 @@
                             <div class="card-body-icon">
                                 <i class="fa fa-fw fa-globe"></i>
                             </div>
-                            <div class="mr-5"><h5>26 Adventures!</h5></div>
+                            <div class="mr-5"><h5>{{ count($adventures) }} Adventures!</h5></div>
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="messages.html">
+                        <a class="card-footer text-white clearfix small z-1" href="/admin/adventures">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="mr-5"><h5>{{ count($bookings) }} New Bookings!</h5></div>
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="bookings.html">
+                        <a class="card-footer text-white clearfix small z-1" href="/admin/bookings">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -69,11 +69,11 @@
                     <div class="card dashboard text-white bg-danger o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
-                                <i class="fa fa-fw fa-user"></i>
+                                <i class="fa fa-fw fa-book"></i>
                             </div>
-                            <div class="mr-5"><h5>{{ count($users) }} Users!</h5></div>
+                            <div class="mr-5"><h5>{{ count($posts) }} Posts!</h5></div>
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="bookmarks.html">
+                        <a class="card-footer text-white clearfix small z-1" href="/admin/blog">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                 <i class="fa fa-angle-right"></i>

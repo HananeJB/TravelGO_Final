@@ -22,8 +22,8 @@
                     {{ $error  }}
                 @endforeach
                 <div class="form-group">
-                    <label>Your Name</label>
-                    <input class="form-control" type="text" id="exampleFirstName" name="name" value="{{ old('name') }}">
+                    <label>Your first Name</label>
+                    <input class="form-control" type="text" id="exampleFirstName" name="firstname" value="{{ old('firstname') }}">
                     <i class="ti-user"></i>
                 </div>
                 @error('name')
@@ -48,8 +48,8 @@
                                     </span>
                 @enderror
                 <div class="form-group">
-                    <label>Telephone</label>
-                    <input class="form-control" type="text" id="exampleInputEmail-2"  name="telephone" value="{{ old('telephone') }}">
+                    <label>Phone</label>
+                    <input class="form-control" type="text" id="exampleInputEmail-2"  name="phone" value="{{ old('phone') }}">
                     <i class="icon-phone"></i>
                 </div>
                 <div class="form-group">

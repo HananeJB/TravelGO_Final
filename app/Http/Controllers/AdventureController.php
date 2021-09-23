@@ -99,8 +99,7 @@ class AdventureController extends Controller
             DB::table('days')->insert($data);
         }
 
-        return redirect()->route('adventures.index')
-            ->with('success','Adventure created successfully.');
+        return redirect()->route('adventures.index')->with('success','Adventure has been created successfully.');
     }
 
     /**

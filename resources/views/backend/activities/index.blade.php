@@ -19,13 +19,18 @@
                 <div class="header_box">
                     <h2 class="d-inline-block">Activities</h2>
                 </div>
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
                 <div class="list_general">
 
                     <ul>
                         @foreach ($activities as $activity)
                         <li>
                             <figure><img src="/images/{{$activity->cover}}" alt=""></figure>
-                            <small>Hotel</small>
+                            <small>Activity</small>
                             <h4>{{ $activity->title }}</h4>
                             <p>{{ $activity->description1 }}</p>
                             <form action="{{ route('activities.destroy',$activity->id) }}" method="POST">

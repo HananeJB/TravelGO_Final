@@ -22,15 +22,15 @@ class UserController extends Controller
     public function updateUserProfile(Request $request)
     {
         $user = Auth::user();
-        $user->name = request()->input('name');
+        $user->firstname = request()->input('firstname');
         $user->lastname = request()->input('lastname');
-        $user->telephone = request()->input('telephone');
+        $user->phone = request()->input('phone');
         $user->email =  request()->input('email');
         $user->password = \Hash::make($request->input('password'));
         $user->save();
 
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Informations updated successfully !');
     }
 
 }

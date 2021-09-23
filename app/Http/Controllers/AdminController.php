@@ -18,13 +18,16 @@ class AdminController extends Controller
         $bookings = DB::table('bookings')
             ->get();
 
-        $users = DB::table('users')
+        $adventures = DB::table('adventures')
             ->get();
 
         $activities = DB::table('activities')
             ->get();
 
-        return view('backend.dashboard', compact('bookings','users','activities'));
+        $posts = DB::table('posts')
+            ->get();
+
+        return view('backend.dashboard', compact('bookings','adventures','activities','posts'));
     }
 
 
@@ -39,6 +42,17 @@ class AdminController extends Controller
         $user->delete();
         return back()
             ->with('success', 'User deleted successfully');
+    }
+
+    public function customerbooking(){
+
+        $user = Auth::user();
+        $userbooking = DB::table('bookings')
+            ->join('users','bookings.user_id','=','users.id')
+            ->where('users.id', $user)
+            ->get();
+
+        return view('frontend.profile.profile',compact('userbooking'))->withUser(Auth::user());
     }
 
 

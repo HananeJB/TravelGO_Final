@@ -28,6 +28,15 @@
                     <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">{{ count($bookings) }}  New</span></span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
+                <a class="nav-link" href="/admin/cities">
+                    <i class="fa fa-fw fa-globe"></i>
+
+                    <span class="nav-link-text">Cities</span>
+                </a>
+            </li>
+
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMyblogs" data-parent="#mylistings">
                     <i class="fa fa-fw fa-list"></i>
@@ -54,9 +63,6 @@
                     <span class="nav-link-text">My listings</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMylistings">
-                    <li>
-                        <a href="/admin/cities">Cities</a>
-                    </li>
                     <li>
                         <a href="/admin/activities">Activities</a>
                     </li>

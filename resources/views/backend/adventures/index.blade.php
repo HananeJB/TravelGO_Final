@@ -19,6 +19,11 @@
                 <div class="header_box">
                     <h2 class="d-inline-block">Adventures</h2>
                 </div>
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
                 <div class="list_general">
 
                     <ul>

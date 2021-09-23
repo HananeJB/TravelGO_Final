@@ -46,7 +46,6 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
 
-
         $request->validate([
             'city_id' => 'required',
             'title' => 'required',
@@ -105,7 +104,7 @@ class ActivityController extends Controller
                 DB::table('days')->insert($data);
             }
 
-        return redirect()->route('activities.index');
+        return redirect()->route('activities.index')->with('message','Activity has been created successfully.');
     }
 
     /**

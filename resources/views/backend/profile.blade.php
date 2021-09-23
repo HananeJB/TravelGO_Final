@@ -23,14 +23,18 @@
                 <div class="header_box version_2">
                     <h2><i class="fa fa-user"></i>Profile details</h2>
                 </div>
-
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
                 <div class="row">
                     <div class="col-md-12 add_top_30">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control"  name="name" value='{{ Auth::user()->name }}' placeholder="Your name">
+                                    <input type="text" class="form-control"  name="firstname" value='{{ Auth::user()->firstname }}' placeholder="Your first name">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -45,7 +49,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telephone</label>
-                                    <input type="text" class="form-control" name="telephone" value='{{ Auth::user()->telephone }}' placeholder="Your telephone number">
+                                    <input type="text" class="form-control" name="phone" value='{{ Auth::user()->phone }}' placeholder="Your telephone number">
                                 </div>
                             </div>
                             <div class="col-md-6">

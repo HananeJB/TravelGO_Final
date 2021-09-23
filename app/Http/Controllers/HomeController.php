@@ -79,7 +79,7 @@ class HomeController extends Controller
             ->simplepaginate(10);
 
 
-        return view('frontend/activities/activities', ['activity' => $activity, 'city' => $city], compact('activity', 'city', 'activities'));
+        return view('frontend/activities/activities', compact(  'activities','cities'));
     }
 
     public function offers()
@@ -93,7 +93,7 @@ class HomeController extends Controller
     public function showDetail($id)
     {
         $activity = Activity::find($id);
-        return view('frontend/activities/activity-detail', ['activity' => $activity, 'id' => $id], compact('activity', 'id'));
+        return view('frontend/activities/activity-detail', ['activity' => $activity, 'id' => $id ], compact('activity', 'id'));
     }
 
     /** End activity **/
@@ -106,13 +106,13 @@ class HomeController extends Controller
         $popular = Adventure::latest()->take(7)->get();
         $adventure = Adventure::all()->take(4);
         $adventures = Adventure::all();
-        return view('frontend/secondary_pages/adventures', compact('adventure','adventures','popular'));
+        return view('frontend/adventures/adventures', compact('adventure','adventures','popular'));
     }
 
     public function showadventures()
     {
         $adventures = Adventure::orderby('id')->simplepaginate(10);
-        return view('frontend.secondary_pages.adventureslist', compact('adventures'));
+        return view('frontend.adventures.adventureslist', compact('adventures'));
     }
 
     public function ShowAdventure($id)
@@ -126,7 +126,7 @@ class HomeController extends Controller
             ->where('adventures.id','=',$id)
             ->get();
         $adventure = Adventure::find($id);
-        return view('frontend/secondary_pages/adventure-detail', ['adventure' => $adventure, 'id' => $id , 'city'=> $city], compact('adventure', 'id', 'city','image'));
+        return view('frontend/adventures/adventure-detail', ['adventure' => $adventure, 'id' => $id , 'city'=> $city], compact('adventure', 'id', 'city','image'));
     }
 
     /** End adventure **/
@@ -146,7 +146,7 @@ class HomeController extends Controller
             ->orWhere('category', $search)
             ->get();
 
-        return view('frontend.secondary_pages.searchactivities',compact('results','city','search'));
+        return view('frontend.activities.searchactivities',compact('results','city','search'));
 
     }
 
@@ -158,7 +158,7 @@ class HomeController extends Controller
             ->where('cities.city', $city)
             ->get();
 
-        return view('frontend.secondary_pages.searchadventures',compact('results','city'));
+        return view('frontend.adventures.searchadventures',compact('results','city'));
 
     }
 
