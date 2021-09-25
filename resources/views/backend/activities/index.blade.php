@@ -29,7 +29,7 @@
                     <ul>
                         @foreach ($activities as $activity)
                         <li>
-                            <figure><img src="/images/{{$activity->cover}}" alt=""></figure>
+                            <figure><img src="/uploads/activities/{{$activity->cover}}" alt=""></figure>
                             <small>Activity</small>
                             <h4>{{ $activity->title }}</h4>
                             <p>{{ $activity->description1 }}</p>
@@ -51,15 +51,7 @@
             <!-- /box_general-->
             <nav aria-label="...">
                 <ul class="pagination pagination-sm add_bottom_30">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
+                    {!!$activities->links()!!}
                 </ul>
             </nav>
             <!-- /pagination-->

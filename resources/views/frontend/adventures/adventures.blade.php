@@ -1,7 +1,7 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Panagea | Adventures</title>
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
@@ -78,10 +78,10 @@
                 <!-- /section -->
 
                 <div class="banner">
-                    <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+                    <div class="wrapper d-flex align-items-center opacity-mask" style="background-image: url('/frontend/img/back_5.jpg'); background-size: cover;" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <div>
                             <small>Adventure</small>
-                            <h3>Your Perfect<br>Advenure Experience</h3>
+                            <h3>Your Perfect<br>Adventure Experience</h3>
                             <p>Activities and accommodations</p>
                             <a href="/adventures/all" class="btn_1">Read more</a>
                         </div>
@@ -102,7 +102,7 @@
                             <a href='/adventures/details/{{$adventure->id}}' class="grid_item latest_adventure">
                                 <figure>
                                     <div class="score"><strong>8.5</strong></div>
-                                    <img src="/images/{{$adventure->cover}}" class="img-fluid" style="width: 400px; height: 267px;" alt="">
+                                    <img src="/uploads/adventures/{{$adventure->cover}}" class="img-fluid" style="width: 400px; height: 267px;" alt="">
                                     <div class="info">
                                         @php
                                             $date1 = new DateTime($adventure->stardate) ;
@@ -125,7 +125,7 @@
             </div>
             <!-- /container -->
 
-            <div class="bg_color_1">
+            <div class="bg_color_1"  >
                 <div class="container container-custom margin_80_55">
                     <div class="main_title_2">
                         <h2>Plan Your Trip Easly</h2>
@@ -153,7 +153,7 @@
             </div>
             <!-- /bg_color_1 -->
 
-            <div class="call_section adventure">
+            <div class="call_section adventure" style="background-image: url('/frontend/img/back_2.jpg');"  >
                 <div class="container clearfix">
                     <div class="col-lg-5 col-md-6 float-right wow" data-wow-offset="250">
                         <div class="block-reveal">

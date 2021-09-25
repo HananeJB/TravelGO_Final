@@ -58,7 +58,7 @@
                 <li><span><a href="#0" style="text-transform: capitalize;">{{ Auth::user()->firstname }}</a></span>
                     <ul>
                         <li><a href="/myaccount/{{Auth::user()->id}}">My Account</a></li>
-                        <li><a href="/myaccount">My Bookings</a></li>
+                        <li><a href="/myaccount/bookings/{{Auth::user()->id}}">My Bookings</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">Logout</a></li>
                     </ul>

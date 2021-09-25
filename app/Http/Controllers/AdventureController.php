@@ -17,7 +17,7 @@ class AdventureController extends Controller
      */
     public function index()
     {
-        $adventures = Adventure::latest()->paginate(5);
+        $adventures = Adventure::latest()->simplepaginate(5);
 
         return view('backend.adventures.index',compact('adventures'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

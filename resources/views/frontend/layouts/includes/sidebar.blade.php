@@ -19,13 +19,16 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/myaccount/bookings/{{Auth::user()->id}}">
                     <i class="fa fa-fw fa-calendar-check-o"></i>
                     @php
-                        $bookings =DB::table('bookings')
-                        ->get();
+                        $user = Auth::user();
+                          $orders = DB::table('bookings')
+                             ->join('users','bookings.user_id','=','users.id')
+                             ->where('users.id', $user)
+                             ->get();
                     @endphp
-                    <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">{{ count($bookings) }}  New</span></span>
+                    <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">{{ count($orders) }}  New</span></span>
                 </a>
             </li>
 

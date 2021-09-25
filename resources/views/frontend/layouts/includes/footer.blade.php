@@ -34,11 +34,16 @@
                 <div id="newsletter">
                     <h6>Newsletter</h6>
                     <div id="message-newsletter"></div>
-                    <form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
+                    <form action="/addtolist" method="post" class="subscribe-form">
+                        @if (\Session::has('news_message'))
+                            <p>{!! \Session::get('news_message') !!}</p>
+                        @else
                         <div class="form-group">
-                            <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
+                            @csrf
+                            <input type="email" name="email" id="email_newsletter" class="form-control" placeholder="Your email">
                             <input type="submit" value="Submit" id="submit-newsletter">
                         </div>
+                            @endif
                     </form>
                 </div>
             </div>

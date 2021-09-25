@@ -44,16 +44,7 @@ class AdminController extends Controller
             ->with('success', 'User deleted successfully');
     }
 
-    public function customerbooking(){
 
-        $user = Auth::user();
-        $userbooking = DB::table('bookings')
-            ->join('users','bookings.user_id','=','users.id')
-            ->where('users.id', $user)
-            ->get();
-
-        return view('frontend.profile.profile',compact('userbooking'))->withUser(Auth::user());
-    }
 
 
 }

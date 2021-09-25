@@ -17,7 +17,7 @@
 
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="/admin/Adventures">Adventures</a>
+                    <a href="/admin/adventures">Adventures</a>
                 </li>
                 <li class="breadcrumb-item active">Add Adventure</li>
             </ol>

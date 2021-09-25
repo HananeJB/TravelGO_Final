@@ -9,14 +9,14 @@
 
     <main>
         <section class="hero_in tours_detail" >
-            <div class="wrapper"  style="background-image: url('/images/{{$activity->cover}}'); background-size: cover; " >
+            <div class="wrapper"  style="background-image: url('/uploads/activities/{{$activity->cover}}'); background-size: cover; " >
                 <div class="container">
                     <h1 class="fadeInUp"><span></span>Tour detail page</h1>
                 </div>
                 <span class="magnific-gallery">
-                        <a href="/images/{{$activity->cover}}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
+                        <a href="/uploads/activities/{{$activity->cover}}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
                      @foreach($activity->images as $image)
-                        <a href="/images/{{ $image->name}}" title="Photo title" data-effect="mfp-zoom-in"></a>
+                        <a href="/uploads/activities/{{$image->name}}" title="Photo title" data-effect="mfp-zoom-in"></a>
                     @endforeach
 				</span>
             </div>
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="cbp_tmlabel">
                                         <div class="hidden-xs">
-                                            <img src="img/tour_plan_1.jpg" alt="" class="rounded-circle thumb_visit">
+                                            <img src="/uploads/days/{{$day->image}}" alt="" class="rounded-circle thumb_visit">
                                         </div>
                                         <h4>{{$day->day_title}}</h4>
                                         <p>

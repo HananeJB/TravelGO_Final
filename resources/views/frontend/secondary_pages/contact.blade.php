@@ -1,14 +1,14 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Panagea | Contact Us.</title>
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
 @section('content')
     <main>
         <section class="hero_in contacts">
-            <div class="wrapper">
+            <div class="wrapper" style="background-image: url('/frontend/img/bg_4.jpg'); background-size: cover;">
                 <div class="container">
                     <h1 class="fadeInUp"><span></span>Contact Us</h1>
                 </div>
@@ -52,18 +52,25 @@
                         <h4>Send a message</h4>
                         <p>Ex quem dicta delicata usu, zril vocibus maiestatis in qui.</p>
                         <div id="message-contact"></div>
-                        <form method="post" action="assets/contact.php" id="contactform" autocomplete="off">
+                        <form method="POST" action="{{route('send-email')}}" enctype=" multipart/form-data">
+                            @csrf
+                            @if(Session::has("success"))
+                                <div class="alert alert-success alert-dismissible"><button type="button" class="close">&times;</button>{{Session::get('success')}}</div>
+                            @elseif(Session::has("failed"))
+                                <div class="alert alert-danger alert-dismissible"><button type="button" class="close">&times;</button>{{Session::get('failed')}}</div>
+                            @endif
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input class="form-control" type="text" id="name_contact" name="name_contact">
+                                        <input class="form-control" type="text" id="name_contact" name="firstname">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input class="form-control" type="text" id="lastname_contact" name="lastname_contact">
+                                        <input class="form-control" type="text" id="lastname_contact" name="lastname">
                                     </div>
                                 </div>
                             </div>
@@ -72,30 +79,23 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input class="form-control" type="email" id="email_contact" name="email_contact">
+                                        <input class="form-control" type="email" id="email_contact" name="emailCc">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Telephone</label>
-                                        <input class="form-control" type="text" id="phone_contact" name="phone_contact">
+                                        <label>Subject</label>
+                                        <input class="form-control" type="text" id="phone_contact" name="emailSubject">
                                     </div>
                                 </div>
                             </div>
                             <!-- /row -->
                             <div class="form-group">
                                 <label>Message</label>
-                                <textarea class="form-control" id="message_contact" name="message_contact" style="height:150px;"></textarea>
+                                <textarea class="form-control" id="message_contact" name="emailBody" style="height:150px;"></textarea>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Are you human? 3 + 1 =</label>
-                                        <input class="form-control" type="text" id="verify_contact" name="verify_contact">
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="add_top_30"><input type="submit" value="Submit" class="btn_1 rounded" id="submit-contact"></p>
+
+                            <p class="add_top_30"><input type="submit" value="Send message" class="btn_1 rounded" id="submit-contact"></p>
                         </form>
                     </div>
                 </div>

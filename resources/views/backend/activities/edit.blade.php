@@ -201,7 +201,6 @@
                         <table id="pricing-list-container" style="width:100%;">
                             @foreach($data as $key=>$items)
                             <tr class="pricing-list-item">
-
                                 <td>
                                     <div class="row">
                                         <div class="col-md-2">

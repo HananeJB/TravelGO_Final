@@ -34,13 +34,16 @@ class CartController extends Controller
     {
         $cartitems=Cart::content();
         $cartsum=['total'=>Cart::total(),'tax'=>Cart::tax(),'subtotal'=>Cart::subtotal()];
+
         return view('frontend.cart.cart-1', compact('cartitems','cartsum'));
     }
     public function checkout()
     {
         $cartitems=Cart::content();
         $cartsum=['total'=>Cart::total(),'tax'=>Cart::tax(),'subtotal'=>Cart::subtotal()];
+
         return view('frontend.cart.cart-2', compact('cartitems','cartsum'));
+
     }
     public function validation(Request $request)
     {

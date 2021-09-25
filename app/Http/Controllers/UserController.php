@@ -33,4 +33,15 @@ class UserController extends Controller
         return redirect()->back()->with('message','Informations updated successfully !');
     }
 
+    public function customerbooking(){
+
+        $user = Auth::user()->id;
+        $orders = DB::table('bookings')
+            ->join('users','bookings.user_id','=','users.id')
+            ->where('users.id', '=',$user)
+            ->simplepaginate(5);
+
+        return view('frontend.profile.bookings',compact('orders'))->withUser(Auth::user());
+    }
+
 }

@@ -13,19 +13,17 @@
             <ul class="slides">
                 @foreach($cities as $city)
                 <li>
-                    <img src="/uploads/blog/{{$city->image}}" alt="">
+                    <img src="/uploads/city/{{$city->image}}" alt="">
                     <div class="meta" style="bottom: 45% !important;">
                         <h3>{{$city->city}}, {{$city->country}}</h3>
                         <h5 style="color:white">{{$city->description}}</h5>
                         <div class="info">
-                            <p><strong>220</strong> Hotels - <strong>150</strong> Restaurant</p>
                         </div>
                         <a href="/activities/{{$city->id}}" class="btn_1">Read more</a>
                     </div>
                 </li>
                 @endforeach
             </ul>
-
             <div id="icon_drag_mobile"></div>
         </div>
         <div id="carousel_slider_wp">
@@ -33,7 +31,7 @@
                 <ul class="slides">
                     @foreach($cities as $city)
                     <li>
-                        <img src="/uploads/blog/{{$city->image}}" alt="">
+                        <img src="/uploads/city/{{$city->image}}" style="width: 400px; height: 200px;" alt="">
                         <div class="caption">
                             <h3>{{$city->city}} <span>{{$city->country}}</span></h3>
                             <small>$75 per person</small>
@@ -89,7 +87,7 @@
             <div class="item">
                 <div class="box_grid">
                     <figure>
-                        <a href='/activities/details/{{$activity->id}}'><img src="/frontend/img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+                        <a href='/activities/details/{{$activity->id}}'><img src="/uploads/activities/{{$activity->cover}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
                         <small>{{ $activity->category }}</small>
                     </figure>
                     <div class="wrapper">
@@ -111,7 +109,7 @@
             @endforeach
         </div>
         <!-- /carousel -->
-        <p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Tours</a></p>
+        <p class="btn_home_align"><a href="/activities" class="btn_1 rounded">View all Tours</a></p>
         <hr class="large">
     </div>
 
@@ -158,7 +156,7 @@
         </div>
         <!-- /bg_color_1 -->
 
-    <div class="call_section">
+    <div class="call_section" style="background-image: url('/frontend/img/back_2.jpg');">
         <div class="container clearfix">
             <div class="col-lg-5 col-md-6 float-right wow" data-wow-offset="250">
                 <div class="block-reveal">

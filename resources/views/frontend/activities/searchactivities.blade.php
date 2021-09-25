@@ -10,7 +10,7 @@
     <main>
 
         <section class="hero_in tours">
-            <div class="wrapper">
+            <div class="wrapper" style="background-image: url('/frontend/img/pexels-taryn-elliott-3889843.jpg'); ">
                 <div class="container">
 
                     <h1 class="fadeInUp"><span></span> tours list</h1>
@@ -53,7 +53,7 @@
                             <div class="col-lg-5">
                                 <figure>
                                     <small>{{$activity->category}}</small>
-                                    <a href='/activities/details/{{$activity->id}}'><img src="/images/{{$activity->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
+                                    <a href='/activities/details/{{$activity->id}}'><img src="/uploads/activities/{{$activity->cover}}" class="img-fluid" alt="" style="width: 400px; height: 267px;" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
                                 </figure>
                             </div>
                             <div class="col-lg-7">
@@ -68,8 +68,8 @@
                                         $date2 = new DateTime($activity->datefin);
                                         $interval = $date1->diff($date2);
                                     @endphp
-                                    <li><i class="icon_clock_alt"></i>  {!! $interval->days !!}</li>
-                                    <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
+                                    <li><i class="icon_clock_alt"></i>  {!! $interval->days !!} days </li>
+
                                 </ul>
                             </div>
                         </div>

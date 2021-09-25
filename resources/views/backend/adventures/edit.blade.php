@@ -85,7 +85,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Cover image</label>
-                            <img src="/images/{{$adventure->cover}}" width="300px">
+                            <img src="/uploads/adventures/{{$adventure->cover}}" width="300px">
                             <input type="file" name="cover" class="form-control" placeholder="image">
                         </div>
                     </div>

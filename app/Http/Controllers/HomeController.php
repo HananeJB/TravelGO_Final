@@ -78,7 +78,6 @@ class HomeController extends Controller
             ->where('city_id','=',$id)
             ->simplepaginate(10);
 
-
         return view('frontend/activities/activities', compact(  'activities','cities'));
     }
 

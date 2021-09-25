@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <body id="register_bg">
+    <body style="background-image: url('/frontend/img/back_1.jpg');  "  id="register_bg">
 
     <nav id="menu" class="fake_menu"></nav>
 
@@ -17,9 +17,10 @@
                 <a href="/home"><img src="/frontend/img//logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
             </figure>
             <form method="POST" action="{{ route('register') }}">
-                @csrf
-                @foreach($errors->all() as $error)
-                    {{ $error  }}
+                @csrf  @foreach($errors->all() as $error)
+                <div class="alert alert-success">
+                        {{ $error  }}
+                </div>
                 @endforeach
                 <div class="form-group">
                     <label>Your first Name</label>

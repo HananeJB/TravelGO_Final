@@ -31,7 +31,7 @@
 
     <main>
         <section class="hero_in adventure_detail">
-            <div class="wrapper opacity-mask" style="background-image: url('/images/{{$adventure->cover}}'); background-size: cover;" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+            <div class="wrapper opacity-mask" style="background-image: url('/uploads/adventures/{{$adventure->cover}}'); background-size: cover;" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <div class="container">
                     <div class="main_info">
                         <div class="row">
@@ -41,7 +41,7 @@
                                     $date2 = new DateTime($adventure->enddate);
                                     $interval = $date1->diff($date2);
                                 @endphp
-                                <div class="d-flex align-items-center justify-content-between mb-3"><em>{!! $interval->days !!} Day Trip</em><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></div>
+                                <div class="d-flex align-items-center justify-content-between mb-3"><em>{!! $interval->days !!} Day Trip</em></div>
                                 <h1>{{$adventure->title}}</h1>
 
                                 @foreach ($city as $city)
@@ -87,7 +87,7 @@
                             <p>
                                 {{$adventure->description}}
                             </p>
-                            <h6>Pictures from our users</h6>
+                            <h6>Pictures from our guides</h6>
                             <div class="pictures magnific-gallery clearfix">
                                 @foreach($adventure->images as $img)
                                 <figure><a href="/images/{{ $img->name }}" title="Photo title" data-effect="mfp-zoom-in"><img src="/images/{{ $img->name }}" style="width: 250px; height: 250px;" alt=""></a></figure>
@@ -149,143 +149,11 @@
                                 @foreach($adventure->days as $day)
                                 <div class="mb-5">
                                     <h3>Day {!! $f->format($i++) !!} - {{$day->day_title}}</h3>
-                                    <figure><img src="/Storage::{{$day->image}};" class="img-fluid" alt=""></figure>
+                                    <figure><img src="/uploads/days/{{$day->image}}" style="width: 400px; height: 240px" class="img-fluid" alt=""></figure>
                                     <p>{{$day->day_description}}</p>
                                 </div>
                                 @endforeach
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /row -->
-
-
-                <div class="row">
-                    <div class="col-lg-4 fixed_title">
-                        <h2>Reviews</h2>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="pl-lg-4">
-                            <div class="reviews-container">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div id="review_summary">
-                                            <strong>8.5</strong>
-                                            <em>Superb</em>
-                                            <small>Based on 4 reviews</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <div class="row">
-                                            <div class="col-lg-10 col-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-3"><small><strong>5 stars</strong></small></div>
-                                        </div>
-                                        <!-- /row -->
-                                        <div class="row">
-                                            <div class="col-lg-10 col-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-3"><small><strong>4 stars</strong></small></div>
-                                        </div>
-                                        <!-- /row -->
-                                        <div class="row">
-                                            <div class="col-lg-10 col-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-3"><small><strong>3 stars</strong></small></div>
-                                        </div>
-                                        <!-- /row -->
-                                        <div class="row">
-                                            <div class="col-lg-10 col-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-3"><small><strong>2 stars</strong></small></div>
-                                        </div>
-                                        <!-- /row -->
-                                        <div class="row">
-                                            <div class="col-lg-10 col-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-3"><small><strong>1 stars</strong></small></div>
-                                        </div>
-                                        <!-- /row -->
-                                    </div>
-                                </div>
-                                <!-- /row -->
-                            </div>
-
-                            <hr>
-
-                            <div class="reviews-container">
-
-                                <div class="review-box clearfix">
-                                    <figure class="rev-thumb"><img src="/frontend/img/avatar1.jpg" alt="">
-                                    </figure>
-                                    <div class="rev-content">
-                                        <div class="rating">
-                                            <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                        </div>
-                                        <div class="rev-info">
-                                            Admin – April 03, 2016:
-                                        </div>
-                                        <div class="rev-text">
-                                            <p>
-                                                Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /review-box -->
-                                <div class="review-box clearfix">
-                                    <figure class="rev-thumb"><img src="/frontend/img/avatar2.jpg" alt="">
-                                    </figure>
-                                    <div class="rev-content">
-                                        <div class="rating">
-                                            <i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                        </div>
-                                        <div class="rev-info">
-                                            Ahsan – April 01, 2016:
-                                        </div>
-                                        <div class="rev-text">
-                                            <p>
-                                                Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /review-box -->
-                                <div class="review-box clearfix">
-                                    <figure class="rev-thumb"><img src="/frontend/img/avatar3.jpg" alt="">
-                                    </figure>
-                                    <div class="rev-content">
-                                        <div class="rating">
-                                            <i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                        </div>
-                                        <div class="rev-info">
-                                            Sara – March 31, 2016:
-                                        </div>
-                                        <div class="rev-text">
-                                            <p>
-                                                Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /review-box -->
-                            </div>
-                            <!-- /review-container -->
                         </div>
                     </div>
                 </div>
@@ -386,25 +254,33 @@
         <div class="box_detail booking">
             <h5>Available Dates</h5>
             <p>Idque vocibus pri et, ea soleat option tincidunt eos. Usu ad erat utamur fabellas, eu nisl iusto deserunt has. </p>
-            <div class="form-group" id="input_date">
-                <input class="form-control" type="text" name="dates" placeholder="When..">
-                <i class="icon_calendar"></i>
-            </div>
-            <div class="panel-dropdown">
-                <a href="#">Guests <span class="qtyTotal">1</span></a>
-                <div class="panel-dropdown-content right">
-                    <div class="qtyButtons">
-                        <label>Adults</label>
-                        <input type="text" name="qtyInput" value="1">
-                    </div>
-                    <div class="qtyButtons">
-                        <label>Childrens</label>
-                        <input type="text" name="qtyInput" value="0">
+            <form action="/addtocart" method="post">
+                @csrf
+                <div class="form-group" id="input_date">
+                    <input class="form-control" type="text" name="date" id="datepicker" value="" placeholder="When..">
+                    <i class="icon_calendar"></i>
+                </div>
+
+                <div class="panel-dropdown">
+                    <input type="hidden" name="qty" id="qtyTotal" class="qtyTotal"/>
+                    <a href="#">Guests <span class="qtyTotal2">1</span></a>
+                    <div class="panel-dropdown-content right">
+                        <div class="qtyButtons">
+                            <label>Adults</label>
+                            <input type="text" name="qtyInput" value="1">
+                        </div>
+                        <div class="qtyButtons">
+                            <label>Childrens</label>
+                            <input type="text" name="qtyInput" value="0">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <a href="cart-1.html" class=" add_top_30 btn_1 full-width purchase">Book now</a>
-            <a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
+                <input type="submit" class="btn_1 full-width purchase" value="Purchase" />
+                <input type="hidden" name="id" value="{{ $adventure->id }}">
+                <input type="hidden" name="title" value="{{ $adventure->title }}">
+                <input type="hidden" name="price" value="{{ $adventure->price }}">
+            </form>
+
             <div class="text-center"><small>No money charged in this step</small></div>
         </div>
         <!-- /box_detail booking -->
@@ -438,7 +314,7 @@
 
 <!-- DATEPICKER  -->
 <script>
-    $('input[name="dates"]').daterangepicker({
+    $('input[name="date"]').daterangepicker({
         "singleDatePicker": true,
         "autoApply": true,
         parentEl:'#input_date',
@@ -446,10 +322,13 @@
         "showCustomRangeLabel": false
     }, function(start, end, label) {
         console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        document.getElementById("datepicker").setAttribute('value', start.format('DD-MM-YYYY') );
+
     });
+
 </script>
 
 <!-- INPUT QUANTITY  -->
-<script src="js/input_qty.js"></script>
+<script src="/frontend/js/input_qty.js"></script>
 
 @endsection

@@ -30,7 +30,7 @@ class ActivityFactory extends Factory
             'price'=>$this->faker->numberBetween(100,1000),
             'datedebut'=>$this->faker->date(),
             'datefin'=>$this->faker->date(),
-            'cover'=>$this->faker->randomElement($array = array ('blog-1.jpg','blog-2.jpg','blog-3.jpg','blog-4.jpg')),
+            'cover'=>$this->faker->randomElement($array = array ('tour_1.jpg','tour_2.jpg','tour_3.jpg','tour_4.jpg')),
             'adresse'=>$this->faker->name(),
             'program'=>$this->faker->text(500),
         ];

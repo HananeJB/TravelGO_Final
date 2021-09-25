@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\City;
-
 use App\Models\Day;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class ActivityController extends Controller
 {
@@ -19,10 +19,11 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::latest()->paginate(5);
+        $activities = Activity::latest()->simplepaginate(5);
 
         return view('backend.activities.index', compact('activities'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
 
@@ -64,7 +65,7 @@ class ActivityController extends Controller
 
 
         if ($image = $request->file('cover')) {
-            $destinationPath = 'images/';
+            $destinationPath = 'uploads/activities/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['cover'] = "$profileImage";
@@ -79,13 +80,13 @@ class ActivityController extends Controller
 
             foreach($files as $file) {
 
-                $path = 'images/';
+                $path = 'uploads/activities/';
                 $name = time() . "." . $file->getClientOriginalExtension();
                 $file->move($path, $name);
 
                 Image::create([
                     'name' => $name,
-                    'path' => 'images/',
+                    'path' => $path,
                     'activity_id'=>$activity_id ,
                 ]);
             }
@@ -93,18 +94,21 @@ class ActivityController extends Controller
 
 
             foreach ( $request->day_title as $day=>$insert) {
+
             $data =[
                 'day_title' =>$request->day_title[$day],
                 'day_description' =>$request->day_description[$day],
-                'image' =>$request->image[$day]->store('images'),
+                'image' =>$request->image[$day]->store('uploads/days/'),
                 'activity_id'=>$activity_id ,
 
             ];
+
 
                 DB::table('days')->insert($data);
             }
 
         return redirect()->route('activities.index')->with('message','Activity has been created successfully.');
+
     }
 
     /**

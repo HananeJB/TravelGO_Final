@@ -1,7 +1,7 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Panagea | Adventures list</title>
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
@@ -10,7 +10,7 @@
     <main>
 
         <section class="hero_in tours">
-            <div class="wrapper">
+            <div class="wrapper" style="background-image: url('/frontend/img/back_5.jpg'); background-size: cover;">
                 <div class="container">
                     <h1 class="fadeInUp"><span></span>Adventures list</h1>
                 </div>
@@ -43,7 +43,7 @@
                             <div class="col-lg-5">
                                 <figure>
                                     <small>{{$adventure->level}}</small>
-                                    <a href='/adventures/details/{{$adventure->id}}'><img src="/images/{{$adventure->cover}}" class="img-fluid" alt="" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
+                                    <a href='/adventures/details/{{$adventure->id}}'><img src="/uploads/adventures/{{$adventure->cover}}" class="img-fluid" alt="" style="width: 400px; height: 267px;" width="400" height="267"><div class="read_more"><span>Read more</span></div></a>
                                 </figure>
                             </div>
                             <div class="col-lg-7">
@@ -58,8 +58,7 @@
                                         $date2 = new DateTime($adventure->enddate);
                                         $interval = $date1->diff($date2);
                                     @endphp
-                                    <li><i class="icon_clock_alt"></i> {!! $interval->days !!}</li>
-                                    <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
+                                    <li><i class="icon_clock_alt"></i> {!! $interval->days !!} Days</li>
                                 </ul>
                             </div>
                         </div>

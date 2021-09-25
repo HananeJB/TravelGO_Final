@@ -1,7 +1,7 @@
 @extends('frontend.layouts.auth_layout')
 
 @section('content')
-    <body id="login_bg">
+    <body style="background-image: url('/frontend/img/back_1.jpg');  " id="login_bg">
 
     <nav id="menu" class="fake_menu"></nav>
 
@@ -17,6 +17,11 @@
             </figure>
             <form action="{{ route('login') }}" method="post">
                 @csrf
+                @csrf  @foreach($errors->all() as $error)
+                    <div class="alert alert-success">
+                        {{ $error  }}
+                    </div>
+                @endforeach
                 <div class="access_social">
                     <a href="#0" class="social_bt facebook">Login with Facebook</a>
                     <a href="#0" class="social_bt google">Login with Google</a>

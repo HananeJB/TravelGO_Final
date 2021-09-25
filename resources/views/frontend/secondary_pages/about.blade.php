@@ -1,7 +1,7 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <title>Panagea | About Us.</title>
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
@@ -81,7 +81,7 @@
                     <div class="col-lg-6 wow" data-wow-offset="150">
                         <figure class="block-reveal">
                             <div class="block-horizzontal"></div>
-                            <img src="img/about_1.jpg" class="img-fluid" alt="">
+                            <img src="/frontend/img/pexels-thanakorn-phanthura-3183613.jpg" class="img-fluid" alt="">
                         </figure>
                     </div>
                     <div class="col-lg-5">
@@ -107,35 +107,35 @@
                     <a href="#0">
                         <div class="title">
                             <h4>Julia Holmes<em>CEO</em></h4>
-                        </div><img src="img/1_carousel.jpg" alt="">
+                        </div><img src="/frontend/img/person_2.jpg" alt="">
                     </a>
                 </div>
                 <div class="item">
                     <a href="#0">
                         <div class="title">
                             <h4>Lucas Smith<em>Marketing</em></h4>
-                        </div><img src="img/2_carousel.jpg" alt="">
+                        </div><img src="/frontend/img/person_1.jpg" alt="">
                     </a>
                 </div>
                 <div class="item">
                     <a href="#0">
                         <div class="title">
                             <h4>Paul Stephens<em>Business strategist</em></h4>
-                        </div><img src="img/3_carousel.jpg" alt="">
+                        </div><img src="/frontend/img/person_5.jpg" alt="">
                     </a>
                 </div>
                 <div class="item">
                     <a href="#0">
                         <div class="title">
                             <h4>Pablo Himenez<em>Customer Service</em></h4>
-                        </div><img src="img/4_carousel.jpg" alt="">
+                        </div><img src="/frontend/img/person_4.jpg" alt="">
                     </a>
                 </div>
                 <div class="item">
                     <a href="#0">
                         <div class="title">
-                            <h4>Andrew Stuttgart<em>Admissions</em></h4>
-                        </div><img src="img/5_carousel.jpg" alt="">
+                            <h4>Angela Stuttgart<em>Admissions</em></h4>
+                        </div><img src="/frontend/img/person_3.jpg" alt="">
                     </a>
                 </div>
             </div>

@@ -84,25 +84,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="box_general padding_bottom">
-                        <div class="header_box version_2">
-                            <h2><i class="fa fa-envelope"></i>Change email</h2>
-                        </div>
-                        <div class="form-group">
-                            <label>Old email</label>
-                            <input class="form-control" name="old_email" value="{{ Auth::user()->email }}" id="old_email" type="email">
-                        </div>
-                        <div class="form-group">
-                            <label>New email</label>
-                            <input class="form-control" name="new_email" id="new_email" type="email">
-                        </div>
-                        <div class="form-group">
-                            <label>Confirm new email</label>
-                            <input class="form-control" name="confirm_new_email" id="confirm_new_email" type="email">
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <!-- /row-->
                 <button class="btn_1 medium" type="submit"> Save</button>
