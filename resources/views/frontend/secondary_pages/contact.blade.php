@@ -1,8 +1,8 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Contact Us.</title>
-    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <title>TravelGO | Contact Us.</title>
+    <meta name="description" content="TravelGO - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@
                     <li>
                         <i class="pe-7s-mail-open-file"></i>
                         <h4>Email address</h4>
-                        <span>support@Panagea.com - info@Panagea.com<br><small>Monday to Friday 9am - 7pm</small></span>
+                        <span>support@TravelGO.com - info@TravelGO.com<br><small>Monday to Friday 9am - 7pm</small></span>
 
                     </li>
                     <li>

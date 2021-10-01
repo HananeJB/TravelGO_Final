@@ -14,7 +14,7 @@
     <div id="login">
         <aside>
             <figure>
-                <a href="/home"><img src="/frontend/img//logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+                <img src="/frontend/img/logo-color.png" width="140" height="20" data-retina="true"  alt="" class="logo_sticky m-2">
             </figure>
             <form method="POST" action="{{ route('register') }}">
                 @csrf  @foreach($errors->all() as $error)

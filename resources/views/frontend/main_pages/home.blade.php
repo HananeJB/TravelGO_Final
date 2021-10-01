@@ -1,8 +1,8 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Home</title>
-    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <title>TravelGO | Home</title>
+    <meta name="description" content="TravelGO - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
 @section('content')

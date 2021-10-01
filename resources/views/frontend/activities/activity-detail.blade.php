@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-
     <main>
         <section class="hero_in tours_detail" >
             <div class="wrapper"  style="background-image: url('/uploads/activities/{{$activity->cover}}'); background-size: cover; " >
@@ -21,8 +20,6 @@
 				</span>
             </div>
         </section>
-        <!--/hero_in-->
-
         <div class="bg_color_1">
             <nav class="secondary_nav sticky_horizontal">
                 <div class="container">
@@ -38,7 +35,7 @@
                         <section id="description">
                             <h2>Description</h2>
                             <p>{{ $activity->description1 }}</p>
-                            <p>{{ $activity->description2 }}</p>
+                            <p> {!! $activity->description2 !!}</p>
 
                             <hr>
 

@@ -2,8 +2,8 @@
     <div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
     <div id="logo">
         <a href="/">
-            <img src="/frontend/img/logo.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
-            <img src="/frontend/img/logo_sticky.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
+            <img src="/frontend/img/logo-white.png" width="140" height="20" data-retina="true" alt="" class="logo_normal m-2">
+            <img src="/frontend/img/logo-color.png" width="140" height="20" data-retina="true"  alt="" class="logo_sticky m-2">
         </a>
     </div>
 

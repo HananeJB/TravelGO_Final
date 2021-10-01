@@ -8,7 +8,6 @@
 @section('content')
 
     <main>
-
         <section class="hero_in tours">
             <div class="wrapper" style="background-image: url('/frontend/img/back_5.jpg'); background-size: cover;">
                 <div class="container">
@@ -16,7 +15,6 @@
                 </div>
             </div>
         </section>
-
         <div class="container margin_60_35">
             <div class="col-lg-12">
                 <form action="{{route('adventure.search')}}" enctype="multipart/form-data">

@@ -1,16 +1,16 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | About Us.</title>
-    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <title>TravelGO | About Us.</title>
+    <meta name="description" content="TravelGO - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
 @section('content')
     <main>
         <section class="hero_in general">
-            <div class="wrapper">
+            <div class="wrapper" style="background-image: url('/frontend/img/pexels-taryn-elliott-3889843.jpg'); ">
                 <div class="container">
-                    <h1 class="fadeInUp"><span></span>About Panagea</h1>
+                    <h1 class="fadeInUp"><span></span>About TravelGO</h1>
                 </div>
             </div>
         </section>
@@ -19,7 +19,7 @@
         <div class="container margin_80_55">
             <div class="main_title_2">
                 <span><em></em></span>
-                <h2>Why Choose Panagea</h2>
+                <h2>Why Choose TravelGO</h2>
                 <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
             </div>
             <div class="row">

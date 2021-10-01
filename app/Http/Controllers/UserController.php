@@ -40,8 +40,11 @@ class UserController extends Controller
             ->join('users','bookings.user_id','=','users.id')
             ->where('users.id', '=',$user)
             ->simplepaginate(5);
-
-        return view('frontend.profile.bookings',compact('orders'))->withUser(Auth::user());
+        $bookings = DB::table('bookings')
+            ->join('users','bookings.user_id','=','users.id')
+            ->where('users.id', '=',$user)
+            ->get();
+        return view('frontend.profile.bookings',compact('orders','bookings'))->withUser(Auth::user());
     }
 
 }

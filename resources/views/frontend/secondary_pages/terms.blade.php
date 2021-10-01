@@ -8,7 +8,7 @@
 @section('content')
     <main>
         <section class="hero_in general">
-            <div class="wrapper">
+            <div class="wrapper" style="background-image: url('/frontend/img/pexels-taryn-elliott-3889843.jpg'); ">
                 <div class="container">
                     <h1 class="fadeInUp"><span></span>Faq Section</h1>
                 </div>

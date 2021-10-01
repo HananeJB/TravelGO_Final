@@ -2,7 +2,7 @@
     <div class="container margin_60_35">
         <div class="row">
             <div class="col-lg-5 col-md-12 p-r-5">
-                <p><img src="/frontend/img/logo.png" width="150" height="36" data-retina="true" alt=""></p>
+                <p><img src="/frontend/img/logo-color.png" width="140" height="20" data-retina="true" alt=""></p>
                 <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
                 <div class="follow_us">
                     <ul>
@@ -29,7 +29,7 @@
                 <h5>Contact with Us</h5>
                 <ul class="contacts">
                     <li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
-                    <li><a href="mailto:info@Panagea.com"><i class="ti-email"></i> info@Panagea.com</a></li>
+                    <li><a href="mailto:info@TravelGO.com"><i class="ti-email"></i> info@TravelGO.com</a></li>
                 </ul>
                 <div id="newsletter">
                     <h6>Newsletter</h6>
@@ -78,7 +78,7 @@
                 <ul id="additional_links">
                     <li><a href="#0">Terms and conditions</a></li>
                     <li><a href="#0">Privacy</a></li>
-                    <li><span>© 2019 Panagea</span></li>
+                    <li><span>© 2019 TravelGO</span></li>
                 </ul>
             </div>
         </div>
@@ -96,9 +96,7 @@
     <form action="{{ route('login') }}" method="post">
         @csrf
         <div class="sign-in-wrapper">
-            <a href="#0" class="social_bt facebook">Login with Facebook</a>
-            <a href="#0" class="social_bt google">Login with Google</a>
-            <div class="divider"><span>Or</span></div>
+            <p class="text-center"><img src="/frontend/img/logo_small.png" width="50" height="50" data-retina="true"  alt="" class=" m-1"></p>
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control" name="email" id="email">

@@ -1,8 +1,8 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Adventures</title>
-    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <title>TravelGO | Adventures</title>
+    <meta name="description" content="TravelGO - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
 @section('content')
@@ -31,10 +31,10 @@
         <main>
             <section class="header-video adventure">
                 <div id="hero_video">
-                    <div class="wrapper">
+                    <div class="wrapper" >
                         <div class="container container-custom">
                             <small>Introducing</small>
-                            <h3>Panagea Adventures</h3>
+                            <h3>TravelGO Adventures</h3>
                             <p>Hosted journeys to extraordinary and unique places.</p>
                             <a href="/adventures/details/1" class="btn_1">Read more</a>
                         </div>
@@ -62,8 +62,7 @@
                         <div class="item">
                             <a href="/adventures/details/{{$popular->id}}" class="grid_item_adventure">
                                 <figure>
-                                    <div class="score"><strong>7.9</strong></div>
-                                    <img src="/frontend/img/adventure_popular_1.jpg" class="img-fluid" alt="">
+                                    <img src="/uploads/adventures/{{$popular->cover}}" style="width:350px; height:450px;" class="img-fluid" alt="">
                                     <div class="info">
                                         <em>{!! $interval->days !!} days </em>
                                         <h3>{{$popular->title}}</h3>
@@ -101,7 +100,6 @@
                         <div class="col-xl-3 col-lg-6 col-md-6">
                             <a href='/adventures/details/{{$adventure->id}}' class="grid_item latest_adventure">
                                 <figure>
-                                    <div class="score"><strong>8.5</strong></div>
                                     <img src="/uploads/adventures/{{$adventure->cover}}" class="img-fluid" style="width: 400px; height: 267px;" alt="">
                                     <div class="info">
                                         @php

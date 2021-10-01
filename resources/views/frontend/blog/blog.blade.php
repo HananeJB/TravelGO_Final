@@ -1,8 +1,8 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
-    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <title>TravelGO | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    <meta name="description" content="TravelGO - Premium site template for travel agencies, hotels and restaurant listing.">
 @endsection
 
 @section('custom_css')
@@ -13,9 +13,9 @@
 @section('content')
     <main>
         <section class="hero_in general">
-            <div class="wrapper">
+            <div class="wrapper" style="background-image: url('/frontend/img/pexels-taryn-elliott-3889843.jpg'); ">
                 <div class="container">
-                    <h1 class="fadeInUp"><span></span>Panagea blog</h1>
+                    <h1 class="fadeInUp"><span></span>TravelGO blog</h1>
                 </div>
             </div>
         </section>

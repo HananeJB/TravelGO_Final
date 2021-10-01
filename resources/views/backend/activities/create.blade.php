@@ -5,6 +5,18 @@
     <meta name="description" content="">
 @endsection
 
+
+@section('custom_css')
+    <!-- Plugin styles -->
+    <link href="/backend/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="/backend/vendor/dropzone.css" rel="stylesheet">
+    <link href="/backend/css/date_picker.css" rel="stylesheet">
+    <!-- WYSIWYG Editor -->
+    <link rel="stylesheet" href="/backend/js/editor/summernote-bs4.css">
+    <!-- Your custom styles -->
+
+@endsection
+
 @section('content')
 
     <div class="content-wrapper">
@@ -65,7 +77,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Big description</label>
-                            <textarea class="form-control" style="height:150px" name="description2" placeholder="Big description"></textarea>
+                            <textarea id="summernote" name="description2"></textarea>
                         </div>
                     </div>
                 </div>
@@ -102,10 +114,8 @@
                                 <div class="form-group">
                                     <input type="file" name="images[]" class="form-control" id="images" multiple="multiple">
                                 </div>
-
                         </div>
                     </div>
-
                 </div>
 
 
@@ -236,32 +246,34 @@
 @endsection
 
 @section('custom_js')
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="/backend/vendor/dropzone.min.js"></script>
+    <script src="/backend/vendor/bootstrap-datepicker.js"></script>
+    <script>$('input.date-pick').datepicker();</script>
+    <!-- WYSIWYG Editor -->
+    <script src="/backend/js/editor/summernote-bs4.min.js"></script>
     <script>
-        $(function() {
-            // Multiple images preview with JavaScript
-            var multiImgPreview = function(input, imgPreviewPlaceholder) {
+        $('.editor').summernote({
 
-                if (input.files) {
-                    var filesAmount = input.files.length;
+            fontSizes: ['10', '14'],
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough']],
+                ['fontsize', ['fontsize']],
+                ['para', ['ul', 'ol', 'paragraph']]
 
-                    for (i = 0; i < filesAmount; i++) {
-                        var reader = new FileReader();
-
-                        reader.onload = function(event) {
-                            $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
-                        }
-
-                        reader.readAsDataURL(input.files[i]);
-                    }
-                }
-
-            };
-
-            $('#images').on('change', function() {
-                multiImgPreview(this, 'div.imgPreview');
-            });
+            ],
+            styleTags: [
+                'p',
+                { title: 'Blockquote', tag: 'blockquote', className: 'blockquote', value: 'blockquote' },
+                'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+            ],
+            lineHeights: ['1.8'],
+            placeholder: 'Write here your description....',
+            tabsize: 2,
+            height: 200,
         });
+        var markupStr = $('#summernote').summernote('body');
     </script>
 
 @endsection
