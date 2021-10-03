@@ -42,20 +42,20 @@
                             <p><a href="mailto:{{ $order->email }}" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a>
                                 <a href="/admin/bookings/viewinvoice/{{ $order->id }}" target=”_blank” class="btn_1 gray"><i class="fa fa-fw fa-print"></i> Print invoice</a></p>
                             <ul class="buttons">
-                                <ul class="buttons">
+                                    <li>
                                     <form action="{{ route('bookings.update',$order->id) }}" method="post">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="statut" value="2" />
-                                        <li><button href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray approve" type="submit"><i class="fa fa-fw fa-check-circle-o"></i> Approve</button></li>
+                                        <a href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray approve" type="submit"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a>
                                     </form>
-                                    <form action="{{ route('bookings.update',$order->id) }}" method="post">
+                                </li>
+                                    <li><form action="{{ route('bookings.update',$order->id) }}" method="post">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="statut" value="0" />
-                                        <li><button href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray delete" type="submit"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</button></li>
-                                    </form>
-                                </ul>
+                                        <a href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray delete" type="submit"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a>
+                                    </form></li>
                             </ul>
                         </li>
                         @endforeach

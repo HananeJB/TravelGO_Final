@@ -29,17 +29,16 @@
                                     <li><strong>Ammount payed:</strong> {{ $order->cart_total }} Dhs</li>
                                     <li><strong>Client:</strong> {{ $order->firstname }} {{ $order->lastname }}</li>
                                 </ul>
-                                <p><a href="mailto:{{ $order->email }}" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a>
-                                    <a href="/admin/bookings/viewinvoice/{{ $order->id }}" target=”_blank” class="btn_1 gray"><i class="fa fa-fw fa-print"></i> Print invoice</a></p>
+                                <a href="/admin/bookings/viewinvoice/{{ $order->id }}" target=”_blank” class="btn_1 gray"><i class="fa fa-fw fa-print"></i> Print invoice</a></p>
                                 <ul class="buttons">
-                                    <ul class="buttons">
+
                                         <form action="{{ route('bookings.update',$order->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <input type="hidden" name="statut" value="0" />
                                             <li><button href="{{ route('bookings.update',$order->id) }}" class="btn_1 gray delete" type="submit"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</button></li>
                                         </form>
-                                    </ul>
+
                                 </ul>
                             </li>
                         @endforeach
