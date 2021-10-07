@@ -93,7 +93,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Cover</label>
-                            <img src="/images/{{$activity->cover}}" style="width: 50%;" alt="">
+                            <img src="/uploads/activities/{{$activity->cover}}" style="width: 50%;" alt="">
                             <input type="file" name="cover" class="form-control" placeholder="Image">
                         </div>
                     </div>
@@ -206,25 +206,26 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <input type="hidden" class="form-control" value="{{++$key}}" placeholder="Title">
-                                                <input type="text" name="day_title" value="{{$items->day_title}}" class="form-control" placeholder="Title">
+                                                <input type="text" name="day_title[]" value="{{$items->day_title}}" class="form-control" placeholder="Title">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text"  name="day_description" value="{{$items->day_description}}" class="form-control" placeholder="Description">
+                                                <input type="text"  name="day_description[]" value="{{$items->day_description}}" class="form-control" placeholder="Description">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="file" name="image" class="form-control" placeholder="Image">
+                                                <input type="file" name="image[]" class="form-control" placeholder="Image">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <form action="{{ route('days.destroy',$items->id) }}" method="POST">
+                                                {{-- <form action="{{ route('days.destroy',$items->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>                                                </form>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>  
+                                                </form>                                               --}}
                                             </div>
                                         </div>
                                     </div>

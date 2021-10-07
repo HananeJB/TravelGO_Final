@@ -31,4 +31,8 @@ class Adventure extends Model
     {
         return $this->hasMany(Booking::class);
     }
+    public static function getCoverPath()
+    {
+        return 'uploads/adventures/';
+    }
 }

@@ -21,7 +21,7 @@ class DayController extends Controller
         return back();
     }
 
-    public function destroy(Day $day)
+    public function deleteday(Day $day)
     {
 
         $day->delete();

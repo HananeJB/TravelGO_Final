@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="cbp_tmlabel">
                                         <div class="hidden-xs">
-                                            <img src="/uploads/days/{{$day->image}}" alt="" class="rounded-circle thumb_visit">
+                                            <img src="{{ asset('storage/' . $day->image)  }}" alt="" class="rounded-circle thumb_visit">
                                         </div>
                                         <h4>{{$day->day_title}}</h4>
                                         <p>

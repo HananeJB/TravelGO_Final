@@ -40,6 +40,10 @@ class Activity extends Model
         return $this->hasMany(Image::class);
     }
 
-
+    // Helpers
+    public static function getCoverPath()
+    {
+        return 'uploads/activities/';
+    }
 
 }

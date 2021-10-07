@@ -148,7 +148,7 @@ class AdventureController extends Controller
         $input = $request->all();
 
         if ($image = $request->file('cover')) {
-            $destinationPath = 'images/';
+            $destinationPath = Adventure::getCoverPath();
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['cover'] = "$profileImage";

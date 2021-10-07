@@ -65,7 +65,7 @@ class ActivityController extends Controller
 
 
         if ($image = $request->file('cover')) {
-            $destinationPath = 'uploads/activities/';
+            $destinationPath = Activity::getCoverPath();
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['cover'] = "$profileImage";
@@ -103,7 +103,6 @@ class ActivityController extends Controller
 
             ];
 
-
                 DB::table('days')->insert($data);
             }
 
@@ -130,7 +129,7 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        $data = Day::all();
+        $data = $activity->days;
         return view('backend.activities.edit', compact('activity','data'));
     }
 
@@ -160,7 +159,7 @@ class ActivityController extends Controller
         $input = $request->all();
 
         if ($image = $request->file('cover')) {
-            $destinationPath = 'images/';
+            $destinationPath = Activity::getCoverPath();
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['cover'] = "$profileImage";
@@ -191,16 +190,17 @@ class ActivityController extends Controller
             }
         }
 
+        $activity->days()->delete();
         foreach ( $request->day_title as $day=>$insert) {
-            $data =[
-                'day_title' =>$request->day_title[$day],
-                'day_description' =>$request->day_description[$day],
-                'image' =>$request->image[$day]->store('images'),
-                'activity_id'=>$activity_id ,
-
-            ];
-
-            DB::table('days')->insert($data);
+            if($request->day_title[$day]) {
+                $data =[
+                    'day_title' =>$request->day_title[$day],
+                    'day_description' =>$request->day_description[$day],
+                    'image' =>$request->image[$day]->store('uploads/days/'),
+                    'activity_id'=>$activity_id ,
+                ];
+                DB::table('days')->insert($data);
+            }
         }
 
 
