@@ -149,7 +149,7 @@
                                 @foreach($adventure->days as $day)
                                 <div class="mb-5">
                                     <h3>Day {!! $f->format($i++) !!} - {{$day->day_title}}</h3>
-                                    <figure><img src="/uploads/days/{{$day->image}}" style="width: 400px; height: 240px" class="img-fluid" alt=""></figure>
+                                    <figure><img src="{{ asset('storage/' . $day->image)  }}" style="width: 400px; height: 240px" class="img-fluid" alt=""></figure>
                                     <p>{{$day->day_description}}</p>
                                 </div>
                                 @endforeach

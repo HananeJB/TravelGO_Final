@@ -168,46 +168,56 @@
             </div>
             <!-- /box_general-->
 
+
+
             <div class="box_general padding_bottom">
                 <div class="header_box version_2">
                     <h2><i class="fa fa-clock-o"></i>Program</h2>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h6>Item</h6>
-                        <table id="pricing-list-container" style="width:100%;">
-                            <tr class="pricing-list-item">
-                                <td>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Title">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Description">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <input type="file" name="image" class="form-control" placeholder="Image">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a>
-                                            </div>
+            <div class="col-md-12">
+                <h6>Item</h6>
+                <table id="pricing-list-container" style="width:100%;">
+                    @foreach($data as $key=>$items)
+                        <tr class="pricing-list-item">
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" value="{{++$key}}" placeholder="Title">
+                                            <input type="text" name="day_title[]" value="{{$items->day_title}}" class="form-control" placeholder="Title">
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
-                        </table>
-                        <a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add Item</a>
-                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text"  name="day_description[]" value="{{$items->day_description}}" class="form-control" placeholder="Description">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="file" name="image[]" class="form-control" placeholder="Image">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <img src="{{ asset('storage/' . $items->image)  }}" style="width: 50px; height: 50px" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            {{-- <form action="{{ route('days.destroy',$items->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>                                               --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
 
-                </div>
-                <!-- /row-->
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
             </div>
             <!-- /box_general-->
 

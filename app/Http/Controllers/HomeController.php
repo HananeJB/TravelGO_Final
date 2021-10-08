@@ -55,8 +55,8 @@ class HomeController extends Controller
     public function BlogList()
     {
         $latest = Post::latest()->take(4)->get();
-        $posts = Post::all();
-        return view('frontend.blog.blog', compact('posts','latest'));
+        $posts = Post::latest()->simplepaginate(7);
+        return view('frontend.blog.blog', compact('posts','latest'))->with('i', (request()->input('page', 1) - 1) * 3);
     }
 
     public function BlogSingle($id)

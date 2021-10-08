@@ -59,7 +59,7 @@ class AdventureController extends Controller
         $input = $request->all();
 
         if ($image = $request->file('cover')) {
-            $destinationPath = 'images/';
+            $destinationPath = Adventure::getCoverPath();
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['cover'] = "$profileImage";
@@ -86,15 +86,14 @@ class AdventureController extends Controller
             }
         }
         foreach ( $request->day_title as $day=>$insert) {
+
             $data =[
                 'day_title' =>$request->day_title[$day],
                 'day_description' =>$request->day_description[$day],
-                'image' =>$request->image[$day]->store('images'),
+                'image' =>$request->image[$day]->store('uploads/days/'),
                 'adventure_id'=>$adventure_id,
 
             ];
-
-
 
             DB::table('days')->insert($data);
         }
@@ -122,7 +121,9 @@ class AdventureController extends Controller
      */
     public function edit(Adventure $adventure)
     {
-        return view('backend.adventures.edit', compact('adventure'));
+        $image = $adventure->images;
+        $data = $adventure->days;
+        return view('backend.adventures.edit', compact('adventure','data','image'));
     }
 
     /**

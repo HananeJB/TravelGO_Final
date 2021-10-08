@@ -24,7 +24,7 @@ class DayFactory extends Factory
         return [
             'day_title'=>$this->faker->name(),
             'day_description'=> $this->faker->text(150),
-            'image'=>$this->faker->randomElement($array = array ('adventure_2.jpg','adventure_3.jpg','adventure_4.jpg','adventure_5.jpg')),
+            'image'=>$this->faker->randomElement($array = array ('/uploads/days/adventure_2.jpg','/uploads/days/adventure_3.jpg','/uploads/days/adventure_4.jpg','/uploads/days/adventure_5.jpg')),
             'activity_id'=>rand(1,20),
             'adventure_id'=>rand(1,20),
         ];

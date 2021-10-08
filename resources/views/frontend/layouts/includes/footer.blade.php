@@ -18,11 +18,11 @@
             <div class="col-lg-3 col-md-6 ml-lg-auto">
                 <h5>Useful links</h5>
                 <ul class="links">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="blog.html">News &amp; Events</a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/blog">News &amp; Events</a></li>
+                    <li><a href="/contact">Contacts</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -76,9 +76,9 @@
             </div>
             <div class="col-lg-6">
                 <ul id="additional_links">
-                    <li><a href="#0">Terms and conditions</a></li>
+                    <li><a href="/terms_and_conditions">Terms and conditions</a></li>
                     <li><a href="#0">Privacy</a></li>
-                    <li><span>© 2019 TravelGO</span></li>
+                    <li><span>© {{date("Y")}} TravelGO</span></li>
                 </ul>
             </div>
         </div>

@@ -58,7 +58,7 @@ class ActivityController extends Controller
             'datefin' => 'required',
             'adresse' => 'required',
             'program' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover',
         ]);
 
         $input = $request->all();
@@ -91,7 +91,6 @@ class ActivityController extends Controller
                 ]);
             }
         }
-
 
             foreach ( $request->day_title as $day=>$insert) {
 
@@ -152,7 +151,7 @@ class ActivityController extends Controller
             'datedebut' => 'required',
             'datefin' => 'required',
             'adresse' => 'required',
-            'cover' => 'required',
+            'cover' ,
 
         ]);
 
@@ -190,18 +189,7 @@ class ActivityController extends Controller
             }
         }
 
-        $activity->days()->delete();
-        foreach ( $request->day_title as $day=>$insert) {
-            if($request->day_title[$day]) {
-                $data =[
-                    'day_title' =>$request->day_title[$day],
-                    'day_description' =>$request->day_description[$day],
-                    'image' =>$request->image[$day]->store('uploads/days/'),
-                    'activity_id'=>$activity_id ,
-                ];
-                DB::table('days')->insert($data);
-            }
-        }
+
 
 
 
