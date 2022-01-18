@@ -1,8 +1,8 @@
 @extends('frontend.layouts.frontend_layout')
 
 @section('head')
-    <title>TravelGO | Premium site template for travel agencies, hotels and restaurant listing.</title>
-    <meta name="description" content="TravelGO - Premium site template for travel agencies, hotels and restaurant listing.">
+    <title>TravelGO | Adventures results.</title>
+    <meta name="description" content="TravelGO ">
 @endsection
 
 @section('content')
